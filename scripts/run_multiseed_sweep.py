@@ -41,7 +41,10 @@ PYTHON = sys.executable
 
 DRL_CONFIGS = ["B0", "B1", "B2", "B3", "B4", "B5", "B6", "B7", "B8", "B9", "B10", "B11"]
 SUP_MODELS = ["rf", "xgb", "mlp", "lstm"]
-FEATURE_SETS = ["ports", "noports"]
+# ports-only by request: the ports-vs-noports ablation is out of scope for this
+# sweep. FEATURE_SETS is still a list (not a lone constant) so a "noports" pass
+# can be re-added later without restructuring build_plan()/cell_command().
+FEATURE_SETS = ["ports"]
 DEFAULT_SEEDS = [42, 43, 44, 45, 46, 47, 48, 49]
 
 RUNS_ROOT = ROOT / "experiments" / "MULTISEED" / "runs"

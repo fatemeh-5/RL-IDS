@@ -111,6 +111,8 @@ def build_summary(long_df: pd.DataFrame) -> pd.DataFrame:
 
 def markdown_zero_day_table(summary: pd.DataFrame, feature_set: str) -> str:
     sub = summary[(summary["FeatureSet"] == feature_set) & (summary["Kind"] == "zero_day")]
+    if sub.empty:
+        return f"### Zero-day per-family results: no data for feature_set={feature_set}\n"
     lines = [
         f"### Zero-day per-family Detection Rate / Precision / F1 (mean +/- std, feature_set={feature_set})",
         "",
@@ -148,7 +150,8 @@ def append_to_paper_log(summary: pd.DataFrame) -> None:
         "zero-day-family summary snapshot, dated so later runs don't silently overwrite it.\n"
     )
     body = markdown_zero_day_table(summary, "ports")
-    body += "\n" + markdown_zero_day_table(summary, "noports")
+    if "noports" in summary["FeatureSet"].astype(str).unique():
+        body += "\n" + markdown_zero_day_table(summary, "noports")
 
     if not PAPER_LOG.exists():
         PAPER_LOG.write_text("# Paper Results Log\n", encoding="utf-8")
