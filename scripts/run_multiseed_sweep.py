@@ -28,6 +28,7 @@ from __future__ import annotations
 
 import argparse
 import json
+import os
 import subprocess
 import sys
 import time
@@ -152,6 +153,18 @@ def append_log(record: dict) -> None:
         handle.write(json.dumps(record) + "\n")
 
 
+def _deterministic_env() -> dict:
+    # Set once here (parent process, before each child interpreter starts) rather
+    # than inside the child script: PYTHONHASHSEED only takes effect if present in
+    # the environment *before* the interpreter boots, so setting it from within the
+    # child after it's already running would be a no-op for that same process.
+    env = dict(os.environ)
+    env["PYTHONHASHSEED"] = "0"
+    env["TF_DETERMINISTIC_OPS"] = "1"
+    env["TF_CUDNN_DETERMINISTIC"] = "1"
+    return env
+
+
 def run_cell(cell: dict) -> tuple[bool, float]:
     out_dir = cell["out_dir"]
     out_dir.mkdir(parents=True, exist_ok=True)
@@ -161,7 +174,10 @@ def run_cell(cell: dict) -> tuple[bool, float]:
     with log_path.open("w", encoding="utf-8") as log_handle:
         log_handle.write("$ " + " ".join(cmd) + "\n\n")
         log_handle.flush()
-        proc = subprocess.run(cmd, cwd=str(ROOT), stdout=log_handle, stderr=subprocess.STDOUT)
+        proc = subprocess.run(
+            cmd, cwd=str(ROOT), stdout=log_handle, stderr=subprocess.STDOUT,
+            env=_deterministic_env(),
+        )
     elapsed = time.time() - t0
     ok = proc.returncode == 0 and (out_dir / "METRICS_ROW.json").exists()
     return ok, elapsed

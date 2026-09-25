@@ -28,10 +28,15 @@ from __future__ import annotations
 
 import argparse
 import json
+import os
+import random
 import sys
 import time
 from datetime import datetime
 from pathlib import Path
+
+os.environ.setdefault("TF_DETERMINISTIC_OPS", "1")
+os.environ.setdefault("TF_CUDNN_DETERMINISTIC", "1")
 
 import numpy as np
 import pandas as pd
@@ -242,6 +247,7 @@ def main() -> None:
     args = parser.parse_args()
 
     balanced = args.train_set == "balanced"
+    random.seed(args.seed)
     rng = np.random.default_rng(args.seed)
 
     print(f"Loading prepared cache (feature_set={args.feature_set}, require_balanced={balanced}) ...")
@@ -283,6 +289,7 @@ def main() -> None:
 
     summary_rows: list[dict] = []
     per_family_tables: list[pd.DataFrame] = []
+    family_breakdown_tables: list[pd.DataFrame] = []
     timings: dict[str, float] = {}
 
     for name in args.models:
@@ -323,6 +330,9 @@ def main() -> None:
             row, per = summarize(name.upper(), result)
             summary_rows.append(row)
             per_family_tables.append(per)
+            fam = result["family_breakdown_df"].copy()
+            fam.insert(0, "Model", name.upper())
+            family_breakdown_tables.append(fam)
             timings[name] = time.time() - t0
 
             print(f"[{name}] Known-Test Recall={row['KT_Recall']}%  "
@@ -342,6 +352,7 @@ def main() -> None:
 
     summary_df = pd.DataFrame(summary_rows)
     per_family_df = pd.concat(per_family_tables, ignore_index=True)
+    family_breakdown_df = pd.concat(family_breakdown_tables, ignore_index=True)
 
     print("\n" + "=" * 60)
     print("SUPERVISED BASELINE SUMMARY")
@@ -358,6 +369,9 @@ def main() -> None:
     out_dir.mkdir(parents=True, exist_ok=True)
     summary_df.to_csv(out_dir / "summary.csv", index=False)
     per_family_df.to_csv(out_dir / "per_family_detection.csv", index=False)
+    family_breakdown_df.to_csv(
+        out_dir / "family_breakdown_precision_recall_f1.csv", index=False
+    )
     with (out_dir / "run_meta.json").open("w", encoding="utf-8") as handle:
         json.dump({
             "train_set": args.train_set,
@@ -383,11 +397,18 @@ def main() -> None:
     # aggregate_multiseed.py can scan both without caring which trainer ran.
     if args.out_dir is not None and len(summary_rows) == 1:
         row_raw = summary_rows[0]
-        per_indexed = per_family_tables[0].set_index("Attack")["Detection Rate (%)"]
-        family_rates = {
-            attack: float(per_indexed.get(attack, float("nan")))
-            for attack in ZERO_DAY_ATTACKS
-        }
+        fam_zd = family_breakdown_tables[0]
+        fam_zd = fam_zd[fam_zd["Kind"] == "zero_day"].set_index("Attack")
+        family_rates = {}
+        for attack in ZERO_DAY_ATTACKS:
+            if attack in fam_zd.index:
+                family_rates[attack] = float(fam_zd.loc[attack, "Detection Rate (%)"])
+                family_rates[f"{attack}_Precision"] = float(fam_zd.loc[attack, "Precision (%)"])
+                family_rates[f"{attack}_F1"] = float(fam_zd.loc[attack, "F1 (%)"])
+            else:
+                family_rates[attack] = float("nan")
+                family_rates[f"{attack}_Precision"] = float("nan")
+                family_rates[f"{attack}_F1"] = float("nan")
         row = {
             "config": row_raw["Model"],
             "feature_set": args.feature_set,

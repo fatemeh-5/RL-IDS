@@ -100,6 +100,11 @@ def save_standard_run(
             slim = per_attack
         slim.to_csv(results_dir / "zero_day_per_attack_metrics.csv", index=False)
 
+        if "family_breakdown_df" in eval_result:
+            eval_result["family_breakdown_df"].to_csv(
+                results_dir / "family_breakdown_precision_recall_f1.csv", index=False
+            )
+
         np.save(
             results_dir / "known_test_predictions.npy",
             eval_result["known_test_predictions"],
@@ -132,6 +137,11 @@ def save_standard_run(
             for path in (family_results, family_model, family_artifacts):
                 path.mkdir(parents=True, exist_ok=True)
             slim.to_csv(family_results / "zero_day_per_attack_metrics.csv", index=False)
+            if "family_breakdown_df" in eval_result:
+                eval_result["family_breakdown_df"].to_csv(
+                    family_results / "family_breakdown_precision_recall_f1.csv",
+                    index=False,
+                )
             shutil.copy2(model_dir / model_filename, family_model / model_filename)
 
     if data is not None:
