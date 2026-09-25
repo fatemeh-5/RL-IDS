@@ -30,6 +30,7 @@ experiments/MULTISEED/sweep_stdout.log
 experiments/MULTISEED/sweep_stderr.log
 experiments/MULTISEED/watchdog.log
 experiments/MULTISEED/sweep_log.jsonl
+experiments/MULTISEED/progress.log
 experiments/MULTISEED/runs/
 
 # OS / editor

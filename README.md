@@ -99,6 +99,7 @@ There is exactly ONE results pipeline. Per-seed cell outputs live under
 experiments/MULTISEED/
 ├── runs/                              # one dir per (config, feature_set, seed) cell — source of truth
 ├── sweep_log.jsonl                    # one line per cell attempt (ok/failed), from run_multiseed_sweep.py
+├── progress.log                       # human-readable live log: timestamp | model features seed | episode x/N, reward, acc, eps, cell ETA
 ├── aggregate_results.csv              # scripts/aggregate_multiseed.py: long table, one row per cell
 ├── summary_stats.csv, significance_tests.csv, table_main.tex
 │                                       # scripts/multiseed_stats.py: mean/std/CI + paired Wilcoxon/t-test
@@ -116,6 +117,16 @@ diverged from the multi-seed results and one of its files was stale. If you
 need a single, non-swept run for a quick check, `scripts/train.py <ID>` still
 works and writes to `experiments/<family_dir>/`, but for anything going in
 the paper, use the `MULTISEED` pipeline above.
+
+### Watching a running sweep
+
+```powershell
+python scripts\sweep_status.py --tail 15                          # snapshot: current model/seed/episode, done/total, ETA
+Get-Content experiments\MULTISEED\progress.log -Wait -Tail 20     # live stream, one clean line per episode
+```
+
+Each cell's full (noisy, TensorFlow-heavy) output still goes to its own
+`runs/<kind>/<config>/<features>/seed<N>/log.txt`.
 
 To rebuild everything from the sweep's raw cells:
 ```bash

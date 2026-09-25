@@ -35,6 +35,7 @@ if str(ROOT) not in sys.path:
 
 from agent.data.constants import ZERO_DAY_ATTACKS
 from agent.runners.runners import rebuild_experiment
+from agent.utils import progress
 
 
 def main() -> int:
@@ -55,6 +56,8 @@ def main() -> int:
         print(f"Already done: {marker}")
         return 0
 
+    tee = progress.install(progress.cell_label(args.config, args.feature_set, args.seed))
+    tee.event("START training")
     try:
         out = rebuild_experiment(
             args.config,
@@ -67,6 +70,7 @@ def main() -> int:
         )
     except Exception:  # noqa: BLE001 - surface full traceback, exit nonzero
         traceback.print_exc()
+        tee.event(f"FAILED after {tee.elapsed()} -- see {out_dir / 'log.txt'}")
         (out_dir / "FAILED.json").write_text(
             json.dumps({"error": traceback.format_exc()}, indent=2), encoding="utf-8"
         )
@@ -108,6 +112,10 @@ def main() -> int:
         **family_rates,
     }
     marker.write_text(json.dumps(row, indent=2), encoding="utf-8")
+    tee.event(
+        f"DONE in {tee.elapsed()} | KT_F1={row['KT_F1']:.2f} "
+        f"KT_AUC={row['KT_ROC_AUC']:.2f} | ZD weighted={weighted_zd:.2f} macro={macro_zd:.2f}"
+    )
     print(f"Wrote {marker}")
     print(json.dumps(row, indent=2))
     return 0

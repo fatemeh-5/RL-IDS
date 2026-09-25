@@ -55,6 +55,7 @@ from agent.data.constants import (
 )
 from agent.data.pipeline import load_or_build_cache
 from agent.evaluation.metrics import evaluate_all
+from agent.utils import progress
 
 ALL_MODELS = ["rf", "xgb", "mlp", "lstm"]
 
@@ -247,6 +248,8 @@ def main() -> None:
     args = parser.parse_args()
 
     balanced = args.train_set == "balanced"
+    tee = progress.install(progress.cell_label("+".join(args.models), args.feature_set, args.seed))
+    tee.event("START supervised")
     random.seed(args.seed)
     rng = np.random.default_rng(args.seed)
 
@@ -348,6 +351,7 @@ def main() -> None:
 
     if not summary_rows:
         print("\nNo models produced results.")
+        tee.event(f"FAILED after {tee.elapsed()}: no models produced results")
         return
 
     summary_df = pd.DataFrame(summary_rows)
@@ -391,6 +395,7 @@ def main() -> None:
         }, handle, indent=2)
 
     print(f"\nSaved -> {out_dir}")
+    tee.event(f"DONE in {tee.elapsed()} -> {out_dir}")
 
     # Sweep marker: one flat METRICS_ROW.json per (model, feature_set, seed),
     # same schema as the DRL side (agent/../run_drl_cell.py), so
