@@ -1,2 +1,0 @@
-Model,KT_Accuracy,KT_Precision,KT_Recall,KT_F1,KT_ROC_AUC,Weighted_ZeroDay_%,Macro_ZeroDay_%
-LSTM,97.99,97.59,92.77,95.12,99.17,95.55,47.9

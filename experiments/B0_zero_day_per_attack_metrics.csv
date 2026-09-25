@@ -1,3 +1,0 @@
-Attack,Samples,Detected,Missed,Detection Rate (%),Miss Rate (%)
-Backdoor,97,0,97,0.0,100.0
-Shellcode,87,0,87,0.0,100.0

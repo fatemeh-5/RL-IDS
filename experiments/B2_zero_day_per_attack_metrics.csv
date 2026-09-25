@@ -1,6 +1,0 @@
-Attack,Samples,Detected,Missed,Detection Rate (%),Miss Rate (%)
-Brute Force,291955,287597,4358,98.51,1.49
-Backdoor,19029,7127,11902,37.45,62.55
-Theft,1909,5,1904,0.26,99.74
-Shellcode,1365,10,1355,0.73,99.27
-ransomware,142,141,1,99.3,0.7

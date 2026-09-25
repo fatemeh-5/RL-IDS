@@ -1,2 +1,0 @@
-Split,Accuracy,Precision_Attack,Recall_Attack,F1_Attack,ROC_AUC,True_Negative,False_Positive,False_Negative,True_Positive
-Known Test,0.940352975958778,0.8901021971359026,0.8193772969824762,0.8532767252683688,0.8822249614473575,1343688,37519,66987,303880
