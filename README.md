@@ -88,13 +88,40 @@ from agent.data import prepare_and_cache
 
 ---
 
-## Results (one CSV per model)
+## Results — single source of truth: `experiments/MULTISEED/`
+
+There is exactly ONE results pipeline. Per-seed cell outputs live under
+`experiments/MULTISEED/runs/<drl|supervised>/<config>/<ports|noports>/seed<N>/`
+(one `METRICS_ROW.json` + `results/` per cell). Everything else in
+`experiments/MULTISEED/` is derived from those cells and safe to regenerate:
 
 ```text
-experiments/
-  B0_zero_day_per_attack_metrics.csv
-  …
-  B10_zero_day_per_attack_metrics.csv
+experiments/MULTISEED/
+├── runs/                              # one dir per (config, feature_set, seed) cell — source of truth
+├── sweep_log.jsonl                    # one line per cell attempt (ok/failed), from run_multiseed_sweep.py
+├── aggregate_results.csv              # scripts/aggregate_multiseed.py: long table, one row per cell
+├── summary_stats.csv, significance_tests.csv, table_main.tex
+│                                       # scripts/multiseed_stats.py: mean/std/CI + paired Wilcoxon/t-test
+├── per_family_precision_recall_f1.csv # scripts/report_per_family.py: long, all seeds
+└── per_family_summary.csv / .json     # scripts/report_per_family.py: mean/std per (config, feature_set, family)
+```
+
+`paper_results_log.md` (repo root) gets a dated, versioned section appended
+by `scripts/report_per_family.py` each time it's run — never overwritten.
+
+There used to be a second, older per-model CSV pipeline
+(`experiments/B0_zero_day_per_attack_metrics.csv`, etc., written by
+`scripts/train.py <ID>` single runs). It was removed because it silently
+diverged from the multi-seed results and one of its files was stale. If you
+need a single, non-swept run for a quick check, `scripts/train.py <ID>` still
+works and writes to `experiments/<family_dir>/`, but for anything going in
+the paper, use the `MULTISEED` pipeline above.
+
+To rebuild everything from the sweep's raw cells:
+```bash
+python scripts/aggregate_multiseed.py     # -> aggregate_results.csv
+python scripts/multiseed_stats.py         # -> summary_stats.csv, significance_tests.csv, STATS_NOTES.md
+python scripts/report_per_family.py       # -> per_family_*.csv/json, appends to paper_results_log.md
 ```
 
 ---
