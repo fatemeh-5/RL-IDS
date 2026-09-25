@@ -1,0 +1,19 @@
+$ C:\Users\Dr. Zarepour\AppData\Local\Programs\Python\Python312\python.exe C:\Users\Dr. Zarepour\Desktop\RL_IDS\Codes\scripts\supervised_baseline.py --models xgb --feature-set noports --seed 42 --out-dir C:\Users\Dr. Zarepour\Desktop\RL_IDS\Codes\experiments\MULTISEED\runs\supervised\xgb\noports\seed42
+
+Loading prepared cache (feature_set=noports, require_balanced=True) ...
+Loading cache from C:\Users\Dr. Zarepour\Desktop\RL_IDS\Codes\data\prepared\noports
+Training pool: 12,891,277 rows (attack=6,445,643, benign=6,445,634, scale_pos_weight=1.000)
+
+============================================================
+XGB
+============================================================
+[xgb] Known-Test Recall=93.11%  ROC-AUC=99.4%  |  Weighted-ZD=95.0%  Macro-ZD=57.15%  (137s)
+
+============================================================
+SUPERVISED BASELINE SUMMARY
+============================================================
+Model  KT_Accuracy  KT_Precision  KT_Recall  KT_F1  KT_ROC_AUC  Weighted_ZeroDay_%  Macro_ZeroDay_%
+  XGB        98.31         98.86      93.11   95.9        99.4                95.0            57.15
+
+Saved -> C:\Users\Dr. Zarepour\Desktop\RL_IDS\Codes\experiments\MULTISEED\runs\supervised\xgb\noports\seed42
+Wrote C:\Users\Dr. Zarepour\Desktop\RL_IDS\Codes\experiments\MULTISEED\runs\supervised\xgb\noports\seed42\METRICS_ROW.json

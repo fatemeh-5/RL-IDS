@@ -1,0 +1,18 @@
+{
+  "config": "RF",
+  "feature_set": "noports",
+  "model_type": "supervised",
+  "seed": 43,
+  "KT_Accuracy": 98.36,
+  "KT_Precision": 99.0,
+  "KT_Recall": 93.18,
+  "KT_F1": 96.0,
+  "KT_ROC_AUC": 99.29,
+  "Weighted_ZeroDay": 92.8,
+  "Macro_ZeroDay": 48.19,
+  "Shellcode": 58.681318681318686,
+  "Brute Force": 98.57478035998697,
+  "Theft": 72.91775798847564,
+  "ransomware": 1.4084507042253522,
+  "Backdoor": 9.369909086131694
+}

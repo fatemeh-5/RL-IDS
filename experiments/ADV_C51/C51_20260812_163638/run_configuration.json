@@ -1,0 +1,18 @@
+{
+  "experiment_id": "C51",
+  "run_id": "C51_20260812_163638",
+  "title": "Categorical DQN (C51)",
+  "description": "[ready] Distributional RL over a fixed categorical support.",
+  "trainer": "c51",
+  "family": "value",
+  "status": "planned",
+  "mode": "train",
+  "seed": 42,
+  "episodes": 31,
+  "episode_length": 256,
+  "batch_size": 64,
+  "gamma": 0.97,
+  "learning_rate": 0.0003,
+  "save_every_episodes": 5,
+  "env": "baseline"
+}

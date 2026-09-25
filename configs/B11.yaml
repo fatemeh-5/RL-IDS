@@ -1,0 +1,53 @@
+experiment_id: B11
+title: Family-aware sampling + investigate action + post-alert queue effect
+trainer: per
+model_type: double
+env: investigate       # <-- new env type; see runner note below
+
+# Inherited from B10 (family-aware sampling)
+family_mode: restrained
+benign_per_episode: 128
+natural_attack_per_episode: 64
+stratified_attack_per_episode: 64
+adaptive_mix: 0.40
+ema_decay: 0.90
+min_family_quota: 2
+max_family_quota: 5
+
+# NEW: investigate + queue-effect params
+investigate_budget: 20
+investigate_penalty_exhausted: -2.0
+post_alert_countdown_length: 5
+post_alert_benign_boost: 0.30
+
+# NEW: cost-sensitive reward matrix (like B5/B6)
+reward_tp: 5.0
+reward_tn: 2.0
+reward_fp: -3.0
+reward_fn: -10.0
+
+# Standard training hyperparameters (match B0-B10)
+epsilon_start: 1.0
+epsilon_min: 0.05
+epsilon_decay: 0.90
+replay_capacity: 1000
+target_update_interval: 250
+per_alpha: 0.60
+beta_start: 0.40
+beta_end: 1.00
+priority_epsilon: 1.0e-6
+
+mode: train
+seed: 42
+episodes: 31
+episode_length: 256
+batch_size: 16
+gamma: 0.97
+learning_rate: 0.001
+save_every_episodes: 5
+
+# NOTE: 3-action space. The Q-network output dim must be 3, not 2.
+# The runner needs to pass action_count=3 to build_double_dqn OR
+# use build_dueling_dqn(action_count=3). See the two runner changes
+# in the accompanying instructions.
+n_actions: 3

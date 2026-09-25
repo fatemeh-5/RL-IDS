@@ -1,0 +1,12 @@
+[
+  "L4_SRC_PORT",
+  "L4_DST_PORT",
+  "PROTOCOL",
+  "L7_PROTO",
+  "IN_BYTES",
+  "OUT_BYTES",
+  "IN_PKTS",
+  "OUT_PKTS",
+  "TCP_FLAGS",
+  "FLOW_DURATION_MILLISECONDS"
+]

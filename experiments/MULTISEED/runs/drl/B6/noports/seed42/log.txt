@@ -1,0 +1,81 @@
+$ C:\Users\Dr. Zarepour\AppData\Local\Programs\Python\Python312\python.exe C:\Users\Dr. Zarepour\Desktop\RL_IDS\Codes\scripts\run_drl_cell.py --config B6 --feature-set noports --seed 42 --out-dir C:\Users\Dr. Zarepour\Desktop\RL_IDS\Codes\experiments\MULTISEED\runs\drl\B6\noports\seed42
+
+WARNING: All log messages before absl::InitializeLog() is called are written to STDERR
+I0000 00:00:1788552062.718289    8512 port.cc:153] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
+WARNING: All log messages before absl::InitializeLog() is called are written to STDERR
+I0000 00:00:1788552064.364518    8512 port.cc:153] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
+I0000 00:00:1788552065.688812    8512 cpu_feature_guard.cc:227] This TensorFlow binary is optimized to use available CPU instructions in performance-critical operations.
+To enable the following instructions: SSE3 SSE4.1 SSE4.2 AVX AVX2 FMA, in other operations, rebuild TensorFlow with the appropriate compiler flags.
+WARNING:tensorflow:From C:\Users\Dr. Zarepour\AppData\Local\Programs\Python\Python312\Lib\site-packages\keras\src\backend\tensorflow\core.py:233: The name tf.placeholder is deprecated. Please use tf.compat.v1.placeholder instead.
+
+WARNING:tensorflow:TensorFlow GPU support is not available on native Windows for TensorFlow >= 2.11. Even if CUDA/cuDNN are installed, GPU will not be used. Please use WSL2 or the TensorFlow-DirectML plugin.
+========================================================================
+Rebuild B6: Dueling Double DQN + PER
+Mode: train  Feature set: noports  Seed: 42
+Config: C:\Users\Dr. Zarepour\Desktop\RL_IDS\Codes\configs\B6.yaml
+========================================================================
+Loading cache from C:\Users\Dr. Zarepour\Desktop\RL_IDS\Codes\data\prepared\noports
+Episode 00/30 | Reward:    10.0 | Acc: 0.520 | Eps: 1.0000->0.9000 | t: 50.6s
+Episode 01/30 | Reward:    10.0 | Acc: 0.520 | Eps: 0.9000->0.8100 | t: 50.5s
+Episode 02/30 | Reward:    32.0 | Acc: 0.562 | Eps: 0.8100->0.7290 | t: 51.0s
+Episode 03/30 | Reward:    70.0 | Acc: 0.637 | Eps: 0.7290->0.6561 | t: 51.2s
+Episode 04/30 | Reward:    82.0 | Acc: 0.660 | Eps: 0.6561->0.5905 | t: 51.6s
+Episode 05/30 | Reward:    82.0 | Acc: 0.660 | Eps: 0.5905->0.5314 | t: 51.7s
+Episode 06/30 | Reward:   106.0 | Acc: 0.707 | Eps: 0.5314->0.4783 | t: 52.3s
+Episode 07/30 | Reward:   122.0 | Acc: 0.738 | Eps: 0.4783->0.4305 | t: 52.4s
+Episode 08/30 | Reward:   128.0 | Acc: 0.750 | Eps: 0.4305->0.3874 | t: 52.6s
+Episode 09/30 | Reward:   142.0 | Acc: 0.777 | Eps: 0.3874->0.3487 | t: 52.7s
+Episode 10/30 | Reward:   144.0 | Acc: 0.781 | Eps: 0.3487->0.3138 | t: 53.1s
+Episode 11/30 | Reward:   164.0 | Acc: 0.820 | Eps: 0.3138->0.2824 | t: 53.2s
+Episode 12/30 | Reward:   168.0 | Acc: 0.828 | Eps: 0.2824->0.2542 | t: 53.4s
+Episode 13/30 | Reward:   146.0 | Acc: 0.785 | Eps: 0.2542->0.2288 | t: 53.3s
+Episode 14/30 | Reward:   180.0 | Acc: 0.852 | Eps: 0.2288->0.2059 | t: 53.7s
+Episode 15/30 | Reward:   186.0 | Acc: 0.863 | Eps: 0.2059->0.1853 | t: 54.0s
+Episode 16/30 | Reward:   200.0 | Acc: 0.891 | Eps: 0.1853->0.1668 | t: 53.8s
+Episode 17/30 | Reward:   166.0 | Acc: 0.824 | Eps: 0.1668->0.1501 | t: 53.9s
+Episode 18/30 | Reward:   184.0 | Acc: 0.859 | Eps: 0.1501->0.1351 | t: 54.0s
+Episode 19/30 | Reward:   192.0 | Acc: 0.875 | Eps: 0.1351->0.1216 | t: 53.9s
+Episode 20/30 | Reward:   200.0 | Acc: 0.891 | Eps: 0.1216->0.1094 | t: 54.4s
+Episode 21/30 | Reward:   200.0 | Acc: 0.891 | Eps: 0.1094->0.0985 | t: 54.3s
+Episode 22/30 | Reward:   204.0 | Acc: 0.898 | Eps: 0.0985->0.0886 | t: 54.4s
+Episode 23/30 | Reward:   216.0 | Acc: 0.922 | Eps: 0.0886->0.0798 | t: 54.5s
+Episode 24/30 | Reward:   206.0 | Acc: 0.902 | Eps: 0.0798->0.0718 | t: 54.4s
+Episode 25/30 | Reward:   208.0 | Acc: 0.906 | Eps: 0.0718->0.0646 | t: 54.5s
+Episode 26/30 | Reward:   210.0 | Acc: 0.910 | Eps: 0.0646->0.0581 | t: 54.5s
+Episode 27/30 | Reward:   220.0 | Acc: 0.930 | Eps: 0.0581->0.0523 | t: 54.5s
+Episode 28/30 | Reward:   206.0 | Acc: 0.902 | Eps: 0.0523->0.0500 | t: 54.5s
+Episode 29/30 | Reward:   202.0 | Acc: 0.895 | Eps: 0.0500->0.0500 | t: 54.6s
+Episode 30/30 | Reward:   212.0 | Acc: 0.914 | Eps: 0.0500->0.0500 | t: 54.4s
+Evaluating ...
+     Split  Accuracy  Precision_Attack  Recall_Attack  F1_Attack  ROC_AUC  True_Negative  False_Positive  False_Negative  True_Positive
+Validation    0.8814            0.9026         0.4929     0.6376   0.9251        1361483           19724          188084         182783
+Known Test    0.8809            0.9022         0.4907     0.6356   0.9246        1361474           19733          188891         181976
+
+Zero-day:
+{'Split': 'Zero-Day', 'Samples': 314400, 'Detected': 1251, 'Missed': 313149, 'Detection_Rate': 0.003979007633587786, 'Miss_Rate': 0.9960209923664122}
+     Attack  Samples  Detection Rate (%)  Miss Rate (%)
+Brute Force   291955                0.00         100.00
+   Backdoor    19029                6.46          93.54
+      Theft     1909                0.26          99.74
+  Shellcode     1365                0.00         100.00
+ ransomware      142               11.97          88.03
+Saved B6 run -> C:\Users\Dr. Zarepour\Desktop\RL_IDS\Codes\experiments\MULTISEED\runs\drl\B6\noports\seed42
+Wrote C:\Users\Dr. Zarepour\Desktop\RL_IDS\Codes\experiments\MULTISEED\runs\drl\B6\noports\seed42\METRICS_ROW.json
+{
+  "config": "B6",
+  "feature_set": "noports",
+  "model_type": "drl",
+  "seed": 42,
+  "KT_Accuracy": 88.09274037512114,
+  "KT_Precision": 90.21709492387548,
+  "KT_Recall": 49.06772508743026,
+  "KT_F1": 63.56396356116917,
+  "KT_ROC_AUC": 92.45633069832,
+  "Weighted_ZeroDay": 0.3979007633587786,
+  "Macro_ZeroDay": 3.7384622931284097,
+  "Shellcode": 0.0,
+  "Brute Force": 0.0,
+  "Theft": 0.26191723415400736,
+  "ransomware": 11.971830985915492,
+  "Backdoor": 6.458563245572548
+}

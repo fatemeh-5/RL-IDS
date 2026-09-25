@@ -1,0 +1,1266 @@
+=== B11 sweep started Tue Sep 15 22:22:32 IST 2026 ===
+[22:22:32] START B11 ports seed=42
+WARNING: All log messages before absl::InitializeLog() is called are written to STDERR
+I0000 00:00:1789498355.896841   30864 port.cc:153] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
+WARNING: All log messages before absl::InitializeLog() is called are written to STDERR
+I0000 00:00:1789498359.718059   30864 port.cc:153] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
+I0000 00:00:1789498364.670909   30864 cpu_feature_guard.cc:227] This TensorFlow binary is optimized to use available CPU instructions in performance-critical operations.
+To enable the following instructions: SSE3 SSE4.1 SSE4.2 AVX AVX2 FMA, in other operations, rebuild TensorFlow with the appropriate compiler flags.
+WARNING:tensorflow:TensorFlow GPU support is not available on native Windows for TensorFlow >= 2.11. Even if CUDA/cuDNN are installed, GPU will not be used. Please use WSL2 or the TensorFlow-DirectML plugin.
+========================================================================
+Rebuild B11: Family-aware sampling + investigate action + post-alert queue effect
+Mode: train  Feature set: ports  Seed: 42
+Config: C:\Users\Dr. Zarepour\Desktop\RL_IDS\Codes\configs\B11.yaml
+========================================================================
+Loading cache from C:\Users\Dr. Zarepour\Desktop\RL_IDS\Codes\data\prepared
+Episode 00/30 | Reward:  -304.0 | Acc: 0.352 | Eps: 1.0000->0.9000 | t: 107.3s | Investigations: 85
+Episode 01/30 | Reward:  -244.0 | Acc: 0.359 | Eps: 0.9000->0.8100 | t: 108.4s | Investigations: 94
+Episode 02/30 | Reward:  -193.0 | Acc: 0.457 | Eps: 0.8100->0.7290 | t: 107.9s | Investigations: 68
+Episode 03/30 | Reward:   -75.0 | Acc: 0.488 | Eps: 0.7290->0.6561 | t: 110.0s | Investigations: 64
+Episode 04/30 | Reward:   -82.0 | Acc: 0.504 | Eps: 0.6561->0.5905 | t: 109.7s | Investigations: 55
+Episode 05/30 | Reward:   -47.0 | Acc: 0.539 | Eps: 0.5905->0.5314 | t: 110.2s | Investigations: 54
+Episode 06/30 | Reward:   -47.0 | Acc: 0.555 | Eps: 0.5314->0.4783 | t: 112.0s | Investigations: 48
+Episode 07/30 | Reward:    90.0 | Acc: 0.609 | Eps: 0.4783->0.4305 | t: 111.0s | Investigations: 52
+Episode 08/30 | Reward:    43.0 | Acc: 0.617 | Eps: 0.4305->0.3874 | t: 110.7s | Investigations: 36
+Episode 09/30 | Reward:     9.0 | Acc: 0.648 | Eps: 0.3874->0.3487 | t: 111.7s | Investigations: 35
+Episode 10/30 | Reward:  -152.0 | Acc: 0.621 | Eps: 0.3487->0.3138 | t: 110.2s | Investigations: 31
+Episode 11/30 | Reward:   142.0 | Acc: 0.707 | Eps: 0.3138->0.2824 | t: 116.8s | Investigations: 22
+Episode 12/30 | Reward:   297.0 | Acc: 0.738 | Eps: 0.2824->0.2542 | t: 114.8s | Investigations: 27
+Episode 13/30 | Reward:   168.0 | Acc: 0.715 | Eps: 0.2542->0.2288 | t: 115.6s | Investigations: 24
+Episode 14/30 | Reward:   246.0 | Acc: 0.770 | Eps: 0.2288->0.2059 | t: 117.0s | Investigations: 19
+Episode 15/30 | Reward:   340.0 | Acc: 0.824 | Eps: 0.2059->0.1853 | t: 115.7s | Investigations: 15
+Episode 16/30 | Reward:   340.0 | Acc: 0.789 | Eps: 0.1853->0.1668 | t: 111.3s | Investigations: 20
+Episode 17/30 | Reward:   379.0 | Acc: 0.793 | Eps: 0.1668->0.1501 | t: 110.9s | Investigations: 14
+Episode 18/30 | Reward:   336.0 | Acc: 0.793 | Eps: 0.1501->0.1351 | t: 110.2s | Investigations: 20
+Episode 19/30 | Reward:   223.0 | Acc: 0.762 | Eps: 0.1351->0.1216 | t: 106.3s | Investigations: 11
+Episode 20/30 | Reward:   395.0 | Acc: 0.855 | Eps: 0.1216->0.1094 | t: 108.9s | Investigations: 9
+Episode 21/30 | Reward:   409.0 | Acc: 0.852 | Eps: 0.1094->0.0985 | t: 112.0s | Investigations: 10
+Episode 22/30 | Reward:   425.0 | Acc: 0.871 | Eps: 0.0985->0.0886 | t: 112.0s | Investigations: 5
+Episode 23/30 | Reward:   352.0 | Acc: 0.840 | Eps: 0.0886->0.0798 | t: 112.1s | Investigations: 9
+Episode 24/30 | Reward:   445.0 | Acc: 0.875 | Eps: 0.0798->0.0718 | t: 113.0s | Investigations: 5
+Episode 25/30 | Reward:   496.0 | Acc: 0.895 | Eps: 0.0718->0.0646 | t: 114.5s | Investigations: 5
+Episode 26/30 | Reward:   467.0 | Acc: 0.906 | Eps: 0.0646->0.0581 | t: 112.7s | Investigations: 4
+Episode 27/30 | Reward:   373.0 | Acc: 0.883 | Eps: 0.0581->0.0523 | t: 109.8s | Investigations: 1
+Episode 28/30 | Reward:   426.0 | Acc: 0.895 | Eps: 0.0523->0.0500 | t: 111.0s | Investigations: 5
+Episode 29/30 | Reward:   341.0 | Acc: 0.855 | Eps: 0.0500->0.0500 | t: 109.5s | Investigations: 4
+Episode 30/30 | Reward:   411.0 | Acc: 0.879 | Eps: 0.0500->0.0500 | t: 107.4s | Investigations: 5
+Evaluating ...
+     Split  Accuracy  Precision_Attack  Recall_Attack  F1_Attack  ROC_AUC  True_Negative  False_Positive  False_Negative  True_Positive
+Validation    0.9364            0.8592         0.8369     0.8479   0.9402        1330338           50869           60499         310368
+Known Test    0.9367            0.8599         0.8377     0.8486   0.9408        1330583           50624           60206         310661
+
+Zero-day:
+{'Split': 'Zero-Day', 'Samples': 314400, 'Detected': 295493, 'Missed': 18907, 'Detection_Rate': 0.9398632315521629, 'Miss_Rate': 0.06013676844783715}
+     Attack  Samples  Detection Rate (%)  Miss Rate (%)
+Brute Force   291955               98.51           1.49
+   Backdoor    19029               37.41          62.59
+      Theft     1909               33.21          66.79
+  Shellcode     1365                0.73          99.27
+ ransomware      142               93.66           6.34
+Saved B11 run -> experiments\MULTISEED\runs\drl\B11\ports\seed42
+Wrote experiments\MULTISEED\runs\drl\B11\ports\seed42\METRICS_ROW.json
+{
+  "config": "B11",
+  "feature_set": "ports",
+  "model_type": "drl",
+  "seed": 42,
+  "KT_Accuracy": 93.6743539371054,
+  "KT_Precision": 85.98779357017314,
+  "KT_Recall": 83.7661479721841,
+  "KT_F1": 84.86243293742282,
+  "KT_ROC_AUC": 94.07588630212032,
+  "Weighted_ZeroDay": 93.98632315521628,
+  "Macro_ZeroDay": 52.70486032540593,
+  "Shellcode": 0.7326007326007326,
+  "Brute Force": 98.50730420784025,
+  "Theft": 33.211105290728135,
+  "ransomware": 93.66197183098592,
+  "Backdoor": 37.41131956487467
+}
+[23:20:31] OK    B11 ports seed=42
+[23:20:31] START B11 ports seed=43
+WARNING: All log messages before absl::InitializeLog() is called are written to STDERR
+I0000 00:00:1789501843.511928   32212 port.cc:153] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
+WARNING: All log messages before absl::InitializeLog() is called are written to STDERR
+I0000 00:00:1789501850.934594   32212 port.cc:153] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
+I0000 00:00:1789501855.547960   32212 cpu_feature_guard.cc:227] This TensorFlow binary is optimized to use available CPU instructions in performance-critical operations.
+To enable the following instructions: SSE3 SSE4.1 SSE4.2 AVX AVX2 FMA, in other operations, rebuild TensorFlow with the appropriate compiler flags.
+WARNING:tensorflow:TensorFlow GPU support is not available on native Windows for TensorFlow >= 2.11. Even if CUDA/cuDNN are installed, GPU will not be used. Please use WSL2 or the TensorFlow-DirectML plugin.
+========================================================================
+Rebuild B11: Family-aware sampling + investigate action + post-alert queue effect
+Mode: train  Feature set: ports  Seed: 43
+Config: C:\Users\Dr. Zarepour\Desktop\RL_IDS\Codes\configs\B11.yaml
+========================================================================
+Loading cache from C:\Users\Dr. Zarepour\Desktop\RL_IDS\Codes\data\prepared
+Episode 00/30 | Reward:  -285.0 | Acc: 0.348 | Eps: 1.0000->0.9000 | t: 96.9s | Investigations: 79
+Episode 01/30 | Reward:  -344.0 | Acc: 0.309 | Eps: 0.9000->0.8100 | t: 104.0s | Investigations: 100
+Episode 02/30 | Reward:  -194.0 | Acc: 0.438 | Eps: 0.8100->0.7290 | t: 100.4s | Investigations: 60
+Episode 03/30 | Reward:   -73.0 | Acc: 0.500 | Eps: 0.7290->0.6561 | t: 101.2s | Investigations: 67
+Episode 04/30 | Reward:   -88.0 | Acc: 0.500 | Eps: 0.6561->0.5905 | t: 104.7s | Investigations: 59
+Episode 05/30 | Reward:     5.0 | Acc: 0.566 | Eps: 0.5905->0.5314 | t: 107.6s | Investigations: 50
+Episode 06/30 | Reward:    69.0 | Acc: 0.602 | Eps: 0.5314->0.4783 | t: 108.7s | Investigations: 51
+Episode 07/30 | Reward:     0.0 | Acc: 0.574 | Eps: 0.4783->0.4305 | t: 107.6s | Investigations: 40
+Episode 08/30 | Reward:    55.0 | Acc: 0.637 | Eps: 0.4305->0.3874 | t: 106.0s | Investigations: 29
+Episode 09/30 | Reward:     7.0 | Acc: 0.633 | Eps: 0.3874->0.3487 | t: 103.0s | Investigations: 29
+Episode 10/30 | Reward:    67.0 | Acc: 0.641 | Eps: 0.3487->0.3138 | t: 102.8s | Investigations: 34
+Episode 11/30 | Reward:   194.0 | Acc: 0.723 | Eps: 0.3138->0.2824 | t: 105.8s | Investigations: 27
+Episode 12/30 | Reward:   335.0 | Acc: 0.754 | Eps: 0.2824->0.2542 | t: 106.1s | Investigations: 29
+Episode 13/30 | Reward:   196.0 | Acc: 0.715 | Eps: 0.2542->0.2288 | t: 103.8s | Investigations: 30
+Episode 14/30 | Reward:   290.0 | Acc: 0.781 | Eps: 0.2288->0.2059 | t: 103.5s | Investigations: 17
+Episode 15/30 | Reward:   329.0 | Acc: 0.824 | Eps: 0.2059->0.1853 | t: 102.8s | Investigations: 10
+Episode 16/30 | Reward:   356.0 | Acc: 0.777 | Eps: 0.1853->0.1668 | t: 101.8s | Investigations: 22
+Episode 17/30 | Reward:   378.0 | Acc: 0.832 | Eps: 0.1668->0.1501 | t: 102.7s | Investigations: 12
+Episode 18/30 | Reward:   388.0 | Acc: 0.816 | Eps: 0.1501->0.1351 | t: 107.4s | Investigations: 14
+Episode 19/30 | Reward:   262.0 | Acc: 0.805 | Eps: 0.1351->0.1216 | t: 109.5s | Investigations: 11
+Episode 20/30 | Reward:   399.0 | Acc: 0.820 | Eps: 0.1216->0.1094 | t: 110.3s | Investigations: 13
+Episode 21/30 | Reward:   380.0 | Acc: 0.852 | Eps: 0.1094->0.0985 | t: 112.2s | Investigations: 5
+Episode 22/30 | Reward:   458.0 | Acc: 0.895 | Eps: 0.0985->0.0886 | t: 114.8s | Investigations: 5
+Episode 23/30 | Reward:   441.0 | Acc: 0.867 | Eps: 0.0886->0.0798 | t: 112.2s | Investigations: 7
+Episode 24/30 | Reward:   493.0 | Acc: 0.902 | Eps: 0.0798->0.0718 | t: 113.0s | Investigations: 4
+Episode 25/30 | Reward:   530.0 | Acc: 0.918 | Eps: 0.0718->0.0646 | t: 111.9s | Investigations: 6
+Episode 26/30 | Reward:   464.0 | Acc: 0.895 | Eps: 0.0646->0.0581 | t: 111.5s | Investigations: 4
+Episode 27/30 | Reward:   499.0 | Acc: 0.926 | Eps: 0.0581->0.0523 | t: 111.4s | Investigations: 3
+Episode 28/30 | Reward:   418.0 | Acc: 0.871 | Eps: 0.0523->0.0500 | t: 111.7s | Investigations: 2
+Episode 29/30 | Reward:   460.0 | Acc: 0.906 | Eps: 0.0500->0.0500 | t: 113.8s | Investigations: 3
+Episode 30/30 | Reward:   519.0 | Acc: 0.922 | Eps: 0.0500->0.0500 | t: 113.8s | Investigations: 2
+Evaluating ...
+     Split  Accuracy  Precision_Attack  Recall_Attack  F1_Attack  ROC_AUC  True_Negative  False_Positive  False_Negative  True_Positive
+Validation    0.9306            0.8288         0.8474     0.8380   0.9508        1316287           64920           56610         314257
+Known Test    0.9308            0.8292         0.8474     0.8382   0.9512        1316473           64734           56582         314285
+
+Zero-day:
+{'Split': 'Zero-Day', 'Samples': 314400, 'Detected': 296822, 'Missed': 17578, 'Detection_Rate': 0.9440903307888041, 'Miss_Rate': 0.05590966921119593}
+     Attack  Samples  Detection Rate (%)  Miss Rate (%)
+Brute Force   291955               98.51           1.49
+   Backdoor    19029               44.29          55.71
+      Theft     1909               33.47          66.53
+  Shellcode     1365                1.25          98.75
+ ransomware      142               99.30           0.70
+Saved B11 run -> experiments\MULTISEED\runs\drl\B11\ports\seed43
+Wrote experiments\MULTISEED\runs\drl\B11\ports\seed43\METRICS_ROW.json
+{
+  "config": "B11",
+  "feature_set": "ports",
+  "model_type": "drl",
+  "seed": 43,
+  "KT_Accuracy": 93.07586323408714,
+  "KT_Precision": 82.92064513916189,
+  "KT_Recall": 84.74331768531576,
+  "KT_F1": 83.8220742886252,
+  "KT_ROC_AUC": 95.12178015798524,
+  "Weighted_ZeroDay": 94.40903307888041,
+  "Macro_ZeroDay": 55.3623632776367,
+  "Shellcode": 1.2454212454212454,
+  "Brute Force": 98.50730420784025,
+  "Theft": 33.47302252488213,
+  "ransomware": 99.29577464788733,
+  "Backdoor": 44.29029376215251
+}
+[00:16:34] OK    B11 ports seed=43
+[00:16:34] START B11 ports seed=44
+WARNING: All log messages before absl::InitializeLog() is called are written to STDERR
+I0000 00:00:1789505197.881459   21360 port.cc:153] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
+WARNING: All log messages before absl::InitializeLog() is called are written to STDERR
+I0000 00:00:1789505201.899698   21360 port.cc:153] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
+I0000 00:00:1789505206.739711   21360 cpu_feature_guard.cc:227] This TensorFlow binary is optimized to use available CPU instructions in performance-critical operations.
+To enable the following instructions: SSE3 SSE4.1 SSE4.2 AVX AVX2 FMA, in other operations, rebuild TensorFlow with the appropriate compiler flags.
+WARNING:tensorflow:TensorFlow GPU support is not available on native Windows for TensorFlow >= 2.11. Even if CUDA/cuDNN are installed, GPU will not be used. Please use WSL2 or the TensorFlow-DirectML plugin.
+========================================================================
+Rebuild B11: Family-aware sampling + investigate action + post-alert queue effect
+Mode: train  Feature set: ports  Seed: 44
+Config: C:\Users\Dr. Zarepour\Desktop\RL_IDS\Codes\configs\B11.yaml
+========================================================================
+Loading cache from C:\Users\Dr. Zarepour\Desktop\RL_IDS\Codes\data\prepared
+Episode 00/30 | Reward:  -325.0 | Acc: 0.332 | Eps: 1.0000->0.9000 | t: 105.5s | Investigations: 79
+Episode 01/30 | Reward:  -239.0 | Acc: 0.383 | Eps: 0.9000->0.8100 | t: 106.9s | Investigations: 79
+Episode 02/30 | Reward:  -248.0 | Acc: 0.418 | Eps: 0.8100->0.7290 | t: 107.4s | Investigations: 69
+Episode 03/30 | Reward:   -43.0 | Acc: 0.508 | Eps: 0.7290->0.6561 | t: 109.4s | Investigations: 63
+Episode 04/30 | Reward:   -17.0 | Acc: 0.535 | Eps: 0.6561->0.5905 | t: 111.4s | Investigations: 52
+Episode 05/30 | Reward:   169.0 | Acc: 0.633 | Eps: 0.5905->0.5314 | t: 110.8s | Investigations: 43
+Episode 06/30 | Reward:   -30.0 | Acc: 0.586 | Eps: 0.5314->0.4783 | t: 111.6s | Investigations: 35
+Episode 07/30 | Reward:    85.0 | Acc: 0.641 | Eps: 0.4783->0.4305 | t: 114.6s | Investigations: 42
+Episode 08/30 | Reward:   140.0 | Acc: 0.664 | Eps: 0.4305->0.3874 | t: 115.8s | Investigations: 34
+Episode 09/30 | Reward:   204.0 | Acc: 0.680 | Eps: 0.3874->0.3487 | t: 113.7s | Investigations: 30
+Episode 10/30 | Reward:   201.0 | Acc: 0.711 | Eps: 0.3487->0.3138 | t: 112.6s | Investigations: 28
+Episode 11/30 | Reward:   172.0 | Acc: 0.723 | Eps: 0.3138->0.2824 | t: 112.3s | Investigations: 22
+Episode 12/30 | Reward:   266.0 | Acc: 0.754 | Eps: 0.2824->0.2542 | t: 112.7s | Investigations: 22
+Episode 13/30 | Reward:   342.0 | Acc: 0.805 | Eps: 0.2542->0.2288 | t: 113.2s | Investigations: 18
+Episode 14/30 | Reward:   234.0 | Acc: 0.746 | Eps: 0.2288->0.2059 | t: 108.9s | Investigations: 17
+Episode 15/30 | Reward:   278.0 | Acc: 0.766 | Eps: 0.2059->0.1853 | t: 114.1s | Investigations: 16
+Episode 16/30 | Reward:   266.0 | Acc: 0.781 | Eps: 0.1853->0.1668 | t: 114.4s | Investigations: 14
+Episode 17/30 | Reward:   308.0 | Acc: 0.805 | Eps: 0.1668->0.1501 | t: 113.2s | Investigations: 9
+Episode 18/30 | Reward:   368.0 | Acc: 0.789 | Eps: 0.1501->0.1351 | t: 113.0s | Investigations: 20
+Episode 19/30 | Reward:   337.0 | Acc: 0.828 | Eps: 0.1351->0.1216 | t: 114.3s | Investigations: 10
+Episode 20/30 | Reward:   416.0 | Acc: 0.852 | Eps: 0.1216->0.1094 | t: 116.0s | Investigations: 8
+Episode 21/30 | Reward:   292.0 | Acc: 0.801 | Eps: 0.1094->0.0985 | t: 115.4s | Investigations: 11
+Episode 22/30 | Reward:   401.0 | Acc: 0.844 | Eps: 0.0985->0.0886 | t: 112.1s | Investigations: 14
+Episode 23/30 | Reward:   407.0 | Acc: 0.867 | Eps: 0.0886->0.0798 | t: 111.0s | Investigations: 9
+Episode 24/30 | Reward:   406.0 | Acc: 0.875 | Eps: 0.0798->0.0718 | t: 109.0s | Investigations: 5
+Episode 25/30 | Reward:   349.0 | Acc: 0.840 | Eps: 0.0718->0.0646 | t: 107.4s | Investigations: 9
+Episode 26/30 | Reward:   384.0 | Acc: 0.863 | Eps: 0.0646->0.0581 | t: 114.2s | Investigations: 7
+Episode 27/30 | Reward:   397.0 | Acc: 0.859 | Eps: 0.0581->0.0523 | t: 112.2s | Investigations: 3
+Episode 28/30 | Reward:   368.0 | Acc: 0.871 | Eps: 0.0523->0.0500 | t: 108.3s | Investigations: 2
+Episode 29/30 | Reward:   420.0 | Acc: 0.855 | Eps: 0.0500->0.0500 | t: 108.1s | Investigations: 7
+Episode 30/30 | Reward:   339.0 | Acc: 0.867 | Eps: 0.0500->0.0500 | t: 107.4s | Investigations: 4
+Evaluating ...
+     Split  Accuracy  Precision_Attack  Recall_Attack  F1_Attack  ROC_AUC  True_Negative  False_Positive  False_Negative  True_Positive
+Validation    0.9117            0.7794         0.8126     0.7957   0.9189        1295917           85290           69483         301384
+Known Test    0.9115            0.7786         0.8133     0.7956   0.9194        1295443           85764           69250         301617
+
+Zero-day:
+{'Split': 'Zero-Day', 'Samples': 314400, 'Detected': 305685, 'Missed': 8715, 'Detection_Rate': 0.972280534351145, 'Miss_Rate': 0.02771946564885496}
+     Attack  Samples  Detection Rate (%)  Miss Rate (%)
+Brute Force   291955               98.51           1.49
+   Backdoor    19029               90.29           9.71
+      Theft     1909               32.69          67.31
+  Shellcode     1365               10.33          89.67
+ ransomware      142              100.00           0.00
+Saved B11 run -> experiments\MULTISEED\runs\drl\B11\ports\seed44
+Wrote experiments\MULTISEED\runs\drl\B11\ports\seed44\METRICS_ROW.json
+{
+  "config": "B11",
+  "feature_set": "ports",
+  "model_type": "drl",
+  "seed": 44,
+  "KT_Accuracy": 91.15254264374678,
+  "KT_Precision": 77.86055588684009,
+  "KT_Recall": 81.32753790442396,
+  "KT_F1": 79.55629292790749,
+  "KT_ROC_AUC": 91.93856804516652,
+  "Weighted_ZeroDay": 97.2280534351145,
+  "Macro_ZeroDay": 66.3625504751077,
+  "Shellcode": 10.329670329670328,
+  "Brute Force": 98.50730420784025,
+  "Theft": 32.68727082242012,
+  "ransomware": 100.0,
+  "Backdoor": 90.28850701560775
+}
+[01:14:40] OK    B11 ports seed=44
+[01:14:40] START B11 ports seed=45
+WARNING: All log messages before absl::InitializeLog() is called are written to STDERR
+I0000 00:00:1789508684.003366   31768 port.cc:153] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
+WARNING: All log messages before absl::InitializeLog() is called are written to STDERR
+I0000 00:00:1789508687.726673   31768 port.cc:153] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
+I0000 00:00:1789508692.246054   31768 cpu_feature_guard.cc:227] This TensorFlow binary is optimized to use available CPU instructions in performance-critical operations.
+To enable the following instructions: SSE3 SSE4.1 SSE4.2 AVX AVX2 FMA, in other operations, rebuild TensorFlow with the appropriate compiler flags.
+WARNING:tensorflow:TensorFlow GPU support is not available on native Windows for TensorFlow >= 2.11. Even if CUDA/cuDNN are installed, GPU will not be used. Please use WSL2 or the TensorFlow-DirectML plugin.
+========================================================================
+Rebuild B11: Family-aware sampling + investigate action + post-alert queue effect
+Mode: train  Feature set: ports  Seed: 45
+Config: C:\Users\Dr. Zarepour\Desktop\RL_IDS\Codes\configs\B11.yaml
+========================================================================
+Loading cache from C:\Users\Dr. Zarepour\Desktop\RL_IDS\Codes\data\prepared
+Episode 00/30 | Reward:  -373.0 | Acc: 0.301 | Eps: 1.0000->0.9000 | t: 100.5s | Investigations: 78
+Episode 01/30 | Reward:  -445.0 | Acc: 0.301 | Eps: 0.9000->0.8100 | t: 101.2s | Investigations: 85
+Episode 02/30 | Reward:  -155.0 | Acc: 0.445 | Eps: 0.8100->0.7290 | t: 101.8s | Investigations: 66
+Episode 03/30 | Reward:  -195.0 | Acc: 0.422 | Eps: 0.7290->0.6561 | t: 105.9s | Investigations: 67
+Episode 04/30 | Reward:   -39.0 | Acc: 0.512 | Eps: 0.6561->0.5905 | t: 104.5s | Investigations: 55
+Episode 05/30 | Reward:  -169.0 | Acc: 0.500 | Eps: 0.5905->0.5314 | t: 105.8s | Investigations: 57
+Episode 06/30 | Reward:    21.0 | Acc: 0.551 | Eps: 0.5314->0.4783 | t: 105.0s | Investigations: 52
+Episode 07/30 | Reward:   153.0 | Acc: 0.672 | Eps: 0.4783->0.4305 | t: 107.9s | Investigations: 39
+Episode 08/30 | Reward:    26.0 | Acc: 0.605 | Eps: 0.4305->0.3874 | t: 104.8s | Investigations: 36
+Episode 09/30 | Reward:   173.0 | Acc: 0.672 | Eps: 0.3874->0.3487 | t: 106.8s | Investigations: 36
+Episode 10/30 | Reward:   173.0 | Acc: 0.699 | Eps: 0.3487->0.3138 | t: 103.9s | Investigations: 31
+Episode 11/30 | Reward:   263.0 | Acc: 0.734 | Eps: 0.3138->0.2824 | t: 110.5s | Investigations: 31
+Episode 12/30 | Reward:   284.0 | Acc: 0.730 | Eps: 0.2824->0.2542 | t: 106.0s | Investigations: 24
+Episode 13/30 | Reward:   229.0 | Acc: 0.754 | Eps: 0.2542->0.2288 | t: 105.9s | Investigations: 21
+Episode 14/30 | Reward:   222.0 | Acc: 0.715 | Eps: 0.2288->0.2059 | t: 105.8s | Investigations: 30
+Episode 15/30 | Reward:   216.0 | Acc: 0.734 | Eps: 0.2059->0.1853 | t: 105.5s | Investigations: 22
+Episode 16/30 | Reward:   336.0 | Acc: 0.801 | Eps: 0.1853->0.1668 | t: 108.3s | Investigations: 16
+Episode 17/30 | Reward:   354.0 | Acc: 0.801 | Eps: 0.1668->0.1501 | t: 108.4s | Investigations: 17
+Episode 18/30 | Reward:   402.0 | Acc: 0.828 | Eps: 0.1501->0.1351 | t: 109.8s | Investigations: 16
+Episode 19/30 | Reward:   410.0 | Acc: 0.855 | Eps: 0.1351->0.1216 | t: 106.0s | Investigations: 10
+Episode 20/30 | Reward:   381.0 | Acc: 0.844 | Eps: 0.1216->0.1094 | t: 109.0s | Investigations: 10
+Episode 21/30 | Reward:   360.0 | Acc: 0.832 | Eps: 0.1094->0.0985 | t: 110.1s | Investigations: 11
+Episode 22/30 | Reward:   424.0 | Acc: 0.863 | Eps: 0.0985->0.0886 | t: 108.0s | Investigations: 12
+Episode 23/30 | Reward:   496.0 | Acc: 0.898 | Eps: 0.0886->0.0798 | t: 112.5s | Investigations: 4
+Episode 24/30 | Reward:   354.0 | Acc: 0.832 | Eps: 0.0798->0.0718 | t: 113.6s | Investigations: 12
+Episode 25/30 | Reward:   378.0 | Acc: 0.875 | Eps: 0.0718->0.0646 | t: 108.1s | Investigations: 3
+Episode 26/30 | Reward:   389.0 | Acc: 0.844 | Eps: 0.0646->0.0581 | t: 109.7s | Investigations: 6
+Episode 27/30 | Reward:   465.0 | Acc: 0.902 | Eps: 0.0581->0.0523 | t: 111.3s | Investigations: 4
+Episode 28/30 | Reward:   527.0 | Acc: 0.902 | Eps: 0.0523->0.0500 | t: 105.8s | Investigations: 7
+Episode 29/30 | Reward:   417.0 | Acc: 0.895 | Eps: 0.0500->0.0500 | t: 111.4s | Investigations: 3
+Episode 30/30 | Reward:   462.0 | Acc: 0.879 | Eps: 0.0500->0.0500 | t: 110.2s | Investigations: 7
+Evaluating ...
+     Split  Accuracy  Precision_Attack  Recall_Attack  F1_Attack  ROC_AUC  True_Negative  False_Positive  False_Negative  True_Positive
+Validation    0.9250            0.8155         0.8346     0.8249   0.9346        1311154           70053           61323         309544
+Known Test    0.9253            0.8159         0.8354     0.8255   0.9350        1311286           69921           61045         309822
+
+Zero-day:
+{'Split': 'Zero-Day', 'Samples': 314400, 'Detected': 306835, 'Missed': 7565, 'Detection_Rate': 0.9759382951653944, 'Miss_Rate': 0.0240617048346056}
+     Attack  Samples  Detection Rate (%)  Miss Rate (%)
+Brute Force   291955               98.51           1.49
+   Backdoor    19029               96.89           3.11
+      Theft     1909               33.00          67.00
+  Shellcode     1365                2.20          97.80
+ ransomware      142               98.59           1.41
+Saved B11 run -> experiments\MULTISEED\runs\drl\B11\ports\seed45
+Wrote experiments\MULTISEED\runs\drl\B11\ports\seed45\METRICS_ROW.json
+{
+  "config": "B11",
+  "feature_set": "ports",
+  "model_type": "drl",
+  "seed": 45,
+  "KT_Accuracy": 92.52508741069155,
+  "KT_Precision": 81.58728403156871,
+  "KT_Recall": 83.53992131950267,
+  "KT_F1": 82.55205765977006,
+  "KT_ROC_AUC": 93.50460121788566,
+  "Weighted_ZeroDay": 97.59382951653944,
+  "Macro_ZeroDay": 65.83848825981984,
+  "Shellcode": 2.197802197802198,
+  "Brute Force": 98.50730420784025,
+  "Theft": 33.001571503404925,
+  "ransomware": 98.59154929577466,
+  "Backdoor": 96.89421409427716
+}
+[02:10:32] OK    B11 ports seed=45
+[02:10:32] START B11 ports seed=46
+WARNING: All log messages before absl::InitializeLog() is called are written to STDERR
+I0000 00:00:1789512035.417414   24168 port.cc:153] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
+WARNING: All log messages before absl::InitializeLog() is called are written to STDERR
+I0000 00:00:1789512039.010796   24168 port.cc:153] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
+I0000 00:00:1789512043.504654   24168 cpu_feature_guard.cc:227] This TensorFlow binary is optimized to use available CPU instructions in performance-critical operations.
+To enable the following instructions: SSE3 SSE4.1 SSE4.2 AVX AVX2 FMA, in other operations, rebuild TensorFlow with the appropriate compiler flags.
+WARNING:tensorflow:TensorFlow GPU support is not available on native Windows for TensorFlow >= 2.11. Even if CUDA/cuDNN are installed, GPU will not be used. Please use WSL2 or the TensorFlow-DirectML plugin.
+========================================================================
+Rebuild B11: Family-aware sampling + investigate action + post-alert queue effect
+Mode: train  Feature set: ports  Seed: 46
+Config: C:\Users\Dr. Zarepour\Desktop\RL_IDS\Codes\configs\B11.yaml
+========================================================================
+Loading cache from C:\Users\Dr. Zarepour\Desktop\RL_IDS\Codes\data\prepared
+Episode 00/30 | Reward:  -323.0 | Acc: 0.328 | Eps: 1.0000->0.9000 | t: 98.8s | Investigations: 86
+Episode 01/30 | Reward:  -206.0 | Acc: 0.406 | Eps: 0.9000->0.8100 | t: 102.9s | Investigations: 77
+Episode 02/30 | Reward:   -55.0 | Acc: 0.465 | Eps: 0.8100->0.7290 | t: 105.1s | Investigations: 69
+Episode 03/30 | Reward:  -136.0 | Acc: 0.441 | Eps: 0.7290->0.6561 | t: 106.5s | Investigations: 80
+Episode 04/30 | Reward:   -90.0 | Acc: 0.531 | Eps: 0.6561->0.5905 | t: 107.8s | Investigations: 52
+Episode 05/30 | Reward:   -76.0 | Acc: 0.551 | Eps: 0.5905->0.5314 | t: 107.1s | Investigations: 51
+Episode 06/30 | Reward:   -54.0 | Acc: 0.562 | Eps: 0.5314->0.4783 | t: 108.2s | Investigations: 48
+Episode 07/30 | Reward:    70.0 | Acc: 0.629 | Eps: 0.4783->0.4305 | t: 108.4s | Investigations: 43
+Episode 08/30 | Reward:    -1.0 | Acc: 0.602 | Eps: 0.4305->0.3874 | t: 107.5s | Investigations: 43
+Episode 09/30 | Reward:   113.0 | Acc: 0.641 | Eps: 0.3874->0.3487 | t: 108.1s | Investigations: 33
+Episode 10/30 | Reward:   212.0 | Acc: 0.711 | Eps: 0.3487->0.3138 | t: 110.7s | Investigations: 30
+Episode 11/30 | Reward:   275.0 | Acc: 0.719 | Eps: 0.3138->0.2824 | t: 110.3s | Investigations: 26
+Episode 12/30 | Reward:   361.0 | Acc: 0.766 | Eps: 0.2824->0.2542 | t: 109.3s | Investigations: 26
+Episode 13/30 | Reward:   322.0 | Acc: 0.766 | Eps: 0.2542->0.2288 | t: 112.4s | Investigations: 20
+Episode 14/30 | Reward:   244.0 | Acc: 0.738 | Eps: 0.2288->0.2059 | t: 112.5s | Investigations: 27
+Episode 15/30 | Reward:   321.0 | Acc: 0.758 | Eps: 0.2059->0.1853 | t: 112.6s | Investigations: 17
+Episode 16/30 | Reward:   351.0 | Acc: 0.785 | Eps: 0.1853->0.1668 | t: 111.8s | Investigations: 20
+Episode 17/30 | Reward:   351.0 | Acc: 0.812 | Eps: 0.1668->0.1501 | t: 109.8s | Investigations: 12
+Episode 18/30 | Reward:   420.0 | Acc: 0.832 | Eps: 0.1501->0.1351 | t: 111.3s | Investigations: 13
+Episode 19/30 | Reward:   433.0 | Acc: 0.867 | Eps: 0.1351->0.1216 | t: 112.0s | Investigations: 5
+Episode 20/30 | Reward:   397.0 | Acc: 0.852 | Eps: 0.1216->0.1094 | t: 111.5s | Investigations: 12
+Episode 21/30 | Reward:   471.0 | Acc: 0.895 | Eps: 0.1094->0.0985 | t: 112.5s | Investigations: 6
+Episode 22/30 | Reward:   463.0 | Acc: 0.887 | Eps: 0.0985->0.0886 | t: 112.3s | Investigations: 7
+Episode 23/30 | Reward:   324.0 | Acc: 0.852 | Eps: 0.0886->0.0798 | t: 115.0s | Investigations: 4
+Episode 24/30 | Reward:   385.0 | Acc: 0.875 | Eps: 0.0798->0.0718 | t: 115.8s | Investigations: 5
+Episode 25/30 | Reward:   408.0 | Acc: 0.848 | Eps: 0.0718->0.0646 | t: 110.5s | Investigations: 8
+Episode 26/30 | Reward:   523.0 | Acc: 0.914 | Eps: 0.0646->0.0581 | t: 112.4s | Investigations: 2
+Episode 27/30 | Reward:   431.0 | Acc: 0.879 | Eps: 0.0581->0.0523 | t: 113.0s | Investigations: 3
+Episode 28/30 | Reward:   377.0 | Acc: 0.855 | Eps: 0.0523->0.0500 | t: 108.0s | Investigations: 7
+Episode 29/30 | Reward:   492.0 | Acc: 0.887 | Eps: 0.0500->0.0500 | t: 107.7s | Investigations: 5
+Episode 30/30 | Reward:   407.0 | Acc: 0.867 | Eps: 0.0500->0.0500 | t: 110.1s | Investigations: 2
+Evaluating ...
+     Split  Accuracy  Precision_Attack  Recall_Attack  F1_Attack  ROC_AUC  True_Negative  False_Positive  False_Negative  True_Positive
+Validation    0.9182            0.7809         0.8528     0.8152   0.9480        1292442           88765           54589         316278
+Known Test    0.9182            0.7804         0.8537     0.8154   0.9482        1292115           89092           54274         316593
+
+Zero-day:
+{'Split': 'Zero-Day', 'Samples': 314400, 'Detected': 305980, 'Missed': 8420, 'Detection_Rate': 0.9732188295165395, 'Miss_Rate': 0.02678117048346056}
+     Attack  Samples  Detection Rate (%)  Miss Rate (%)
+Brute Force   291955               98.51           1.49
+   Backdoor    19029               90.48           9.52
+      Theft     1909               51.49          48.51
+  Shellcode     1365                2.93          97.07
+ ransomware      142              100.00           0.00
+Saved B11 run -> experiments\MULTISEED\runs\drl\B11\ports\seed46
+Wrote experiments\MULTISEED\runs\drl\B11\ports\seed46\METRICS_ROW.json
+{
+  "config": "B11",
+  "feature_set": "ports",
+  "model_type": "drl",
+  "seed": 46,
+  "KT_Accuracy": 91.81735474643195,
+  "KT_Precision": 78.03911902091524,
+  "KT_Recall": 85.36564320902103,
+  "KT_F1": 81.53813266851415,
+  "KT_ROC_AUC": 94.82132570714644,
+  "Weighted_ZeroDay": 97.32188295165395,
+  "Macro_ZeroDay": 68.6827164907385,
+  "Shellcode": 2.93040293040293,
+  "Brute Force": 98.50730420784025,
+  "Theft": 51.492928234677834,
+  "ransomware": 100.0,
+  "Backdoor": 90.48294708077145
+}
+[03:07:41] OK    B11 ports seed=46
+[03:07:41] START B11 ports seed=47
+WARNING: All log messages before absl::InitializeLog() is called are written to STDERR
+I0000 00:00:1789515464.662992   27220 port.cc:153] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
+WARNING: All log messages before absl::InitializeLog() is called are written to STDERR
+I0000 00:00:1789515468.211753   27220 port.cc:153] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
+I0000 00:00:1789515472.830049   27220 cpu_feature_guard.cc:227] This TensorFlow binary is optimized to use available CPU instructions in performance-critical operations.
+To enable the following instructions: SSE3 SSE4.1 SSE4.2 AVX AVX2 FMA, in other operations, rebuild TensorFlow with the appropriate compiler flags.
+WARNING:tensorflow:TensorFlow GPU support is not available on native Windows for TensorFlow >= 2.11. Even if CUDA/cuDNN are installed, GPU will not be used. Please use WSL2 or the TensorFlow-DirectML plugin.
+========================================================================
+Rebuild B11: Family-aware sampling + investigate action + post-alert queue effect
+Mode: train  Feature set: ports  Seed: 47
+Config: C:\Users\Dr. Zarepour\Desktop\RL_IDS\Codes\configs\B11.yaml
+========================================================================
+Loading cache from C:\Users\Dr. Zarepour\Desktop\RL_IDS\Codes\data\prepared
+Episode 00/30 | Reward:  -319.0 | Acc: 0.320 | Eps: 1.0000->0.9000 | t: 100.0s | Investigations: 81
+Episode 01/30 | Reward:  -181.0 | Acc: 0.391 | Eps: 0.9000->0.8100 | t: 100.0s | Investigations: 74
+Episode 02/30 | Reward:  -144.0 | Acc: 0.438 | Eps: 0.8100->0.7290 | t: 108.2s | Investigations: 65
+Episode 03/30 | Reward:  -111.0 | Acc: 0.465 | Eps: 0.7290->0.6561 | t: 108.1s | Investigations: 64
+Episode 04/30 | Reward:   -26.0 | Acc: 0.508 | Eps: 0.6561->0.5905 | t: 106.4s | Investigations: 56
+Episode 05/30 | Reward:    50.0 | Acc: 0.586 | Eps: 0.5905->0.5314 | t: 109.3s | Investigations: 46
+Episode 06/30 | Reward:   -20.0 | Acc: 0.566 | Eps: 0.5314->0.4783 | t: 112.9s | Investigations: 44
+Episode 07/30 | Reward:   155.0 | Acc: 0.656 | Eps: 0.4783->0.4305 | t: 111.6s | Investigations: 40
+Episode 08/30 | Reward:   152.0 | Acc: 0.652 | Eps: 0.4305->0.3874 | t: 107.6s | Investigations: 32
+Episode 09/30 | Reward:   159.0 | Acc: 0.672 | Eps: 0.3874->0.3487 | t: 105.4s | Investigations: 25
+Episode 10/30 | Reward:   206.0 | Acc: 0.691 | Eps: 0.3487->0.3138 | t: 105.1s | Investigations: 28
+Episode 11/30 | Reward:   197.0 | Acc: 0.688 | Eps: 0.3138->0.2824 | t: 105.6s | Investigations: 30
+Episode 12/30 | Reward:   249.0 | Acc: 0.766 | Eps: 0.2824->0.2542 | t: 107.2s | Investigations: 20
+Episode 13/30 | Reward:   336.0 | Acc: 0.785 | Eps: 0.2542->0.2288 | t: 108.3s | Investigations: 23
+Episode 14/30 | Reward:   234.0 | Acc: 0.719 | Eps: 0.2288->0.2059 | t: 110.7s | Investigations: 23
+Episode 15/30 | Reward:   360.0 | Acc: 0.793 | Eps: 0.2059->0.1853 | t: 111.7s | Investigations: 17
+Episode 16/30 | Reward:   337.0 | Acc: 0.789 | Eps: 0.1853->0.1668 | t: 109.4s | Investigations: 15
+Episode 17/30 | Reward:   380.0 | Acc: 0.832 | Eps: 0.1668->0.1501 | t: 112.3s | Investigations: 10
+Episode 18/30 | Reward:   384.0 | Acc: 0.816 | Eps: 0.1501->0.1351 | t: 110.5s | Investigations: 16
+Episode 19/30 | Reward:   415.0 | Acc: 0.855 | Eps: 0.1351->0.1216 | t: 112.9s | Investigations: 10
+Episode 20/30 | Reward:   391.0 | Acc: 0.855 | Eps: 0.1216->0.1094 | t: 112.5s | Investigations: 8
+Episode 21/30 | Reward:   401.0 | Acc: 0.867 | Eps: 0.1094->0.0985 | t: 112.4s | Investigations: 6
+Episode 22/30 | Reward:   353.0 | Acc: 0.852 | Eps: 0.0985->0.0886 | t: 112.0s | Investigations: 9
+Episode 23/30 | Reward:   345.0 | Acc: 0.848 | Eps: 0.0886->0.0798 | t: 113.0s | Investigations: 5
+Episode 24/30 | Reward:   370.0 | Acc: 0.820 | Eps: 0.0798->0.0718 | t: 113.1s | Investigations: 11
+Episode 25/30 | Reward:   455.0 | Acc: 0.902 | Eps: 0.0718->0.0646 | t: 112.3s | Investigations: 3
+Episode 26/30 | Reward:   486.0 | Acc: 0.902 | Eps: 0.0646->0.0581 | t: 111.8s | Investigations: 1
+Episode 27/30 | Reward:   312.0 | Acc: 0.848 | Eps: 0.0581->0.0523 | t: 113.7s | Investigations: 6
+Episode 28/30 | Reward:   560.0 | Acc: 0.930 | Eps: 0.0523->0.0500 | t: 112.1s | Investigations: 3
+Episode 29/30 | Reward:   445.0 | Acc: 0.887 | Eps: 0.0500->0.0500 | t: 112.8s | Investigations: 8
+Episode 30/30 | Reward:   365.0 | Acc: 0.871 | Eps: 0.0500->0.0500 | t: 113.5s | Investigations: 4
+Evaluating ...
+     Split  Accuracy  Precision_Attack  Recall_Attack  F1_Attack  ROC_AUC  True_Negative  False_Positive  False_Negative  True_Positive
+Validation    0.9329            0.8453         0.8357     0.8405   0.9434        1324492           56715           60924         309943
+Known Test    0.9331            0.8462         0.8360     0.8411   0.9439        1324855           56352           60825         310042
+
+Zero-day:
+{'Split': 'Zero-Day', 'Samples': 314400, 'Detected': 295540, 'Missed': 18860, 'Detection_Rate': 0.9400127226463104, 'Miss_Rate': 0.05998727735368957}
+     Attack  Samples  Detection Rate (%)  Miss Rate (%)
+Brute Force   291955               98.51           1.49
+   Backdoor    19029               37.70          62.30
+      Theft     1909               33.05          66.95
+  Shellcode     1365                0.44          99.56
+ ransomware      142               93.66           6.34
+Saved B11 run -> experiments\MULTISEED\runs\drl\B11\ports\seed47
+Wrote experiments\MULTISEED\runs\drl\B11\ports\seed47\METRICS_ROW.json
+{
+  "config": "B11",
+  "feature_set": "ports",
+  "model_type": "drl",
+  "seed": 47,
+  "KT_Accuracy": 93.31209754839122,
+  "KT_Precision": 84.6198354776552,
+  "KT_Recall": 83.59924177670162,
+  "KT_F1": 84.10644263022186,
+  "KT_ROC_AUC": 94.38977341855238,
+  "Weighted_ZeroDay": 94.00127226463104,
+  "Macro_ZeroDay": 52.671577677179606,
+  "Shellcode": 0.43956043956043955,
+  "Brute Force": 98.50730420784025,
+  "Theft": 33.05395495023573,
+  "ransomware": 93.66197183098592,
+  "Backdoor": 37.69509695727574
+}
+[04:04:52] OK    B11 ports seed=47
+[04:04:52] START B11 ports seed=48
+WARNING: All log messages before absl::InitializeLog() is called are written to STDERR
+I0000 00:00:1789518895.705884   33152 port.cc:153] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
+WARNING: All log messages before absl::InitializeLog() is called are written to STDERR
+I0000 00:00:1789518899.524473   33152 port.cc:153] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
+I0000 00:00:1789518904.228398   33152 cpu_feature_guard.cc:227] This TensorFlow binary is optimized to use available CPU instructions in performance-critical operations.
+To enable the following instructions: SSE3 SSE4.1 SSE4.2 AVX AVX2 FMA, in other operations, rebuild TensorFlow with the appropriate compiler flags.
+WARNING:tensorflow:TensorFlow GPU support is not available on native Windows for TensorFlow >= 2.11. Even if CUDA/cuDNN are installed, GPU will not be used. Please use WSL2 or the TensorFlow-DirectML plugin.
+========================================================================
+Rebuild B11: Family-aware sampling + investigate action + post-alert queue effect
+Mode: train  Feature set: ports  Seed: 48
+Config: C:\Users\Dr. Zarepour\Desktop\RL_IDS\Codes\configs\B11.yaml
+========================================================================
+Loading cache from C:\Users\Dr. Zarepour\Desktop\RL_IDS\Codes\data\prepared
+Episode 00/30 | Reward:  -181.0 | Acc: 0.395 | Eps: 1.0000->0.9000 | t: 103.4s | Investigations: 86
+Episode 01/30 | Reward:  -278.0 | Acc: 0.367 | Eps: 0.9000->0.8100 | t: 106.4s | Investigations: 73
+Episode 02/30 | Reward:  -145.0 | Acc: 0.449 | Eps: 0.8100->0.7290 | t: 106.3s | Investigations: 54
+Episode 03/30 | Reward:  -110.0 | Acc: 0.484 | Eps: 0.7290->0.6561 | t: 104.3s | Investigations: 68
+Episode 04/30 | Reward:   -33.0 | Acc: 0.516 | Eps: 0.6561->0.5905 | t: 102.5s | Investigations: 55
+Episode 05/30 | Reward:  -119.0 | Acc: 0.492 | Eps: 0.5905->0.5314 | t: 103.1s | Investigations: 56
+Episode 06/30 | Reward:    48.0 | Acc: 0.629 | Eps: 0.5314->0.4783 | t: 106.2s | Investigations: 35
+Episode 07/30 | Reward:   186.0 | Acc: 0.664 | Eps: 0.4783->0.4305 | t: 108.9s | Investigations: 45
+Episode 08/30 | Reward:   118.0 | Acc: 0.688 | Eps: 0.4305->0.3874 | t: 110.0s | Investigations: 30
+Episode 09/30 | Reward:   184.0 | Acc: 0.695 | Eps: 0.3874->0.3487 | t: 107.6s | Investigations: 37
+Episode 10/30 | Reward:   281.0 | Acc: 0.746 | Eps: 0.3487->0.3138 | t: 109.1s | Investigations: 25
+Episode 11/30 | Reward:   261.0 | Acc: 0.738 | Eps: 0.3138->0.2824 | t: 108.6s | Investigations: 17
+Episode 12/30 | Reward:   250.0 | Acc: 0.750 | Eps: 0.2824->0.2542 | t: 101.2s | Investigations: 17
+Episode 13/30 | Reward:   262.0 | Acc: 0.754 | Eps: 0.2542->0.2288 | t: 103.5s | Investigations: 18
+Episode 14/30 | Reward:   328.0 | Acc: 0.770 | Eps: 0.2288->0.2059 | t: 108.2s | Investigations: 22
+Episode 15/30 | Reward:   358.0 | Acc: 0.801 | Eps: 0.2059->0.1853 | t: 103.1s | Investigations: 14
+Episode 16/30 | Reward:   274.0 | Acc: 0.773 | Eps: 0.1853->0.1668 | t: 107.0s | Investigations: 15
+Episode 17/30 | Reward:   204.0 | Acc: 0.738 | Eps: 0.1668->0.1501 | t: 108.4s | Investigations: 21
+Episode 18/30 | Reward:   354.0 | Acc: 0.832 | Eps: 0.1501->0.1351 | t: 109.4s | Investigations: 10
+Episode 19/30 | Reward:   369.0 | Acc: 0.805 | Eps: 0.1351->0.1216 | t: 106.6s | Investigations: 17
+Episode 20/30 | Reward:   383.0 | Acc: 0.852 | Eps: 0.1216->0.1094 | t: 104.1s | Investigations: 8
+Episode 21/30 | Reward:   361.0 | Acc: 0.828 | Eps: 0.1094->0.0985 | t: 112.9s | Investigations: 11
+Episode 22/30 | Reward:   348.0 | Acc: 0.844 | Eps: 0.0985->0.0886 | t: 112.6s | Investigations: 7
+Episode 23/30 | Reward:   372.0 | Acc: 0.832 | Eps: 0.0886->0.0798 | t: 107.8s | Investigations: 4
+Episode 24/30 | Reward:   379.0 | Acc: 0.859 | Eps: 0.0798->0.0718 | t: 102.8s | Investigations: 5
+Episode 25/30 | Reward:   466.0 | Acc: 0.887 | Eps: 0.0718->0.0646 | t: 108.4s | Investigations: 3
+Episode 26/30 | Reward:   299.0 | Acc: 0.840 | Eps: 0.0646->0.0581 | t: 107.1s | Investigations: 7
+Episode 27/30 | Reward:   508.0 | Acc: 0.895 | Eps: 0.0581->0.0523 | t: 113.3s | Investigations: 2
+Episode 28/30 | Reward:   345.0 | Acc: 0.852 | Eps: 0.0523->0.0500 | t: 112.1s | Investigations: 3
+Episode 29/30 | Reward:   377.0 | Acc: 0.871 | Eps: 0.0500->0.0500 | t: 116.3s | Investigations: 4
+Episode 30/30 | Reward:   362.0 | Acc: 0.840 | Eps: 0.0500->0.0500 | t: 117.7s | Investigations: 5
+Evaluating ...
+     Split  Accuracy  Precision_Attack  Recall_Attack  F1_Attack  ROC_AUC  True_Negative  False_Positive  False_Negative  True_Positive
+Validation    0.9009            0.7322         0.8388     0.7819   0.9338        1267408          113799           59779         311088
+Known Test    0.9010            0.7319         0.8397     0.7821   0.9343        1267159          114048           59445         311422
+
+Zero-day:
+{'Split': 'Zero-Day', 'Samples': 314400, 'Detected': 305765, 'Missed': 8635, 'Detection_Rate': 0.9725349872773537, 'Miss_Rate': 0.02746501272264631}
+     Attack  Samples  Detection Rate (%)  Miss Rate (%)
+Brute Force   291955               98.51           1.49
+   Backdoor    19029               90.49           9.51
+      Theft     1909               36.98          63.02
+  Shellcode     1365                7.33          92.67
+ ransomware      142              100.00           0.00
+Saved B11 run -> experiments\MULTISEED\runs\drl\B11\ports\seed48
+Wrote experiments\MULTISEED\runs\drl\B11\ports\seed48\METRICS_ROW.json
+{
+  "config": "B11",
+  "feature_set": "ports",
+  "model_type": "drl",
+  "seed": 48,
+  "KT_Accuracy": 90.09784974835537,
+  "KT_Precision": 73.19481984628764,
+  "KT_Recall": 83.97134282640407,
+  "KT_F1": 78.21362061539273,
+  "KT_ROC_AUC": 93.4337260686155,
+  "Weighted_ZeroDay": 97.25349872773536,
+  "Macro_ZeroDay": 66.66189647019151,
+  "Shellcode": 7.326007326007327,
+  "Brute Force": 98.50730420784025,
+  "Theft": 36.98271346254584,
+  "ransomware": 100.0,
+  "Backdoor": 90.49345735456409
+}
+[05:01:00] OK    B11 ports seed=48
+[05:01:00] START B11 ports seed=49
+WARNING: All log messages before absl::InitializeLog() is called are written to STDERR
+I0000 00:00:1789522263.896901   31628 port.cc:153] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
+WARNING: All log messages before absl::InitializeLog() is called are written to STDERR
+I0000 00:00:1789522267.960571   31628 port.cc:153] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
+I0000 00:00:1789522273.168021   31628 cpu_feature_guard.cc:227] This TensorFlow binary is optimized to use available CPU instructions in performance-critical operations.
+To enable the following instructions: SSE3 SSE4.1 SSE4.2 AVX AVX2 FMA, in other operations, rebuild TensorFlow with the appropriate compiler flags.
+WARNING:tensorflow:TensorFlow GPU support is not available on native Windows for TensorFlow >= 2.11. Even if CUDA/cuDNN are installed, GPU will not be used. Please use WSL2 or the TensorFlow-DirectML plugin.
+========================================================================
+Rebuild B11: Family-aware sampling + investigate action + post-alert queue effect
+Mode: train  Feature set: ports  Seed: 49
+Config: C:\Users\Dr. Zarepour\Desktop\RL_IDS\Codes\configs\B11.yaml
+========================================================================
+Loading cache from C:\Users\Dr. Zarepour\Desktop\RL_IDS\Codes\data\prepared
+Episode 00/30 | Reward:  -385.0 | Acc: 0.258 | Eps: 1.0000->0.9000 | t: 99.2s | Investigations: 101
+Episode 01/30 | Reward:  -215.0 | Acc: 0.398 | Eps: 0.9000->0.8100 | t: 98.7s | Investigations: 72
+Episode 02/30 | Reward:  -247.0 | Acc: 0.434 | Eps: 0.8100->0.7290 | t: 104.6s | Investigations: 64
+Episode 03/30 | Reward:  -150.0 | Acc: 0.445 | Eps: 0.7290->0.6561 | t: 105.5s | Investigations: 62
+Episode 04/30 | Reward:   -93.0 | Acc: 0.492 | Eps: 0.6561->0.5905 | t: 109.1s | Investigations: 58
+Episode 05/30 | Reward:   -83.0 | Acc: 0.547 | Eps: 0.5905->0.5314 | t: 109.5s | Investigations: 54
+Episode 06/30 | Reward:    96.0 | Acc: 0.605 | Eps: 0.5314->0.4783 | t: 109.0s | Investigations: 45
+Episode 07/30 | Reward:    91.0 | Acc: 0.656 | Eps: 0.4783->0.4305 | t: 108.9s | Investigations: 33
+Episode 08/30 | Reward:   114.0 | Acc: 0.629 | Eps: 0.4305->0.3874 | t: 109.7s | Investigations: 43
+Episode 09/30 | Reward:   167.0 | Acc: 0.664 | Eps: 0.3874->0.3487 | t: 108.6s | Investigations: 40
+Episode 10/30 | Reward:   196.0 | Acc: 0.672 | Eps: 0.3487->0.3138 | t: 110.4s | Investigations: 42
+Episode 11/30 | Reward:   190.0 | Acc: 0.727 | Eps: 0.3138->0.2824 | t: 111.1s | Investigations: 22
+Episode 12/30 | Reward:   228.0 | Acc: 0.727 | Eps: 0.2824->0.2542 | t: 111.4s | Investigations: 28
+Episode 13/30 | Reward:   198.0 | Acc: 0.742 | Eps: 0.2542->0.2288 | t: 110.0s | Investigations: 23
+Episode 14/30 | Reward:   321.0 | Acc: 0.785 | Eps: 0.2288->0.2059 | t: 110.0s | Investigations: 18
+Episode 15/30 | Reward:   227.0 | Acc: 0.781 | Eps: 0.2059->0.1853 | t: 110.1s | Investigations: 18
+Episode 16/30 | Reward:   222.0 | Acc: 0.766 | Eps: 0.1853->0.1668 | t: 109.3s | Investigations: 17
+Episode 17/30 | Reward:   250.0 | Acc: 0.801 | Eps: 0.1668->0.1501 | t: 111.7s | Investigations: 12
+Episode 18/30 | Reward:   236.0 | Acc: 0.777 | Eps: 0.1501->0.1351 | t: 113.1s | Investigations: 14
+Episode 19/30 | Reward:   334.0 | Acc: 0.820 | Eps: 0.1351->0.1216 | t: 114.9s | Investigations: 13
+Episode 20/30 | Reward:   182.0 | Acc: 0.789 | Eps: 0.1216->0.1094 | t: 112.0s | Investigations: 10
+Episode 21/30 | Reward:   198.0 | Acc: 0.785 | Eps: 0.1094->0.0985 | t: 113.7s | Investigations: 16
+Episode 22/30 | Reward:   308.0 | Acc: 0.828 | Eps: 0.0985->0.0886 | t: 112.4s | Investigations: 6
+Episode 23/30 | Reward:   410.0 | Acc: 0.879 | Eps: 0.0886->0.0798 | t: 110.7s | Investigations: 6
+Episode 24/30 | Reward:   271.0 | Acc: 0.820 | Eps: 0.0798->0.0718 | t: 112.6s | Investigations: 8
+Episode 25/30 | Reward:   242.0 | Acc: 0.832 | Eps: 0.0718->0.0646 | t: 108.1s | Investigations: 6
+Episode 26/30 | Reward:   391.0 | Acc: 0.867 | Eps: 0.0646->0.0581 | t: 108.6s | Investigations: 5
+Episode 27/30 | Reward:   314.0 | Acc: 0.844 | Eps: 0.0581->0.0523 | t: 112.1s | Investigations: 5
+Episode 28/30 | Reward:   390.0 | Acc: 0.891 | Eps: 0.0523->0.0500 | t: 106.1s | Investigations: 3
+Episode 29/30 | Reward:   432.0 | Acc: 0.871 | Eps: 0.0500->0.0500 | t: 102.3s | Investigations: 7
+Episode 30/30 | Reward:   448.0 | Acc: 0.895 | Eps: 0.0500->0.0500 | t: 104.8s | Investigations: 7
+Evaluating ...
+     Split  Accuracy  Precision_Attack  Recall_Attack  F1_Attack  ROC_AUC  True_Negative  False_Positive  False_Negative  True_Positive
+Validation    0.9276            0.8167         0.8485     0.8323   0.9381        1310582           70625           56178         314689
+Known Test    0.9280            0.8173         0.8498     0.8332   0.9385        1310762           70445           55718         315149
+
+Zero-day:
+{'Split': 'Zero-Day', 'Samples': 314400, 'Detected': 296026, 'Missed': 18374, 'Detection_Rate': 0.941558524173028, 'Miss_Rate': 0.05844147582697201}
+     Attack  Samples  Detection Rate (%)  Miss Rate (%)
+Brute Force   291955               98.51           1.49
+   Backdoor    19029               37.57          62.43
+      Theft     1909               58.46          41.54
+  Shellcode     1365                1.61          98.39
+ ransomware      142               99.30           0.70
+Saved B11 run -> experiments\MULTISEED\runs\drl\B11\ports\seed49
+Wrote experiments\MULTISEED\runs\drl\B11\ports\seed49\METRICS_ROW.json
+{
+  "config": "B11",
+  "feature_set": "ports",
+  "model_type": "drl",
+  "seed": 49,
+  "KT_Accuracy": 92.79921966766244,
+  "KT_Precision": 81.73078419270009,
+  "KT_Recall": 84.9762852990425,
+  "KT_F1": 83.32194257205593,
+  "KT_ROC_AUC": 93.8545185747387,
+  "Weighted_ZeroDay": 94.1558524173028,
+  "Macro_ZeroDay": 59.08979118785682,
+  "Shellcode": 1.611721611721612,
+  "Brute Force": 98.50730420784025,
+  "Theft": 58.459926663174436,
+  "ransomware": 99.29577464788733,
+  "Backdoor": 37.574228808660465
+}
+[05:57:47] OK    B11 ports seed=49
+[05:57:47] START B11 noports seed=42
+WARNING: All log messages before absl::InitializeLog() is called are written to STDERR
+I0000 00:00:1789525679.683069   19220 port.cc:153] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
+WARNING: All log messages before absl::InitializeLog() is called are written to STDERR
+I0000 00:00:1789525687.397657   19220 port.cc:153] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
+I0000 00:00:1789525692.368201   19220 cpu_feature_guard.cc:227] This TensorFlow binary is optimized to use available CPU instructions in performance-critical operations.
+To enable the following instructions: SSE3 SSE4.1 SSE4.2 AVX AVX2 FMA, in other operations, rebuild TensorFlow with the appropriate compiler flags.
+WARNING:tensorflow:TensorFlow GPU support is not available on native Windows for TensorFlow >= 2.11. Even if CUDA/cuDNN are installed, GPU will not be used. Please use WSL2 or the TensorFlow-DirectML plugin.
+========================================================================
+Rebuild B11: Family-aware sampling + investigate action + post-alert queue effect
+Mode: train  Feature set: noports  Seed: 42
+Config: C:\Users\Dr. Zarepour\Desktop\RL_IDS\Codes\configs\B11.yaml
+========================================================================
+Loading cache from C:\Users\Dr. Zarepour\Desktop\RL_IDS\Codes\data\prepared\noports
+Episode 00/30 | Reward:  -304.0 | Acc: 0.352 | Eps: 1.0000->0.9000 | t: 101.3s | Investigations: 85
+Episode 01/30 | Reward:  -265.0 | Acc: 0.355 | Eps: 0.9000->0.8100 | t: 98.5s | Investigations: 94
+Episode 02/30 | Reward:  -321.0 | Acc: 0.418 | Eps: 0.8100->0.7290 | t: 102.1s | Investigations: 68
+Episode 03/30 | Reward:  -183.0 | Acc: 0.453 | Eps: 0.7290->0.6561 | t: 99.3s | Investigations: 64
+Episode 04/30 | Reward:   -98.0 | Acc: 0.492 | Eps: 0.6561->0.5905 | t: 104.7s | Investigations: 55
+Episode 05/30 | Reward:   -85.0 | Acc: 0.527 | Eps: 0.5905->0.5314 | t: 102.5s | Investigations: 54
+Episode 06/30 | Reward:   -93.0 | Acc: 0.559 | Eps: 0.5314->0.4783 | t: 105.3s | Investigations: 48
+Episode 07/30 | Reward:    36.0 | Acc: 0.586 | Eps: 0.4783->0.4305 | t: 102.8s | Investigations: 52
+Episode 08/30 | Reward:    33.0 | Acc: 0.617 | Eps: 0.4305->0.3874 | t: 99.9s | Investigations: 36
+Episode 09/30 | Reward:   -82.0 | Acc: 0.602 | Eps: 0.3874->0.3487 | t: 105.0s | Investigations: 35
+Episode 10/30 | Reward:   -15.0 | Acc: 0.645 | Eps: 0.3487->0.3138 | t: 104.9s | Investigations: 31
+Episode 11/30 | Reward:    27.0 | Acc: 0.680 | Eps: 0.3138->0.2824 | t: 110.0s | Investigations: 22
+Episode 12/30 | Reward:    46.0 | Acc: 0.680 | Eps: 0.2824->0.2542 | t: 107.5s | Investigations: 27
+Episode 13/30 | Reward:    62.0 | Acc: 0.691 | Eps: 0.2542->0.2288 | t: 107.3s | Investigations: 24
+Episode 14/30 | Reward:   161.0 | Acc: 0.754 | Eps: 0.2288->0.2059 | t: 108.7s | Investigations: 19
+Episode 15/30 | Reward:   195.0 | Acc: 0.789 | Eps: 0.2059->0.1853 | t: 110.2s | Investigations: 15
+Episode 16/30 | Reward:   247.0 | Acc: 0.770 | Eps: 0.1853->0.1668 | t: 109.0s | Investigations: 20
+Episode 17/30 | Reward:   218.0 | Acc: 0.766 | Eps: 0.1668->0.1501 | t: 107.6s | Investigations: 14
+Episode 18/30 | Reward:   230.0 | Acc: 0.758 | Eps: 0.1501->0.1351 | t: 107.6s | Investigations: 20
+Episode 19/30 | Reward:   230.0 | Acc: 0.773 | Eps: 0.1351->0.1216 | t: 113.6s | Investigations: 11
+Episode 20/30 | Reward:   256.0 | Acc: 0.812 | Eps: 0.1216->0.1094 | t: 113.8s | Investigations: 9
+Episode 21/30 | Reward:   291.0 | Acc: 0.812 | Eps: 0.1094->0.0985 | t: 113.7s | Investigations: 10
+Episode 22/30 | Reward:   207.0 | Acc: 0.805 | Eps: 0.0985->0.0886 | t: 113.7s | Investigations: 5
+Episode 23/30 | Reward:   193.0 | Acc: 0.777 | Eps: 0.0886->0.0798 | t: 114.6s | Investigations: 9
+Episode 24/30 | Reward:   210.0 | Acc: 0.797 | Eps: 0.0798->0.0718 | t: 114.4s | Investigations: 5
+Episode 25/30 | Reward:   288.0 | Acc: 0.836 | Eps: 0.0718->0.0646 | t: 113.4s | Investigations: 5
+Episode 26/30 | Reward:   275.0 | Acc: 0.844 | Eps: 0.0646->0.0581 | t: 113.1s | Investigations: 4
+Episode 27/30 | Reward:   284.0 | Acc: 0.855 | Eps: 0.0581->0.0523 | t: 114.0s | Investigations: 1
+Episode 28/30 | Reward:   202.0 | Acc: 0.812 | Eps: 0.0523->0.0500 | t: 114.6s | Investigations: 5
+Episode 29/30 | Reward:   124.0 | Acc: 0.793 | Eps: 0.0500->0.0500 | t: 115.7s | Investigations: 4
+Episode 30/30 | Reward:   304.0 | Acc: 0.848 | Eps: 0.0500->0.0500 | t: 112.6s | Investigations: 5
+Evaluating ...
+     Split  Accuracy  Precision_Attack  Recall_Attack  F1_Attack  ROC_AUC  True_Negative  False_Positive  False_Negative  True_Positive
+Validation    0.8707            0.6982         0.6858     0.6919   0.7976        1271240          109967          116518         254349
+Known Test    0.8705            0.6976         0.6850     0.6912   0.7975        1271061          110146          116829         254038
+
+Zero-day:
+{'Split': 'Zero-Day', 'Samples': 314400, 'Detected': 203517, 'Missed': 110883, 'Detection_Rate': 0.6473187022900764, 'Miss_Rate': 0.3526812977099237}
+     Attack  Samples  Detection Rate (%)  Miss Rate (%)
+Brute Force   291955               66.92          33.08
+   Backdoor    19029               36.81          63.19
+      Theft     1909               57.99          42.01
+  Shellcode     1365                0.00         100.00
+ ransomware      142               11.97          88.03
+Saved B11 run -> experiments\MULTISEED\runs\drl\B11\noports\seed42
+Wrote experiments\MULTISEED\runs\drl\B11\noports\seed42\METRICS_ROW.json
+{
+  "config": "B11",
+  "feature_set": "noports",
+  "model_type": "drl",
+  "seed": 42,
+  "KT_Accuracy": 87.04535310723178,
+  "KT_Precision": 69.7553983700547,
+  "KT_Recall": 68.4984104813855,
+  "KT_F1": 69.12119023033776,
+  "KT_ROC_AUC": 79.74918108982487,
+  "Weighted_ZeroDay": 64.73187022900764,
+  "Macro_ZeroDay": 34.73832804602271,
+  "Shellcode": 0.0,
+  "Brute Force": 66.92435478070252,
+  "Theft": 57.98847564169722,
+  "ransomware": 11.971830985915492,
+  "Backdoor": 36.80697882179831
+}
+[06:54:29] OK    B11 noports seed=42
+[06:54:29] START B11 noports seed=43
+WARNING: All log messages before absl::InitializeLog() is called are written to STDERR
+I0000 00:00:1789529073.353022    9544 port.cc:153] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
+WARNING: All log messages before absl::InitializeLog() is called are written to STDERR
+I0000 00:00:1789529077.043450    9544 port.cc:153] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
+I0000 00:00:1789529081.734388    9544 cpu_feature_guard.cc:227] This TensorFlow binary is optimized to use available CPU instructions in performance-critical operations.
+To enable the following instructions: SSE3 SSE4.1 SSE4.2 AVX AVX2 FMA, in other operations, rebuild TensorFlow with the appropriate compiler flags.
+WARNING:tensorflow:TensorFlow GPU support is not available on native Windows for TensorFlow >= 2.11. Even if CUDA/cuDNN are installed, GPU will not be used. Please use WSL2 or the TensorFlow-DirectML plugin.
+========================================================================
+Rebuild B11: Family-aware sampling + investigate action + post-alert queue effect
+Mode: train  Feature set: noports  Seed: 43
+Config: C:\Users\Dr. Zarepour\Desktop\RL_IDS\Codes\configs\B11.yaml
+========================================================================
+Loading cache from C:\Users\Dr. Zarepour\Desktop\RL_IDS\Codes\data\prepared\noports
+Episode 00/30 | Reward:  -285.0 | Acc: 0.348 | Eps: 1.0000->0.9000 | t: 102.6s | Investigations: 79
+Episode 01/30 | Reward:  -312.0 | Acc: 0.324 | Eps: 0.9000->0.8100 | t: 104.4s | Investigations: 100
+Episode 02/30 | Reward:  -318.0 | Acc: 0.387 | Eps: 0.8100->0.7290 | t: 107.7s | Investigations: 60
+Episode 03/30 | Reward:   -72.0 | Acc: 0.496 | Eps: 0.7290->0.6561 | t: 106.1s | Investigations: 67
+Episode 04/30 | Reward:  -104.0 | Acc: 0.492 | Eps: 0.6561->0.5905 | t: 106.3s | Investigations: 59
+Episode 05/30 | Reward:   -66.0 | Acc: 0.516 | Eps: 0.5905->0.5314 | t: 109.4s | Investigations: 50
+Episode 06/30 | Reward:    76.0 | Acc: 0.562 | Eps: 0.5314->0.4783 | t: 109.5s | Investigations: 51
+Episode 07/30 | Reward:   -90.0 | Acc: 0.500 | Eps: 0.4783->0.4305 | t: 110.6s | Investigations: 40
+Episode 08/30 | Reward:   -69.0 | Acc: 0.570 | Eps: 0.4305->0.3874 | t: 109.9s | Investigations: 29
+Episode 09/30 | Reward:   -24.0 | Acc: 0.594 | Eps: 0.3874->0.3487 | t: 111.1s | Investigations: 29
+Episode 10/30 | Reward:   -64.0 | Acc: 0.551 | Eps: 0.3487->0.3138 | t: 110.4s | Investigations: 34
+Episode 11/30 | Reward:   159.0 | Acc: 0.684 | Eps: 0.3138->0.2824 | t: 108.6s | Investigations: 27
+Episode 12/30 | Reward:    10.0 | Acc: 0.625 | Eps: 0.2824->0.2542 | t: 107.7s | Investigations: 31
+Episode 13/30 | Reward:     1.0 | Acc: 0.645 | Eps: 0.2542->0.2288 | t: 109.0s | Investigations: 30
+Episode 14/30 | Reward:   120.0 | Acc: 0.715 | Eps: 0.2288->0.2059 | t: 103.5s | Investigations: 17
+Episode 15/30 | Reward:   239.0 | Acc: 0.805 | Eps: 0.2059->0.1853 | t: 109.5s | Investigations: 10
+Episode 16/30 | Reward:   160.0 | Acc: 0.730 | Eps: 0.1853->0.1668 | t: 112.5s | Investigations: 22
+Episode 17/30 | Reward:   135.0 | Acc: 0.758 | Eps: 0.1668->0.1501 | t: 110.0s | Investigations: 12
+Episode 18/30 | Reward:   231.0 | Acc: 0.781 | Eps: 0.1501->0.1351 | t: 106.9s | Investigations: 14
+Episode 19/30 | Reward:   299.0 | Acc: 0.820 | Eps: 0.1351->0.1216 | t: 106.1s | Investigations: 11
+Episode 20/30 | Reward:   315.0 | Acc: 0.816 | Eps: 0.1216->0.1094 | t: 107.3s | Investigations: 13
+Episode 21/30 | Reward:   125.0 | Acc: 0.785 | Eps: 0.1094->0.0985 | t: 106.3s | Investigations: 5
+Episode 22/30 | Reward:   185.0 | Acc: 0.816 | Eps: 0.0985->0.0886 | t: 104.7s | Investigations: 5
+Episode 23/30 | Reward:   205.0 | Acc: 0.801 | Eps: 0.0886->0.0798 | t: 108.9s | Investigations: 7
+Episode 24/30 | Reward:   146.0 | Acc: 0.805 | Eps: 0.0798->0.0718 | t: 110.6s | Investigations: 4
+Episode 25/30 | Reward:   240.0 | Acc: 0.836 | Eps: 0.0718->0.0646 | t: 106.9s | Investigations: 6
+Episode 26/30 | Reward:   159.0 | Acc: 0.805 | Eps: 0.0646->0.0581 | t: 107.8s | Investigations: 4
+Episode 27/30 | Reward:   178.0 | Acc: 0.828 | Eps: 0.0581->0.0523 | t: 107.7s | Investigations: 3
+Episode 28/30 | Reward:   203.0 | Acc: 0.816 | Eps: 0.0523->0.0500 | t: 106.9s | Investigations: 2
+Episode 29/30 | Reward:   259.0 | Acc: 0.816 | Eps: 0.0500->0.0500 | t: 111.2s | Investigations: 3
+Episode 30/30 | Reward:   253.0 | Acc: 0.840 | Eps: 0.0500->0.0500 | t: 112.8s | Investigations: 2
+Evaluating ...
+     Split  Accuracy  Precision_Attack  Recall_Attack  F1_Attack  ROC_AUC  True_Negative  False_Positive  False_Negative  True_Positive
+Validation    0.8869            0.7916         0.6323     0.7031   0.8789        1319491           61716          136371         234496
+Known Test    0.8864            0.7901         0.6308     0.7015   0.8781        1319062           62145          136929         233938
+
+Zero-day:
+{'Split': 'Zero-Day', 'Samples': 314400, 'Detected': 8110, 'Missed': 306290, 'Detection_Rate': 0.025795165394402037, 'Miss_Rate': 0.9742048346055979}
+     Attack  Samples  Detection Rate (%)  Miss Rate (%)
+Brute Force   291955                0.00         100.00
+   Backdoor    19029               36.75          63.25
+      Theft     1909               57.57          42.43
+  Shellcode     1365                0.00         100.00
+ ransomware      142               11.97          88.03
+Saved B11 run -> experiments\MULTISEED\runs\drl\B11\noports\seed43
+Wrote experiments\MULTISEED\runs\drl\B11\noports\seed43\METRICS_ROW.json
+{
+  "config": "B11",
+  "feature_set": "noports",
+  "model_type": "drl",
+  "seed": 43,
+  "KT_Accuracy": 88.63780867703076,
+  "KT_Precision": 79.01095300979793,
+  "KT_Recall": 63.078677800936724,
+  "KT_F1": 70.15158557613015,
+  "KT_ROC_AUC": 87.80888667278585,
+  "Weighted_ZeroDay": 2.5795165394402035,
+  "Macro_ZeroDay": 21.25913330116029,
+  "Shellcode": 0.0,
+  "Brute Force": 0.0,
+  "Theft": 57.56940806705081,
+  "ransomware": 11.971830985915492,
+  "Backdoor": 36.754427452835145
+}
+[07:50:51] OK    B11 noports seed=43
+[07:50:51] START B11 noports seed=44
+WARNING: All log messages before absl::InitializeLog() is called are written to STDERR
+I0000 00:00:1789532454.727629   32004 port.cc:153] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
+WARNING: All log messages before absl::InitializeLog() is called are written to STDERR
+I0000 00:00:1789532458.477474   32004 port.cc:153] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
+I0000 00:00:1789532463.115980   32004 cpu_feature_guard.cc:227] This TensorFlow binary is optimized to use available CPU instructions in performance-critical operations.
+To enable the following instructions: SSE3 SSE4.1 SSE4.2 AVX AVX2 FMA, in other operations, rebuild TensorFlow with the appropriate compiler flags.
+WARNING:tensorflow:TensorFlow GPU support is not available on native Windows for TensorFlow >= 2.11. Even if CUDA/cuDNN are installed, GPU will not be used. Please use WSL2 or the TensorFlow-DirectML plugin.
+========================================================================
+Rebuild B11: Family-aware sampling + investigate action + post-alert queue effect
+Mode: train  Feature set: noports  Seed: 44
+Config: C:\Users\Dr. Zarepour\Desktop\RL_IDS\Codes\configs\B11.yaml
+========================================================================
+Loading cache from C:\Users\Dr. Zarepour\Desktop\RL_IDS\Codes\data\prepared\noports
+Episode 00/30 | Reward:  -325.0 | Acc: 0.332 | Eps: 1.0000->0.9000 | t: 104.8s | Investigations: 79
+Episode 01/30 | Reward:  -278.0 | Acc: 0.379 | Eps: 0.9000->0.8100 | t: 104.9s | Investigations: 79
+Episode 02/30 | Reward:  -194.0 | Acc: 0.441 | Eps: 0.8100->0.7290 | t: 101.2s | Investigations: 69
+Episode 03/30 | Reward:  -144.0 | Acc: 0.477 | Eps: 0.7290->0.6561 | t: 105.2s | Investigations: 63
+Episode 04/30 | Reward:   -84.0 | Acc: 0.516 | Eps: 0.6561->0.5905 | t: 107.8s | Investigations: 52
+Episode 05/30 | Reward:   -51.0 | Acc: 0.566 | Eps: 0.5905->0.5314 | t: 106.9s | Investigations: 43
+Episode 06/30 | Reward:    -6.0 | Acc: 0.605 | Eps: 0.5314->0.4783 | t: 109.1s | Investigations: 35
+Episode 07/30 | Reward:   -79.0 | Acc: 0.598 | Eps: 0.4783->0.4305 | t: 110.2s | Investigations: 42
+Episode 08/30 | Reward:   -43.0 | Acc: 0.629 | Eps: 0.4305->0.3874 | t: 112.6s | Investigations: 34
+Episode 09/30 | Reward:    40.0 | Acc: 0.641 | Eps: 0.3874->0.3487 | t: 111.9s | Investigations: 30
+Episode 10/30 | Reward:    82.0 | Acc: 0.672 | Eps: 0.3487->0.3138 | t: 111.7s | Investigations: 28
+Episode 11/30 | Reward:     5.0 | Acc: 0.676 | Eps: 0.3138->0.2824 | t: 112.0s | Investigations: 22
+Episode 12/30 | Reward:   170.0 | Acc: 0.738 | Eps: 0.2824->0.2542 | t: 113.4s | Investigations: 22
+Episode 13/30 | Reward:   134.0 | Acc: 0.750 | Eps: 0.2542->0.2288 | t: 114.4s | Investigations: 18
+Episode 14/30 | Reward:   187.0 | Acc: 0.746 | Eps: 0.2288->0.2059 | t: 114.1s | Investigations: 17
+Episode 15/30 | Reward:    62.0 | Acc: 0.730 | Eps: 0.2059->0.1853 | t: 114.2s | Investigations: 16
+Episode 16/30 | Reward:   136.0 | Acc: 0.750 | Eps: 0.1853->0.1668 | t: 115.7s | Investigations: 14
+Episode 17/30 | Reward:   161.0 | Acc: 0.762 | Eps: 0.1668->0.1501 | t: 116.5s | Investigations: 9
+Episode 18/30 | Reward:   173.0 | Acc: 0.742 | Eps: 0.1501->0.1351 | t: 113.8s | Investigations: 20
+Episode 19/30 | Reward:   244.0 | Acc: 0.801 | Eps: 0.1351->0.1216 | t: 114.5s | Investigations: 10
+Episode 20/30 | Reward:   246.0 | Acc: 0.824 | Eps: 0.1216->0.1094 | t: 113.9s | Investigations: 8
+Episode 21/30 | Reward:   167.0 | Acc: 0.785 | Eps: 0.1094->0.0985 | t: 114.7s | Investigations: 11
+Episode 22/30 | Reward:   210.0 | Acc: 0.789 | Eps: 0.0985->0.0886 | t: 115.7s | Investigations: 14
+Episode 23/30 | Reward:   172.0 | Acc: 0.789 | Eps: 0.0886->0.0798 | t: 115.8s | Investigations: 9
+Episode 24/30 | Reward:   244.0 | Acc: 0.828 | Eps: 0.0798->0.0718 | t: 114.3s | Investigations: 5
+Episode 25/30 | Reward:   147.0 | Acc: 0.793 | Eps: 0.0718->0.0646 | t: 114.0s | Investigations: 9
+Episode 26/30 | Reward:   119.0 | Acc: 0.785 | Eps: 0.0646->0.0581 | t: 114.3s | Investigations: 7
+Episode 27/30 | Reward:   245.0 | Acc: 0.828 | Eps: 0.0581->0.0523 | t: 115.5s | Investigations: 3
+Episode 28/30 | Reward:   295.0 | Acc: 0.832 | Eps: 0.0523->0.0500 | t: 112.5s | Investigations: 2
+Episode 29/30 | Reward:   253.0 | Acc: 0.824 | Eps: 0.0500->0.0500 | t: 113.9s | Investigations: 7
+Episode 30/30 | Reward:   216.0 | Acc: 0.832 | Eps: 0.0500->0.0500 | t: 109.5s | Investigations: 4
+Evaluating ...
+     Split  Accuracy  Precision_Attack  Recall_Attack  F1_Attack  ROC_AUC  True_Negative  False_Positive  False_Negative  True_Positive
+Validation    0.8885            0.7993         0.6318     0.7058   0.8872        1322385           58822          136555         234312
+Known Test    0.8880            0.7979         0.6303     0.7043   0.8866        1321997           59210          137105         233762
+
+Zero-day:
+{'Split': 'Zero-Day', 'Samples': 314400, 'Detected': 8115, 'Missed': 306285, 'Detection_Rate': 0.025811068702290076, 'Miss_Rate': 0.9741889312977099}
+     Attack  Samples  Detection Rate (%)  Miss Rate (%)
+Brute Force   291955                0.00         100.00
+   Backdoor    19029               36.78          63.22
+      Theft     1909               57.57          42.43
+  Shellcode     1365                0.00         100.00
+ ransomware      142               11.97          88.03
+Saved B11 run -> experiments\MULTISEED\runs\drl\B11\noports\seed44
+Wrote experiments\MULTISEED\runs\drl\B11\noports\seed44\METRICS_ROW.json
+{
+  "config": "B11",
+  "feature_set": "noports",
+  "model_type": "drl",
+  "seed": 44,
+  "KT_Accuracy": 88.79527919482852,
+  "KT_Precision": 79.78987753095859,
+  "KT_Recall": 63.03122143517758,
+  "KT_F1": 70.42731746703643,
+  "KT_ROC_AUC": 88.66108929905158,
+  "Weighted_ZeroDay": 2.5811068702290076,
+  "Macro_ZeroDay": 21.264388438056606,
+  "Shellcode": 0.0,
+  "Brute Force": 0.0,
+  "Theft": 57.56940806705081,
+  "ransomware": 11.971830985915492,
+  "Backdoor": 36.78070313731673
+}
+[08:49:08] OK    B11 noports seed=44
+[08:49:08] START B11 noports seed=45
+WARNING: All log messages before absl::InitializeLog() is called are written to STDERR
+I0000 00:00:1789535951.525534   31432 port.cc:153] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
+WARNING: All log messages before absl::InitializeLog() is called are written to STDERR
+I0000 00:00:1789535955.366407   31432 port.cc:153] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
+I0000 00:00:1789535959.771009   31432 cpu_feature_guard.cc:227] This TensorFlow binary is optimized to use available CPU instructions in performance-critical operations.
+To enable the following instructions: SSE3 SSE4.1 SSE4.2 AVX AVX2 FMA, in other operations, rebuild TensorFlow with the appropriate compiler flags.
+WARNING:tensorflow:TensorFlow GPU support is not available on native Windows for TensorFlow >= 2.11. Even if CUDA/cuDNN are installed, GPU will not be used. Please use WSL2 or the TensorFlow-DirectML plugin.
+========================================================================
+Rebuild B11: Family-aware sampling + investigate action + post-alert queue effect
+Mode: train  Feature set: noports  Seed: 45
+Config: C:\Users\Dr. Zarepour\Desktop\RL_IDS\Codes\configs\B11.yaml
+========================================================================
+Loading cache from C:\Users\Dr. Zarepour\Desktop\RL_IDS\Codes\data\prepared\noports
+Episode 00/30 | Reward:  -373.0 | Acc: 0.301 | Eps: 1.0000->0.9000 | t: 96.8s | Investigations: 78
+Episode 01/30 | Reward:  -418.0 | Acc: 0.312 | Eps: 0.9000->0.8100 | t: 98.9s | Investigations: 85
+Episode 02/30 | Reward:  -205.0 | Acc: 0.418 | Eps: 0.8100->0.7290 | t: 102.7s | Investigations: 66
+Episode 03/30 | Reward:  -251.0 | Acc: 0.402 | Eps: 0.7290->0.6561 | t: 102.5s | Investigations: 67
+Episode 04/30 | Reward:   -53.0 | Acc: 0.492 | Eps: 0.6561->0.5905 | t: 103.8s | Investigations: 55
+Episode 05/30 | Reward:  -120.0 | Acc: 0.488 | Eps: 0.5905->0.5314 | t: 101.6s | Investigations: 57
+Episode 06/30 | Reward:  -106.0 | Acc: 0.504 | Eps: 0.5314->0.4783 | t: 101.5s | Investigations: 53
+Episode 07/30 | Reward:    95.0 | Acc: 0.641 | Eps: 0.4783->0.4305 | t: 106.7s | Investigations: 44
+Episode 08/30 | Reward:   -36.0 | Acc: 0.562 | Eps: 0.4305->0.3874 | t: 107.0s | Investigations: 36
+Episode 09/30 | Reward:   -61.0 | Acc: 0.562 | Eps: 0.3874->0.3487 | t: 108.5s | Investigations: 36
+Episode 10/30 | Reward:   187.0 | Acc: 0.680 | Eps: 0.3487->0.3138 | t: 107.6s | Investigations: 31
+Episode 11/30 | Reward:   178.0 | Acc: 0.699 | Eps: 0.3138->0.2824 | t: 107.5s | Investigations: 31
+Episode 12/30 | Reward:   160.0 | Acc: 0.680 | Eps: 0.2824->0.2542 | t: 104.6s | Investigations: 24
+Episode 13/30 | Reward:   205.0 | Acc: 0.742 | Eps: 0.2542->0.2288 | t: 106.0s | Investigations: 21
+Episode 14/30 | Reward:   244.0 | Acc: 0.730 | Eps: 0.2288->0.2059 | t: 105.5s | Investigations: 30
+Episode 15/30 | Reward:   187.0 | Acc: 0.723 | Eps: 0.2059->0.1853 | t: 109.6s | Investigations: 22
+Episode 16/30 | Reward:   216.0 | Acc: 0.766 | Eps: 0.1853->0.1668 | t: 107.2s | Investigations: 16
+Episode 17/30 | Reward:   201.0 | Acc: 0.746 | Eps: 0.1668->0.1501 | t: 106.5s | Investigations: 17
+Episode 18/30 | Reward:   261.0 | Acc: 0.766 | Eps: 0.1501->0.1351 | t: 107.3s | Investigations: 16
+Episode 19/30 | Reward:   248.0 | Acc: 0.797 | Eps: 0.1351->0.1216 | t: 109.0s | Investigations: 10
+Episode 20/30 | Reward:   205.0 | Acc: 0.773 | Eps: 0.1216->0.1094 | t: 112.2s | Investigations: 10
+Episode 21/30 | Reward:   354.0 | Acc: 0.836 | Eps: 0.1094->0.0985 | t: 109.0s | Investigations: 11
+Episode 22/30 | Reward:   250.0 | Acc: 0.773 | Eps: 0.0985->0.0886 | t: 107.8s | Investigations: 12
+Episode 23/30 | Reward:   268.0 | Acc: 0.805 | Eps: 0.0886->0.0798 | t: 107.6s | Investigations: 4
+Episode 24/30 | Reward:   240.0 | Acc: 0.785 | Eps: 0.0798->0.0718 | t: 108.1s | Investigations: 12
+Episode 25/30 | Reward:   202.0 | Acc: 0.805 | Eps: 0.0718->0.0646 | t: 108.2s | Investigations: 3
+Episode 26/30 | Reward:   279.0 | Acc: 0.809 | Eps: 0.0646->0.0581 | t: 109.8s | Investigations: 6
+Episode 27/30 | Reward:   311.0 | Acc: 0.797 | Eps: 0.0581->0.0523 | t: 111.8s | Investigations: 4
+Episode 28/30 | Reward:   389.0 | Acc: 0.844 | Eps: 0.0523->0.0500 | t: 110.3s | Investigations: 7
+Episode 29/30 | Reward:   346.0 | Acc: 0.836 | Eps: 0.0500->0.0500 | t: 111.4s | Investigations: 3
+Episode 30/30 | Reward:   343.0 | Acc: 0.828 | Eps: 0.0500->0.0500 | t: 110.9s | Investigations: 7
+Evaluating ...
+     Split  Accuracy  Precision_Attack  Recall_Attack  F1_Attack  ROC_AUC  True_Negative  False_Positive  False_Negative  True_Positive
+Validation    0.8358            0.5832         0.7861     0.6696   0.9004        1172853          208354           79334         291533
+Known Test    0.8350            0.5818         0.7849     0.6682   0.8998        1171954          209253           79785         291082
+
+Zero-day:
+{'Split': 'Zero-Day', 'Samples': 314400, 'Detected': 215003, 'Missed': 99397, 'Detection_Rate': 0.6838517811704835, 'Miss_Rate': 0.31614821882951655}
+     Attack  Samples  Detection Rate (%)  Miss Rate (%)
+Brute Force   291955               66.92          33.08
+   Backdoor    19029               97.03           2.97
+      Theft     1909               58.83          41.17
+  Shellcode     1365                0.81          99.19
+ ransomware      142               11.97          88.03
+Saved B11 run -> experiments\MULTISEED\runs\drl\B11\noports\seed45
+Wrote experiments\MULTISEED\runs\drl\B11\noports\seed45\METRICS_ROW.json
+{
+  "config": "B11",
+  "feature_set": "noports",
+  "model_type": "drl",
+  "seed": 45,
+  "KT_Accuracy": 83.50309404739754,
+  "KT_Precision": 58.17742112784434,
+  "KT_Recall": 78.48689691992008,
+  "KT_F1": 66.82307891855162,
+  "KT_ROC_AUC": 89.98380868639155,
+  "Weighted_ZeroDay": 68.38517811704835,
+  "Macro_ZeroDay": 47.110849976030785,
+  "Shellcode": 0.805860805860806,
+  "Brute Force": 66.92435478070252,
+  "Theft": 58.82661079099005,
+  "ransomware": 11.971830985915492,
+  "Backdoor": 97.02559251668505
+}
+[09:44:44] OK    B11 noports seed=45
+[09:44:44] START B11 noports seed=46
+WARNING: All log messages before absl::InitializeLog() is called are written to STDERR
+I0000 00:00:1789539287.507604   27116 port.cc:153] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
+WARNING: All log messages before absl::InitializeLog() is called are written to STDERR
+I0000 00:00:1789539291.299766   27116 port.cc:153] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
+I0000 00:00:1789539295.911880   27116 cpu_feature_guard.cc:227] This TensorFlow binary is optimized to use available CPU instructions in performance-critical operations.
+To enable the following instructions: SSE3 SSE4.1 SSE4.2 AVX AVX2 FMA, in other operations, rebuild TensorFlow with the appropriate compiler flags.
+WARNING:tensorflow:TensorFlow GPU support is not available on native Windows for TensorFlow >= 2.11. Even if CUDA/cuDNN are installed, GPU will not be used. Please use WSL2 or the TensorFlow-DirectML plugin.
+========================================================================
+Rebuild B11: Family-aware sampling + investigate action + post-alert queue effect
+Mode: train  Feature set: noports  Seed: 46
+Config: C:\Users\Dr. Zarepour\Desktop\RL_IDS\Codes\configs\B11.yaml
+========================================================================
+Loading cache from C:\Users\Dr. Zarepour\Desktop\RL_IDS\Codes\data\prepared\noports
+Episode 00/30 | Reward:  -323.0 | Acc: 0.328 | Eps: 1.0000->0.9000 | t: 103.1s | Investigations: 86
+Episode 01/30 | Reward:  -243.0 | Acc: 0.387 | Eps: 0.9000->0.8100 | t: 104.7s | Investigations: 77
+Episode 02/30 | Reward:   -60.0 | Acc: 0.453 | Eps: 0.8100->0.7290 | t: 103.0s | Investigations: 69
+Episode 03/30 | Reward:  -173.0 | Acc: 0.406 | Eps: 0.7290->0.6561 | t: 105.7s | Investigations: 80
+Episode 04/30 | Reward:  -103.0 | Acc: 0.523 | Eps: 0.6561->0.5905 | t: 105.4s | Investigations: 52
+Episode 05/30 | Reward:  -206.0 | Acc: 0.504 | Eps: 0.5905->0.5314 | t: 105.9s | Investigations: 51
+Episode 06/30 | Reward:  -116.0 | Acc: 0.539 | Eps: 0.5314->0.4783 | t: 106.8s | Investigations: 48
+Episode 07/30 | Reward:  -174.0 | Acc: 0.555 | Eps: 0.4783->0.4305 | t: 107.0s | Investigations: 43
+Episode 08/30 | Reward:   -66.0 | Acc: 0.602 | Eps: 0.4305->0.3874 | t: 107.8s | Investigations: 43
+Episode 09/30 | Reward:   -98.0 | Acc: 0.562 | Eps: 0.3874->0.3487 | t: 108.2s | Investigations: 33
+Episode 10/30 | Reward:   110.0 | Acc: 0.691 | Eps: 0.3487->0.3138 | t: 109.0s | Investigations: 30
+Episode 11/30 | Reward:   102.0 | Acc: 0.688 | Eps: 0.3138->0.2824 | t: 109.0s | Investigations: 26
+Episode 12/30 | Reward:   121.0 | Acc: 0.680 | Eps: 0.2824->0.2542 | t: 108.8s | Investigations: 26
+Episode 13/30 | Reward:   285.0 | Acc: 0.758 | Eps: 0.2542->0.2288 | t: 109.3s | Investigations: 20
+Episode 14/30 | Reward:   156.0 | Acc: 0.723 | Eps: 0.2288->0.2059 | t: 108.9s | Investigations: 27
+Episode 15/30 | Reward:   116.0 | Acc: 0.691 | Eps: 0.2059->0.1853 | t: 110.7s | Investigations: 17
+Episode 16/30 | Reward:   217.0 | Acc: 0.754 | Eps: 0.1853->0.1668 | t: 110.8s | Investigations: 20
+Episode 17/30 | Reward:    59.0 | Acc: 0.723 | Eps: 0.1668->0.1501 | t: 111.0s | Investigations: 12
+Episode 18/30 | Reward:   308.0 | Acc: 0.797 | Eps: 0.1501->0.1351 | t: 110.4s | Investigations: 13
+Episode 19/30 | Reward:   228.0 | Acc: 0.809 | Eps: 0.1351->0.1216 | t: 107.7s | Investigations: 5
+Episode 20/30 | Reward:   190.0 | Acc: 0.777 | Eps: 0.1216->0.1094 | t: 108.8s | Investigations: 12
+Episode 21/30 | Reward:   226.0 | Acc: 0.801 | Eps: 0.1094->0.0985 | t: 111.0s | Investigations: 6
+Episode 22/30 | Reward:   253.0 | Acc: 0.812 | Eps: 0.0985->0.0886 | t: 106.6s | Investigations: 7
+Episode 23/30 | Reward:   272.0 | Acc: 0.828 | Eps: 0.0886->0.0798 | t: 101.6s | Investigations: 4
+Episode 24/30 | Reward:   281.0 | Acc: 0.812 | Eps: 0.0798->0.0718 | t: 103.6s | Investigations: 5
+Episode 25/30 | Reward:   326.0 | Acc: 0.816 | Eps: 0.0718->0.0646 | t: 107.8s | Investigations: 8
+Episode 26/30 | Reward:   272.0 | Acc: 0.801 | Eps: 0.0646->0.0581 | t: 109.0s | Investigations: 2
+Episode 27/30 | Reward:   323.0 | Acc: 0.836 | Eps: 0.0581->0.0523 | t: 104.3s | Investigations: 3
+Episode 28/30 | Reward:   292.0 | Acc: 0.801 | Eps: 0.0523->0.0500 | t: 105.1s | Investigations: 7
+Episode 29/30 | Reward:   326.0 | Acc: 0.832 | Eps: 0.0500->0.0500 | t: 109.4s | Investigations: 5
+Episode 30/30 | Reward:   336.0 | Acc: 0.840 | Eps: 0.0500->0.0500 | t: 105.1s | Investigations: 2
+Evaluating ...
+     Split  Accuracy  Precision_Attack  Recall_Attack  F1_Attack  ROC_AUC  True_Negative  False_Positive  False_Negative  True_Positive
+Validation    0.8003            0.5188         0.7834     0.6242   0.8248        1111702          269505           80316         290551
+Known Test    0.7994            0.5173         0.7813     0.6225   0.8235        1110835          270372           81116         289751
+
+Zero-day:
+{'Split': 'Zero-Day', 'Samples': 314400, 'Detected': 15601, 'Missed': 298799, 'Detection_Rate': 0.04962150127226463, 'Miss_Rate': 0.9503784987277354}
+     Attack  Samples  Detection Rate (%)  Miss Rate (%)
+Brute Force   291955                0.71          99.29
+   Backdoor    19029               61.60          38.40
+      Theft     1909               57.62          42.38
+  Shellcode     1365               50.62          49.38
+ ransomware      142               11.97          88.03
+Saved B11 run -> experiments\MULTISEED\runs\drl\B11\noports\seed46
+Wrote experiments\MULTISEED\runs\drl\B11\noports\seed46\METRICS_ROW.json
+{
+  "config": "B11",
+  "feature_set": "noports",
+  "model_type": "drl",
+  "seed": 46,
+  "KT_Accuracy": 79.93874687941262,
+  "KT_Precision": 51.72988789962205,
+  "KT_Recall": 78.12800815386647,
+  "KT_F1": 62.24578137251743,
+  "KT_ROC_AUC": 82.34517321968336,
+  "Weighted_ZeroDay": 4.962150127226463,
+  "Macro_ZeroDay": 36.504298219331176,
+  "Shellcode": 50.62271062271062,
+  "Brute Force": 0.7096984124265726,
+  "Theft": 57.62179151388162,
+  "ransomware": 11.971830985915492,
+  "Backdoor": 61.59545956172159
+}
+[10:40:36] OK    B11 noports seed=46
+[10:40:36] START B11 noports seed=47
+WARNING: All log messages before absl::InitializeLog() is called are written to STDERR
+I0000 00:00:1789542639.889991   22560 port.cc:153] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
+WARNING: All log messages before absl::InitializeLog() is called are written to STDERR
+I0000 00:00:1789542643.405536   22560 port.cc:153] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
+I0000 00:00:1789542647.653199   22560 cpu_feature_guard.cc:227] This TensorFlow binary is optimized to use available CPU instructions in performance-critical operations.
+To enable the following instructions: SSE3 SSE4.1 SSE4.2 AVX AVX2 FMA, in other operations, rebuild TensorFlow with the appropriate compiler flags.
+WARNING:tensorflow:TensorFlow GPU support is not available on native Windows for TensorFlow >= 2.11. Even if CUDA/cuDNN are installed, GPU will not be used. Please use WSL2 or the TensorFlow-DirectML plugin.
+========================================================================
+Rebuild B11: Family-aware sampling + investigate action + post-alert queue effect
+Mode: train  Feature set: noports  Seed: 47
+Config: C:\Users\Dr. Zarepour\Desktop\RL_IDS\Codes\configs\B11.yaml
+========================================================================
+Loading cache from C:\Users\Dr. Zarepour\Desktop\RL_IDS\Codes\data\prepared\noports
+Episode 00/30 | Reward:  -319.0 | Acc: 0.320 | Eps: 1.0000->0.9000 | t: 95.9s | Investigations: 81
+Episode 01/30 | Reward:  -233.0 | Acc: 0.379 | Eps: 0.9000->0.8100 | t: 99.4s | Investigations: 74
+Episode 02/30 | Reward:  -114.0 | Acc: 0.457 | Eps: 0.8100->0.7290 | t: 103.9s | Investigations: 65
+Episode 03/30 | Reward:  -103.0 | Acc: 0.477 | Eps: 0.7290->0.6561 | t: 98.0s | Investigations: 64
+Episode 04/30 | Reward:  -184.0 | Acc: 0.480 | Eps: 0.6561->0.5905 | t: 97.0s | Investigations: 56
+Episode 05/30 | Reward:  -127.0 | Acc: 0.562 | Eps: 0.5905->0.5314 | t: 99.3s | Investigations: 46
+Episode 06/30 | Reward:  -147.0 | Acc: 0.543 | Eps: 0.5314->0.4783 | t: 99.2s | Investigations: 44
+Episode 07/30 | Reward:  -101.0 | Acc: 0.590 | Eps: 0.4783->0.4305 | t: 101.7s | Investigations: 40
+Episode 08/30 | Reward:   -11.0 | Acc: 0.574 | Eps: 0.4305->0.3874 | t: 100.4s | Investigations: 32
+Episode 09/30 | Reward:   105.0 | Acc: 0.652 | Eps: 0.3874->0.3487 | t: 102.8s | Investigations: 25
+Episode 10/30 | Reward:   105.0 | Acc: 0.668 | Eps: 0.3487->0.3138 | t: 109.3s | Investigations: 28
+Episode 11/30 | Reward:   108.0 | Acc: 0.680 | Eps: 0.3138->0.2824 | t: 104.1s | Investigations: 30
+Episode 12/30 | Reward:   113.0 | Acc: 0.738 | Eps: 0.2824->0.2542 | t: 106.3s | Investigations: 20
+Episode 13/30 | Reward:    51.0 | Acc: 0.691 | Eps: 0.2542->0.2288 | t: 108.7s | Investigations: 23
+Episode 14/30 | Reward:   159.0 | Acc: 0.699 | Eps: 0.2288->0.2059 | t: 110.8s | Investigations: 23
+Episode 15/30 | Reward:   168.0 | Acc: 0.727 | Eps: 0.2059->0.1853 | t: 112.6s | Investigations: 17
+Episode 16/30 | Reward:   167.0 | Acc: 0.711 | Eps: 0.1853->0.1668 | t: 114.1s | Investigations: 15
+Episode 17/30 | Reward:   213.0 | Acc: 0.766 | Eps: 0.1668->0.1501 | t: 110.7s | Investigations: 10
+Episode 18/30 | Reward:   237.0 | Acc: 0.758 | Eps: 0.1501->0.1351 | t: 111.9s | Investigations: 16
+Episode 19/30 | Reward:   247.0 | Acc: 0.785 | Eps: 0.1351->0.1216 | t: 108.7s | Investigations: 10
+Episode 20/30 | Reward:   253.0 | Acc: 0.805 | Eps: 0.1216->0.1094 | t: 106.9s | Investigations: 8
+Episode 21/30 | Reward:   317.0 | Acc: 0.840 | Eps: 0.1094->0.0985 | t: 109.7s | Investigations: 6
+Episode 22/30 | Reward:   199.0 | Acc: 0.797 | Eps: 0.0985->0.0886 | t: 109.7s | Investigations: 9
+Episode 23/30 | Reward:   226.0 | Acc: 0.812 | Eps: 0.0886->0.0798 | t: 111.9s | Investigations: 5
+Episode 24/30 | Reward:   241.0 | Acc: 0.801 | Eps: 0.0798->0.0718 | t: 114.0s | Investigations: 11
+Episode 25/30 | Reward:   380.0 | Acc: 0.863 | Eps: 0.0718->0.0646 | t: 111.0s | Investigations: 3
+Episode 26/30 | Reward:   255.0 | Acc: 0.828 | Eps: 0.0646->0.0581 | t: 112.3s | Investigations: 1
+Episode 27/30 | Reward:   219.0 | Acc: 0.809 | Eps: 0.0581->0.0523 | t: 111.9s | Investigations: 6
+Episode 28/30 | Reward:   309.0 | Acc: 0.852 | Eps: 0.0523->0.0500 | t: 111.3s | Investigations: 3
+Episode 29/30 | Reward:   310.0 | Acc: 0.828 | Eps: 0.0500->0.0500 | t: 111.0s | Investigations: 8
+Episode 30/30 | Reward:   203.0 | Acc: 0.816 | Eps: 0.0500->0.0500 | t: 113.9s | Investigations: 4
+Evaluating ...
+     Split  Accuracy  Precision_Attack  Recall_Attack  F1_Attack  ROC_AUC  True_Negative  False_Positive  False_Negative  True_Positive
+Validation    0.8820            0.7229         0.7177     0.7203   0.9061        1279190          102017          104693         266174
+Known Test    0.8818            0.7222         0.7174     0.7198   0.9058        1278887          102320          104814         266053
+
+Zero-day:
+{'Split': 'Zero-Day', 'Samples': 314400, 'Detected': 194627, 'Missed': 119773, 'Detection_Rate': 0.61904262086514, 'Miss_Rate': 0.38095737913486005}
+     Attack  Samples  Detection Rate (%)  Miss Rate (%)
+Brute Force   291955               66.24          33.76
+   Backdoor    19029                0.63          99.37
+      Theft     1909               57.57          42.43
+  Shellcode     1365                0.07          99.93
+ ransomware      142               11.97          88.03
+Saved B11 run -> experiments\MULTISEED\runs\drl\B11\noports\seed47
+Wrote experiments\MULTISEED\runs\drl\B11\noports\seed47\METRICS_ROW.json
+{
+  "config": "B11",
+  "feature_set": "noports",
+  "model_type": "drl",
+  "seed": 47,
+  "KT_Accuracy": 88.17778244526203,
+  "KT_Precision": 72.2238057620944,
+  "KT_Recall": 71.73811635977319,
+  "KT_F1": 71.98014176722039,
+  "KT_ROC_AUC": 90.5789976896453,
+  "Weighted_ZeroDay": 61.904262086513995,
+  "Macro_ZeroDay": 27.296955155078763,
+  "Shellcode": 0.07326007326007326,
+  "Brute Force": 66.2396602216095,
+  "Theft": 57.56940806705081,
+  "ransomware": 11.971830985915492,
+  "Backdoor": 0.6306164275579379
+}
+[11:36:22] OK    B11 noports seed=47
+[11:36:22] START B11 noports seed=48
+WARNING: All log messages before absl::InitializeLog() is called are written to STDERR
+I0000 00:00:1789545986.080137   27168 port.cc:153] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
+WARNING: All log messages before absl::InitializeLog() is called are written to STDERR
+I0000 00:00:1789545989.879638   27168 port.cc:153] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
+I0000 00:00:1789545994.560198   27168 cpu_feature_guard.cc:227] This TensorFlow binary is optimized to use available CPU instructions in performance-critical operations.
+To enable the following instructions: SSE3 SSE4.1 SSE4.2 AVX AVX2 FMA, in other operations, rebuild TensorFlow with the appropriate compiler flags.
+WARNING:tensorflow:TensorFlow GPU support is not available on native Windows for TensorFlow >= 2.11. Even if CUDA/cuDNN are installed, GPU will not be used. Please use WSL2 or the TensorFlow-DirectML plugin.
+========================================================================
+Rebuild B11: Family-aware sampling + investigate action + post-alert queue effect
+Mode: train  Feature set: noports  Seed: 48
+Config: C:\Users\Dr. Zarepour\Desktop\RL_IDS\Codes\configs\B11.yaml
+========================================================================
+Loading cache from C:\Users\Dr. Zarepour\Desktop\RL_IDS\Codes\data\prepared\noports
+Episode 00/30 | Reward:  -181.0 | Acc: 0.395 | Eps: 1.0000->0.9000 | t: 102.2s | Investigations: 86
+Episode 01/30 | Reward:  -287.0 | Acc: 0.359 | Eps: 0.9000->0.8100 | t: 103.4s | Investigations: 73
+Episode 02/30 | Reward:  -194.0 | Acc: 0.449 | Eps: 0.8100->0.7290 | t: 105.1s | Investigations: 54
+Episode 03/30 | Reward:  -165.0 | Acc: 0.453 | Eps: 0.7290->0.6561 | t: 106.0s | Investigations: 68
+Episode 04/30 | Reward:  -183.0 | Acc: 0.453 | Eps: 0.6561->0.5905 | t: 106.9s | Investigations: 55
+Episode 05/30 | Reward:  -149.0 | Acc: 0.488 | Eps: 0.5905->0.5314 | t: 106.6s | Investigations: 56
+Episode 06/30 | Reward:   -68.0 | Acc: 0.582 | Eps: 0.5314->0.4783 | t: 106.4s | Investigations: 35
+Episode 07/30 | Reward:  -120.0 | Acc: 0.551 | Eps: 0.4783->0.4305 | t: 107.4s | Investigations: 45
+Episode 08/30 | Reward:    82.0 | Acc: 0.668 | Eps: 0.4305->0.3874 | t: 106.9s | Investigations: 30
+Episode 09/30 | Reward:    46.0 | Acc: 0.648 | Eps: 0.3874->0.3487 | t: 105.8s | Investigations: 37
+Episode 10/30 | Reward:    10.0 | Acc: 0.625 | Eps: 0.3487->0.3138 | t: 107.7s | Investigations: 25
+Episode 11/30 | Reward:    94.0 | Acc: 0.668 | Eps: 0.3138->0.2824 | t: 108.8s | Investigations: 17
+Episode 12/30 | Reward:   125.0 | Acc: 0.711 | Eps: 0.2824->0.2542 | t: 107.9s | Investigations: 17
+Episode 13/30 | Reward:   140.0 | Acc: 0.711 | Eps: 0.2542->0.2288 | t: 107.3s | Investigations: 18
+Episode 14/30 | Reward:   197.0 | Acc: 0.742 | Eps: 0.2288->0.2059 | t: 108.8s | Investigations: 22
+Episode 15/30 | Reward:    97.0 | Acc: 0.738 | Eps: 0.2059->0.1853 | t: 109.0s | Investigations: 14
+Episode 16/30 | Reward:    61.0 | Acc: 0.723 | Eps: 0.1853->0.1668 | t: 104.6s | Investigations: 15
+Episode 17/30 | Reward:   162.0 | Acc: 0.750 | Eps: 0.1668->0.1501 | t: 107.1s | Investigations: 21
+Episode 18/30 | Reward:   162.0 | Acc: 0.781 | Eps: 0.1501->0.1351 | t: 109.7s | Investigations: 10
+Episode 19/30 | Reward:   150.0 | Acc: 0.758 | Eps: 0.1351->0.1216 | t: 107.9s | Investigations: 17
+Episode 20/30 | Reward:   330.0 | Acc: 0.855 | Eps: 0.1216->0.1094 | t: 106.6s | Investigations: 8
+Episode 21/30 | Reward:   226.0 | Acc: 0.805 | Eps: 0.1094->0.0985 | t: 111.8s | Investigations: 11
+Episode 22/30 | Reward:   194.0 | Acc: 0.801 | Eps: 0.0985->0.0886 | t: 109.7s | Investigations: 7
+Episode 23/30 | Reward:   204.0 | Acc: 0.801 | Eps: 0.0886->0.0798 | t: 108.9s | Investigations: 4
+Episode 24/30 | Reward:   386.0 | Acc: 0.859 | Eps: 0.0798->0.0718 | t: 109.1s | Investigations: 5
+Episode 25/30 | Reward:   262.0 | Acc: 0.848 | Eps: 0.0718->0.0646 | t: 109.4s | Investigations: 3
+Episode 26/30 | Reward:   218.0 | Acc: 0.824 | Eps: 0.0646->0.0581 | t: 108.2s | Investigations: 7
+Episode 27/30 | Reward:   323.0 | Acc: 0.871 | Eps: 0.0581->0.0523 | t: 106.7s | Investigations: 2
+Episode 28/30 | Reward:   338.0 | Acc: 0.863 | Eps: 0.0523->0.0500 | t: 103.9s | Investigations: 3
+Episode 29/30 | Reward:   310.0 | Acc: 0.855 | Eps: 0.0500->0.0500 | t: 108.6s | Investigations: 4
+Episode 30/30 | Reward:   210.0 | Acc: 0.824 | Eps: 0.0500->0.0500 | t: 108.1s | Investigations: 5
+Evaluating ...
+     Split  Accuracy  Precision_Attack  Recall_Attack  F1_Attack  ROC_AUC  True_Negative  False_Positive  False_Negative  True_Positive
+Validation    0.8326            0.5919         0.6734     0.6300   0.7051        1209005          172202          121124         249743
+Known Test    0.8321            0.5909         0.6714     0.6286   0.7034        1208832          172375          121871         248996
+
+Zero-day:
+{'Split': 'Zero-Day', 'Samples': 314400, 'Detected': 9451, 'Missed': 304949, 'Detection_Rate': 0.030060432569974555, 'Miss_Rate': 0.9699395674300254}
+     Attack  Samples  Detection Rate (%)  Miss Rate (%)
+Brute Force   291955                0.00         100.00
+   Backdoor    19029               43.68          56.32
+      Theft     1909               58.77          41.23
+  Shellcode     1365                0.00         100.00
+ ransomware      142               11.97          88.03
+Saved B11 run -> experiments\MULTISEED\runs\drl\B11\noports\seed48
+Wrote experiments\MULTISEED\runs\drl\B11\noports\seed48\METRICS_ROW.json
+{
+  "config": "B11",
+  "feature_set": "noports",
+  "model_type": "drl",
+  "seed": 48,
+  "KT_Accuracy": 83.20584632840851,
+  "KT_Precision": 59.09186916043107,
+  "KT_Recall": 67.13889345776248,
+  "KT_F1": 62.85888836435516,
+  "KT_ROC_AUC": 70.34313109400692,
+  "Weighted_ZeroDay": 3.0060432569974553,
+  "Macro_ZeroDay": 22.885351242450913,
+  "Shellcode": 0.0,
+  "Brute Force": 0.0,
+  "Theft": 58.77422734415924,
+  "ransomware": 11.971830985915492,
+  "Backdoor": 43.68069788217983
+}
+[12:32:17] OK    B11 noports seed=48
+[12:32:17] START B11 noports seed=49
+WARNING: All log messages before absl::InitializeLog() is called are written to STDERR
+I0000 00:00:1789549341.286476    8620 port.cc:153] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
+WARNING: All log messages before absl::InitializeLog() is called are written to STDERR
+I0000 00:00:1789549344.895962    8620 port.cc:153] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
+I0000 00:00:1789549349.266201    8620 cpu_feature_guard.cc:227] This TensorFlow binary is optimized to use available CPU instructions in performance-critical operations.
+To enable the following instructions: SSE3 SSE4.1 SSE4.2 AVX AVX2 FMA, in other operations, rebuild TensorFlow with the appropriate compiler flags.
+WARNING:tensorflow:TensorFlow GPU support is not available on native Windows for TensorFlow >= 2.11. Even if CUDA/cuDNN are installed, GPU will not be used. Please use WSL2 or the TensorFlow-DirectML plugin.
+========================================================================
+Rebuild B11: Family-aware sampling + investigate action + post-alert queue effect
+Mode: train  Feature set: noports  Seed: 49
+Config: C:\Users\Dr. Zarepour\Desktop\RL_IDS\Codes\configs\B11.yaml
+========================================================================
+Loading cache from C:\Users\Dr. Zarepour\Desktop\RL_IDS\Codes\data\prepared\noports
+Episode 00/30 | Reward:  -385.0 | Acc: 0.258 | Eps: 1.0000->0.9000 | t: 100.3s | Investigations: 101
+Episode 01/30 | Reward:  -219.0 | Acc: 0.406 | Eps: 0.9000->0.8100 | t: 97.3s | Investigations: 72
+Episode 02/30 | Reward:  -331.0 | Acc: 0.391 | Eps: 0.8100->0.7290 | t: 102.7s | Investigations: 64
+Episode 03/30 | Reward:  -178.0 | Acc: 0.426 | Eps: 0.7290->0.6561 | t: 104.3s | Investigations: 62
+Episode 04/30 | Reward:  -179.0 | Acc: 0.430 | Eps: 0.6561->0.5905 | t: 102.1s | Investigations: 58
+Episode 05/30 | Reward:   -60.0 | Acc: 0.512 | Eps: 0.5905->0.5314 | t: 103.2s | Investigations: 54
+Episode 06/30 | Reward:   -62.0 | Acc: 0.535 | Eps: 0.5314->0.4783 | t: 104.7s | Investigations: 45
+Episode 07/30 | Reward:    35.0 | Acc: 0.617 | Eps: 0.4783->0.4305 | t: 107.9s | Investigations: 33
+Episode 08/30 | Reward:     7.0 | Acc: 0.605 | Eps: 0.4305->0.3874 | t: 107.4s | Investigations: 43
+Episode 09/30 | Reward:    60.0 | Acc: 0.637 | Eps: 0.3874->0.3487 | t: 108.1s | Investigations: 40
+Episode 10/30 | Reward:   106.0 | Acc: 0.641 | Eps: 0.3487->0.3138 | t: 107.6s | Investigations: 42
+Episode 11/30 | Reward:   -28.0 | Acc: 0.645 | Eps: 0.3138->0.2824 | t: 110.1s | Investigations: 22
+Episode 12/30 | Reward:   124.0 | Acc: 0.691 | Eps: 0.2824->0.2542 | t: 109.6s | Investigations: 28
+Episode 13/30 | Reward:   164.0 | Acc: 0.730 | Eps: 0.2542->0.2288 | t: 110.5s | Investigations: 23
+Episode 14/30 | Reward:   241.0 | Acc: 0.750 | Eps: 0.2288->0.2059 | t: 109.8s | Investigations: 18
+Episode 15/30 | Reward:    72.0 | Acc: 0.719 | Eps: 0.2059->0.1853 | t: 110.7s | Investigations: 18
+Episode 16/30 | Reward:   179.0 | Acc: 0.750 | Eps: 0.1853->0.1668 | t: 108.9s | Investigations: 17
+Episode 17/30 | Reward:    53.0 | Acc: 0.727 | Eps: 0.1668->0.1501 | t: 109.4s | Investigations: 12
+Episode 18/30 | Reward:   209.0 | Acc: 0.766 | Eps: 0.1501->0.1351 | t: 109.2s | Investigations: 14
+Episode 19/30 | Reward:   279.0 | Acc: 0.809 | Eps: 0.1351->0.1216 | t: 109.8s | Investigations: 13
+Episode 20/30 | Reward:    73.0 | Acc: 0.762 | Eps: 0.1216->0.1094 | t: 111.7s | Investigations: 10
+Episode 21/30 | Reward:   150.0 | Acc: 0.762 | Eps: 0.1094->0.0985 | t: 111.4s | Investigations: 16
+Episode 22/30 | Reward:   162.0 | Acc: 0.785 | Eps: 0.0985->0.0886 | t: 110.3s | Investigations: 6
+Episode 23/30 | Reward:   292.0 | Acc: 0.836 | Eps: 0.0886->0.0798 | t: 112.2s | Investigations: 6
+Episode 24/30 | Reward:   335.0 | Acc: 0.844 | Eps: 0.0798->0.0718 | t: 111.6s | Investigations: 8
+Episode 25/30 | Reward:   262.0 | Acc: 0.824 | Eps: 0.0718->0.0646 | t: 110.9s | Investigations: 6
+Episode 26/30 | Reward:   277.0 | Acc: 0.844 | Eps: 0.0646->0.0581 | t: 111.2s | Investigations: 5
+Episode 27/30 | Reward:   283.0 | Acc: 0.828 | Eps: 0.0581->0.0523 | t: 111.2s | Investigations: 5
+Episode 28/30 | Reward:   314.0 | Acc: 0.855 | Eps: 0.0523->0.0500 | t: 112.0s | Investigations: 3
+Episode 29/30 | Reward:   179.0 | Acc: 0.793 | Eps: 0.0500->0.0500 | t: 113.8s | Investigations: 7
+Episode 30/30 | Reward:   349.0 | Acc: 0.863 | Eps: 0.0500->0.0500 | t: 111.6s | Investigations: 7
+Evaluating ...
+     Split  Accuracy  Precision_Attack  Recall_Attack  F1_Attack  ROC_AUC  True_Negative  False_Positive  False_Negative  True_Positive
+Validation    0.8834            0.7731         0.6356     0.6977   0.7903        1312020           69187          135136         235731
+Known Test    0.8827            0.7710         0.6343     0.6960   0.7902        1311352           69855          135634         235233
+
+Zero-day:
+{'Split': 'Zero-Day', 'Samples': 314400, 'Detected': 8408, 'Missed': 305992, 'Detection_Rate': 0.026743002544529264, 'Miss_Rate': 0.9732569974554708}
+     Attack  Samples  Detection Rate (%)  Miss Rate (%)
+Brute Force   291955                0.00         100.00
+   Backdoor    19029               37.02          62.98
+      Theft     1909               70.09          29.91
+  Shellcode     1365                0.00         100.00
+ ransomware      142               17.61          82.39
+Saved B11 run -> experiments\MULTISEED\runs\drl\B11\noports\seed49
+Wrote experiments\MULTISEED\runs\drl\B11\noports\seed49\METRICS_ROW.json
+{
+  "config": "B11",
+  "feature_set": "noports",
+  "model_type": "drl",
+  "seed": 49,
+  "KT_Accuracy": 88.27167117370614,
+  "KT_Precision": 77.10332756450597,
+  "KT_Recall": 63.427859583085045,
+  "KT_F1": 69.60019527927155,
+  "KT_ROC_AUC": 79.01708192765777,
+  "Weighted_ZeroDay": 2.6743002544529264,
+  "Macro_ZeroDay": 24.943425019395306,
+  "Shellcode": 0.0,
+  "Brute Force": 0.0,
+  "Theft": 70.08905185961237,
+  "ransomware": 17.6056338028169,
+  "Backdoor": 37.02243943454727
+}
+[13:28:47] OK    B11 noports seed=49
+=== B11 sweep finished Wed Sep 16 13:28:47 IST 2026 ===

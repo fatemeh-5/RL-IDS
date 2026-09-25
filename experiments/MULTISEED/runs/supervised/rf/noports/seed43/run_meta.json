@@ -1,0 +1,23 @@
+{
+  "train_set": "balanced",
+  "seed": 43,
+  "feature_set": "noports",
+  "models": [
+    "rf"
+  ],
+  "n_features": 8,
+  "mlp_hidden": [
+    128,
+    64
+  ],
+  "lstm_units": 64,
+  "epochs": 15,
+  "batch_size": 8192,
+  "tree_subsample": null,
+  "pool_size": 12891277,
+  "pool_attack": 6445643,
+  "pool_benign": 6445634,
+  "timings_seconds": {
+    "rf": 544.4
+  }
+}

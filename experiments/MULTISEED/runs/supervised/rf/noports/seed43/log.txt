@@ -1,0 +1,19 @@
+$ C:\Users\Dr. Zarepour\AppData\Local\Programs\Python\Python312\python.exe C:\Users\Dr. Zarepour\Desktop\RL_IDS\Codes\scripts\supervised_baseline.py --models rf --feature-set noports --seed 43 --out-dir C:\Users\Dr. Zarepour\Desktop\RL_IDS\Codes\experiments\MULTISEED\runs\supervised\rf\noports\seed43
+
+Loading prepared cache (feature_set=noports, require_balanced=True) ...
+Loading cache from C:\Users\Dr. Zarepour\Desktop\RL_IDS\Codes\data\prepared\noports
+Training pool: 12,891,277 rows (attack=6,445,643, benign=6,445,634, scale_pos_weight=1.000)
+
+============================================================
+RF
+============================================================
+[rf] Known-Test Recall=93.18%  ROC-AUC=99.29%  |  Weighted-ZD=92.8%  Macro-ZD=48.19%  (544s)
+
+============================================================
+SUPERVISED BASELINE SUMMARY
+============================================================
+Model  KT_Accuracy  KT_Precision  KT_Recall  KT_F1  KT_ROC_AUC  Weighted_ZeroDay_%  Macro_ZeroDay_%
+   RF        98.36          99.0      93.18   96.0       99.29                92.8            48.19
+
+Saved -> C:\Users\Dr. Zarepour\Desktop\RL_IDS\Codes\experiments\MULTISEED\runs\supervised\rf\noports\seed43
+Wrote C:\Users\Dr. Zarepour\Desktop\RL_IDS\Codes\experiments\MULTISEED\runs\supervised\rf\noports\seed43\METRICS_ROW.json

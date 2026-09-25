@@ -1,0 +1,86 @@
+$ C:\Users\Dr. Zarepour\AppData\Local\Programs\Python\Python312\python.exe C:\Users\Dr. Zarepour\Desktop\RL_IDS\Codes\scripts\run_drl_cell.py --config B1 --feature-set ports --seed 42 --out-dir C:\Users\Dr. Zarepour\Desktop\RL_IDS\Codes\experiments\MULTISEED\runs\drl\B1\ports\seed42
+
+WARNING: All log messages before absl::InitializeLog() is called are written to STDERR
+I0000 00:00:1788519763.997962   31356 port.cc:153] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
+WARNING: All log messages before absl::InitializeLog() is called are written to STDERR
+I0000 00:00:1788519765.576103   31356 port.cc:153] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
+I0000 00:00:1788519766.866601   31356 cpu_feature_guard.cc:227] This TensorFlow binary is optimized to use available CPU instructions in performance-critical operations.
+To enable the following instructions: SSE3 SSE4.1 SSE4.2 AVX AVX2 FMA, in other operations, rebuild TensorFlow with the appropriate compiler flags.
+WARNING:tensorflow:TensorFlow GPU support is not available on native Windows for TensorFlow >= 2.11. Even if CUDA/cuDNN are installed, GPU will not be used. Please use WSL2 or the TensorFlow-DirectML plugin.
+========================================================================
+Rebuild B1: Double DQN + target network
+Mode: train  Feature set: ports  Seed: 42
+Config: C:\Users\Dr. Zarepour\Desktop\RL_IDS\Codes\configs\B1.yaml
+========================================================================
+Loading cache from C:\Users\Dr. Zarepour\Desktop\RL_IDS\Codes\data\prepared
+Episode 0/30 | reward=78.0 | acc=0.652 | eps=0.381 | t=50.7s
+Episode 1/30 | reward=146.0 | acc=0.785 | eps=0.136 | t=52.4s
+Episode 2/30 | reward=194.0 | acc=0.879 | eps=0.050 | t=53.1s
+Episode 3/30 | reward=222.0 | acc=0.934 | eps=0.050 | t=53.3s
+Episode 4/30 | reward=206.0 | acc=0.902 | eps=0.050 | t=53.4s
+  checkpoint saved -> C:\Users\Dr. Zarepour\Desktop\RL_IDS\Codes\experiments\MULTISEED\runs\drl\B1\ports\seed42\checkpoints
+Episode 5/30 | reward=216.0 | acc=0.922 | eps=0.050 | t=53.4s
+Episode 6/30 | reward=216.0 | acc=0.922 | eps=0.050 | t=53.3s
+Episode 7/30 | reward=212.0 | acc=0.914 | eps=0.050 | t=53.3s
+Episode 8/30 | reward=216.0 | acc=0.922 | eps=0.050 | t=53.4s
+Episode 9/30 | reward=212.0 | acc=0.914 | eps=0.050 | t=53.3s
+  checkpoint saved -> C:\Users\Dr. Zarepour\Desktop\RL_IDS\Codes\experiments\MULTISEED\runs\drl\B1\ports\seed42\checkpoints
+Episode 10/30 | reward=230.0 | acc=0.949 | eps=0.050 | t=53.2s
+Episode 11/30 | reward=222.0 | acc=0.934 | eps=0.050 | t=53.4s
+Episode 12/30 | reward=220.0 | acc=0.930 | eps=0.050 | t=53.6s
+Episode 13/30 | reward=222.0 | acc=0.934 | eps=0.050 | t=53.3s
+Episode 14/30 | reward=218.0 | acc=0.926 | eps=0.050 | t=53.5s
+  checkpoint saved -> C:\Users\Dr. Zarepour\Desktop\RL_IDS\Codes\experiments\MULTISEED\runs\drl\B1\ports\seed42\checkpoints
+Episode 15/30 | reward=218.0 | acc=0.926 | eps=0.050 | t=53.4s
+Episode 16/30 | reward=192.0 | acc=0.875 | eps=0.050 | t=53.0s
+Episode 17/30 | reward=212.0 | acc=0.914 | eps=0.050 | t=53.3s
+Episode 18/30 | reward=216.0 | acc=0.922 | eps=0.050 | t=53.4s
+Episode 19/30 | reward=224.0 | acc=0.938 | eps=0.050 | t=53.3s
+  checkpoint saved -> C:\Users\Dr. Zarepour\Desktop\RL_IDS\Codes\experiments\MULTISEED\runs\drl\B1\ports\seed42\checkpoints
+Episode 20/30 | reward=210.0 | acc=0.910 | eps=0.050 | t=53.4s
+Episode 21/30 | reward=208.0 | acc=0.906 | eps=0.050 | t=53.6s
+Episode 22/30 | reward=218.0 | acc=0.926 | eps=0.050 | t=53.3s
+Episode 23/30 | reward=214.0 | acc=0.918 | eps=0.050 | t=53.3s
+Episode 24/30 | reward=222.0 | acc=0.934 | eps=0.050 | t=53.5s
+  checkpoint saved -> C:\Users\Dr. Zarepour\Desktop\RL_IDS\Codes\experiments\MULTISEED\runs\drl\B1\ports\seed42\checkpoints
+Episode 25/30 | reward=220.0 | acc=0.930 | eps=0.050 | t=53.4s
+Episode 26/30 | reward=222.0 | acc=0.934 | eps=0.050 | t=53.4s
+Episode 27/30 | reward=220.0 | acc=0.930 | eps=0.050 | t=53.4s
+Episode 28/30 | reward=212.0 | acc=0.914 | eps=0.050 | t=53.2s
+Episode 29/30 | reward=216.0 | acc=0.922 | eps=0.050 | t=53.5s
+  checkpoint saved -> C:\Users\Dr. Zarepour\Desktop\RL_IDS\Codes\experiments\MULTISEED\runs\drl\B1\ports\seed42\checkpoints
+Episode 30/30 | reward=214.0 | acc=0.918 | eps=0.050 | t=53.4s
+  checkpoint saved -> C:\Users\Dr. Zarepour\Desktop\RL_IDS\Codes\experiments\MULTISEED\runs\drl\B1\ports\seed42\checkpoints
+Evaluating ...
+     Split  Accuracy  Precision_Attack  Recall_Attack  F1_Attack  ROC_AUC  True_Negative  False_Positive  False_Negative  True_Positive
+Validation    0.9158            0.8570         0.7226     0.7841   0.7623        1336488           44719          102888         267979
+Known Test    0.9158            0.8575         0.7225     0.7842   0.7620        1336678           44529          102917         267950
+
+Zero-day:
+{'Split': 'Zero-Day', 'Samples': 314400, 'Detected': 294566, 'Missed': 19834, 'Detection_Rate': 0.9369147582697201, 'Miss_Rate': 0.06308524173027989}
+     Attack  Samples  Detection Rate (%)  Miss Rate (%)
+Brute Force   291955               98.51           1.49
+   Backdoor    19029               35.80          64.20
+      Theft     1909                0.31          99.69
+  Shellcode     1365                0.73          99.27
+ ransomware      142               99.30           0.70
+Saved B1 run -> C:\Users\Dr. Zarepour\Desktop\RL_IDS\Codes\experiments\MULTISEED\runs\drl\B1\ports\seed42
+Wrote C:\Users\Dr. Zarepour\Desktop\RL_IDS\Codes\experiments\MULTISEED\runs\drl\B1\ports\seed42\METRICS_ROW.json
+{
+  "config": "B1",
+  "feature_set": "ports",
+  "model_type": "drl",
+  "seed": 42,
+  "KT_Accuracy": 91.58448786980459,
+  "KT_Precision": 85.74976238403221,
+  "KT_Recall": 72.24962048389315,
+  "KT_F1": 78.42293655044443,
+  "KT_ROC_AUC": 76.19965355005745,
+  "Weighted_ZeroDay": 93.69147582697201,
+  "Macro_ZeroDay": 46.929594561403746,
+  "Shellcode": 0.7326007326007326,
+  "Brute Force": 98.50730420784025,
+  "Theft": 0.3143006809848088,
+  "ransomware": 99.29577464788733,
+  "Backdoor": 35.79799253770561
+}

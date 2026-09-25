@@ -1,0 +1,18 @@
+{
+  "config": "XGB",
+  "feature_set": "noports",
+  "model_type": "supervised",
+  "seed": 43,
+  "KT_Accuracy": 98.31,
+  "KT_Precision": 98.86,
+  "KT_Recall": 93.11,
+  "KT_F1": 95.9,
+  "KT_ROC_AUC": 99.4,
+  "Weighted_ZeroDay": 92.78,
+  "Macro_ZeroDay": 47.38,
+  "Shellcode": 51.868131868131876,
+  "Brute Force": 98.57478035998697,
+  "Theft": 75.79884756416972,
+  "ransomware": 1.4084507042253522,
+  "Backdoor": 9.270061485101687
+}

@@ -1,0 +1,18 @@
+{
+  "config": "B10",
+  "feature_set": "ports",
+  "model_type": "drl",
+  "seed": 43,
+  "KT_Accuracy": 90.50080076526447,
+  "KT_Precision": 71.51121680205395,
+  "KT_Recall": 91.62502999727666,
+  "KT_F1": 80.32816143783974,
+  "KT_ROC_AUC": 95.96716260472311,
+  "Weighted_ZeroDay": 97.78753180661577,
+  "Macro_ZeroDay": 69.75357629241714,
+  "Shellcode": 2.197802197802198,
+  "Brute Force": 99.19199876693327,
+  "Theft": 61.34101623886852,
+  "ransomware": 99.29577464788733,
+  "Backdoor": 86.74128961059435
+}

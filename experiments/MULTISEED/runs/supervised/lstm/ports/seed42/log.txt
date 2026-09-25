@@ -1,0 +1,56 @@
+$ C:\Users\Dr. Zarepour\AppData\Local\Programs\Python\Python312\python.exe C:\Users\Dr. Zarepour\Desktop\RL_IDS\Codes\scripts\supervised_baseline.py --models lstm --feature-set ports --seed 42 --out-dir C:\Users\Dr. Zarepour\Desktop\RL_IDS\Codes\experiments\MULTISEED\runs\supervised\lstm\ports\seed42
+
+WARNING: All log messages before absl::InitializeLog() is called are written to STDERR
+I0000 00:00:1788537287.337011   35880 port.cc:153] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
+WARNING: All log messages before absl::InitializeLog() is called are written to STDERR
+I0000 00:00:1788537288.877071   35880 port.cc:153] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
+I0000 00:00:1788537289.176990   35880 cpu_feature_guard.cc:227] This TensorFlow binary is optimized to use available CPU instructions in performance-critical operations.
+To enable the following instructions: SSE3 SSE4.1 SSE4.2 AVX AVX2 FMA, in other operations, rebuild TensorFlow with the appropriate compiler flags.
+WARNING:tensorflow:TensorFlow GPU support is not available on native Windows for TensorFlow >= 2.11. Even if CUDA/cuDNN are installed, GPU will not be used. Please use WSL2 or the TensorFlow-DirectML plugin.
+Loading prepared cache (feature_set=ports, require_balanced=True) ...
+Loading cache from C:\Users\Dr. Zarepour\Desktop\RL_IDS\Codes\data\prepared
+Training pool: 12,891,282 rows (attack=6,445,648, benign=6,445,634, scale_pos_weight=1.000)
+
+============================================================
+LSTM
+============================================================
+Epoch 1/15
+1574/1574 - 331s - 210ms/step - accuracy: 0.9485 - loss: 0.1395 - val_accuracy: 0.9521 - val_loss: 0.1550
+Epoch 2/15
+1574/1574 - 330s - 209ms/step - accuracy: 0.9737 - loss: 0.0813 - val_accuracy: 0.9653 - val_loss: 0.1083
+Epoch 3/15
+1574/1574 - 329s - 209ms/step - accuracy: 0.9763 - loss: 0.0740 - val_accuracy: 0.9667 - val_loss: 0.1055
+Epoch 4/15
+1574/1574 - 330s - 210ms/step - accuracy: 0.9808 - loss: 0.0623 - val_accuracy: 0.9734 - val_loss: 0.0920
+Epoch 5/15
+1574/1574 - 330s - 210ms/step - accuracy: 0.9810 - loss: 0.0615 - val_accuracy: 0.9739 - val_loss: 0.0860
+Epoch 6/15
+1574/1574 - 330s - 210ms/step - accuracy: 0.9838 - loss: 0.0536 - val_accuracy: 0.9755 - val_loss: 0.0818
+Epoch 7/15
+1574/1574 - 331s - 210ms/step - accuracy: 0.9845 - loss: 0.0507 - val_accuracy: 0.9771 - val_loss: 0.0749
+Epoch 8/15
+1574/1574 - 330s - 210ms/step - accuracy: 0.9849 - loss: 0.0495 - val_accuracy: 0.9777 - val_loss: 0.0733
+Epoch 9/15
+1574/1574 - 330s - 210ms/step - accuracy: 0.9835 - loss: 0.0538 - val_accuracy: 0.9733 - val_loss: 0.0893
+Epoch 10/15
+1574/1574 - 330s - 210ms/step - accuracy: 0.9845 - loss: 0.0518 - val_accuracy: 0.9772 - val_loss: 0.0750
+Epoch 11/15
+1574/1574 - 330s - 210ms/step - accuracy: 0.9849 - loss: 0.0499 - val_accuracy: 0.9776 - val_loss: 0.0732
+Epoch 12/15
+1574/1574 - 330s - 210ms/step - accuracy: 0.9859 - loss: 0.0462 - val_accuracy: 0.9792 - val_loss: 0.0704
+Epoch 13/15
+1574/1574 - 330s - 210ms/step - accuracy: 0.9851 - loss: 0.0489 - val_accuracy: 0.9788 - val_loss: 0.0714
+Epoch 14/15
+1574/1574 - 330s - 210ms/step - accuracy: 0.9870 - loss: 0.0435 - val_accuracy: 0.9803 - val_loss: 0.0657
+Epoch 15/15
+1574/1574 - 330s - 210ms/step - accuracy: 0.9875 - loss: 0.0421 - val_accuracy: 0.9807 - val_loss: 0.0645
+[lstm] Known-Test Recall=92.86%  ROC-AUC=99.16%  |  Weighted-ZD=95.66%  Macro-ZD=47.05%  (4996s)
+
+============================================================
+SUPERVISED BASELINE SUMMARY
+============================================================
+Model  KT_Accuracy  KT_Precision  KT_Recall  KT_F1  KT_ROC_AUC  Weighted_ZeroDay_%  Macro_ZeroDay_%
+ LSTM        98.07         97.89      92.86  95.31       99.16               95.66            47.05
+
+Saved -> C:\Users\Dr. Zarepour\Desktop\RL_IDS\Codes\experiments\MULTISEED\runs\supervised\lstm\ports\seed42
+Wrote C:\Users\Dr. Zarepour\Desktop\RL_IDS\Codes\experiments\MULTISEED\runs\supervised\lstm\ports\seed42\METRICS_ROW.json

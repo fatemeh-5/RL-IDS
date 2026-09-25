@@ -1,0 +1,79 @@
+$ C:\Users\Dr. Zarepour\AppData\Local\Programs\Python\Python312\python.exe C:\Users\Dr. Zarepour\Desktop\RL_IDS\Codes\scripts\run_drl_cell.py --config B7 --feature-set ports --seed 42 --out-dir C:\Users\Dr. Zarepour\Desktop\RL_IDS\Codes\experiments\MULTISEED\runs\drl\B7\ports\seed42
+
+WARNING: All log messages before absl::InitializeLog() is called are written to STDERR
+I0000 00:00:1788529700.590750   34504 port.cc:153] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
+WARNING: All log messages before absl::InitializeLog() is called are written to STDERR
+I0000 00:00:1788529702.158922   34504 port.cc:153] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
+I0000 00:00:1788529704.798414   34504 cpu_feature_guard.cc:227] This TensorFlow binary is optimized to use available CPU instructions in performance-critical operations.
+To enable the following instructions: SSE3 SSE4.1 SSE4.2 AVX AVX2 FMA, in other operations, rebuild TensorFlow with the appropriate compiler flags.
+WARNING:tensorflow:TensorFlow GPU support is not available on native Windows for TensorFlow >= 2.11. Even if CUDA/cuDNN are installed, GPU will not be used. Please use WSL2 or the TensorFlow-DirectML plugin.
+========================================================================
+Rebuild B7: Stratified attack-family sampling
+Mode: train  Feature set: ports  Seed: 42
+Config: C:\Users\Dr. Zarepour\Desktop\RL_IDS\Codes\configs\B7.yaml
+========================================================================
+Loading cache from C:\Users\Dr. Zarepour\Desktop\RL_IDS\Codes\data\prepared
+Episode 00/30 | Reward:    16.0 | Acc: 0.531 | Eps: 1.0000->0.9000 | t: 49.9s
+Episode 01/30 | Reward:    32.0 | Acc: 0.562 | Eps: 0.9000->0.8100 | t: 50.3s
+Episode 02/30 | Reward:    52.0 | Acc: 0.602 | Eps: 0.8100->0.7290 | t: 50.9s
+Episode 03/30 | Reward:    76.0 | Acc: 0.648 | Eps: 0.7290->0.6561 | t: 51.0s
+Episode 04/30 | Reward:    54.0 | Acc: 0.605 | Eps: 0.6561->0.5905 | t: 51.3s
+Episode 05/30 | Reward:    60.0 | Acc: 0.617 | Eps: 0.5905->0.5314 | t: 51.7s
+Episode 06/30 | Reward:    90.0 | Acc: 0.676 | Eps: 0.5314->0.4783 | t: 51.9s
+Episode 07/30 | Reward:   104.0 | Acc: 0.703 | Eps: 0.4783->0.4305 | t: 52.0s
+Episode 08/30 | Reward:    92.0 | Acc: 0.680 | Eps: 0.4305->0.3874 | t: 52.3s
+Episode 09/30 | Reward:   140.0 | Acc: 0.773 | Eps: 0.3874->0.3487 | t: 52.4s
+Episode 10/30 | Reward:   110.0 | Acc: 0.715 | Eps: 0.3487->0.3138 | t: 52.7s
+Episode 11/30 | Reward:   128.0 | Acc: 0.750 | Eps: 0.3138->0.2824 | t: 52.8s
+Episode 12/30 | Reward:   124.0 | Acc: 0.742 | Eps: 0.2824->0.2542 | t: 53.0s
+Episode 13/30 | Reward:   148.0 | Acc: 0.789 | Eps: 0.2542->0.2288 | t: 52.8s
+Episode 14/30 | Reward:   146.0 | Acc: 0.785 | Eps: 0.2288->0.2059 | t: 53.3s
+Episode 15/30 | Reward:   156.0 | Acc: 0.805 | Eps: 0.2059->0.1853 | t: 53.5s
+Episode 16/30 | Reward:   164.0 | Acc: 0.820 | Eps: 0.1853->0.1668 | t: 53.2s
+Episode 17/30 | Reward:   160.0 | Acc: 0.812 | Eps: 0.1668->0.1501 | t: 53.3s
+Episode 18/30 | Reward:   168.0 | Acc: 0.828 | Eps: 0.1501->0.1351 | t: 55.1s
+Episode 19/30 | Reward:   174.0 | Acc: 0.840 | Eps: 0.1351->0.1216 | t: 54.9s
+Episode 20/30 | Reward:   174.0 | Acc: 0.840 | Eps: 0.1216->0.1094 | t: 53.7s
+Episode 21/30 | Reward:   182.0 | Acc: 0.855 | Eps: 0.1094->0.0985 | t: 53.8s
+Episode 22/30 | Reward:   188.0 | Acc: 0.867 | Eps: 0.0985->0.0886 | t: 53.7s
+Episode 23/30 | Reward:   192.0 | Acc: 0.875 | Eps: 0.0886->0.0798 | t: 53.9s
+Episode 24/30 | Reward:   196.0 | Acc: 0.883 | Eps: 0.0798->0.0718 | t: 54.2s
+Episode 25/30 | Reward:   208.0 | Acc: 0.906 | Eps: 0.0718->0.0646 | t: 54.6s
+Episode 26/30 | Reward:   186.0 | Acc: 0.863 | Eps: 0.0646->0.0581 | t: 54.9s
+Episode 27/30 | Reward:   190.0 | Acc: 0.871 | Eps: 0.0581->0.0523 | t: 54.7s
+Episode 28/30 | Reward:   180.0 | Acc: 0.852 | Eps: 0.0523->0.0500 | t: 54.1s
+Episode 29/30 | Reward:   184.0 | Acc: 0.859 | Eps: 0.0500->0.0500 | t: 54.0s
+Episode 30/30 | Reward:   206.0 | Acc: 0.902 | Eps: 0.0500->0.0500 | t: 54.2s
+Evaluating ...
+     Split  Accuracy  Precision_Attack  Recall_Attack  F1_Attack  ROC_AUC  True_Negative  False_Positive  False_Negative  True_Positive
+Validation    0.8984            0.7090         0.8824     0.7862   0.9443        1246863          134344           43621         327246
+Known Test    0.8990            0.7102         0.8829     0.7872   0.9444        1247581          133626           43415         327452
+
+Zero-day:
+{'Split': 'Zero-Day', 'Samples': 314400, 'Detected': 311132, 'Missed': 3268, 'Detection_Rate': 0.9896055979643766, 'Miss_Rate': 0.01039440203562341}
+     Attack  Samples  Detection Rate (%)  Miss Rate (%)
+Brute Force   291955               99.88           0.12
+   Backdoor    19029               98.33           1.67
+      Theft     1909               33.47          66.53
+  Shellcode     1365                3.37          96.63
+ ransomware      142               99.30           0.70
+Saved B7 run -> C:\Users\Dr. Zarepour\Desktop\RL_IDS\Codes\experiments\MULTISEED\runs\drl\B7\ports\seed42
+Wrote C:\Users\Dr. Zarepour\Desktop\RL_IDS\Codes\experiments\MULTISEED\runs\drl\B7\ports\seed42\METRICS_ROW.json
+{
+  "config": "B7",
+  "feature_set": "ports",
+  "model_type": "drl",
+  "seed": 42,
+  "KT_Accuracy": 89.89534688603335,
+  "KT_Precision": 71.01878640924096,
+  "KT_Recall": 88.29364704867243,
+  "KT_F1": 78.71962689841276,
+  "KT_ROC_AUC": 94.44474084988853,
+  "Weighted_ZeroDay": 98.96055979643766,
+  "Macro_ZeroDay": 66.86984659081762,
+  "Shellcode": 3.36996336996337,
+  "Brute Force": 99.87635080748746,
+  "Theft": 33.47302252488213,
+  "ransomware": 99.29577464788733,
+  "Backdoor": 98.33412160386779
+}

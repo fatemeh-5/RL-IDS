@@ -1,0 +1,27 @@
+experiment_id: B7
+title: Stratified attack-family sampling
+trainer: per
+model_type: double
+env: family
+family_mode: stratified
+benign_per_episode: 128
+natural_attack_per_episode: 0
+stratified_attack_per_episode: 128
+epsilon_start: 1.0
+epsilon_min: 0.05
+epsilon_decay: 0.90
+replay_capacity: 1000
+target_update_interval: 250
+per_alpha: 0.60
+beta_start: 0.40
+beta_end: 1.00
+priority_epsilon: 1.0e-6
+
+mode: train
+seed: 42
+episodes: 31
+episode_length: 256
+batch_size: 16
+gamma: 0.97
+learning_rate: 0.001
+save_every_episodes: 5

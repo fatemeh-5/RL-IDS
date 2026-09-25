@@ -1,0 +1,18 @@
+{
+  "config": "LSTM",
+  "feature_set": "noports",
+  "model_type": "supervised",
+  "seed": 43,
+  "KT_Accuracy": 93.91,
+  "KT_Precision": 88.79,
+  "KT_Recall": 81.5,
+  "KT_F1": 84.99,
+  "KT_ROC_AUC": 97.3,
+  "Weighted_ZeroDay": 30.23,
+  "Macro_ZeroDay": 21.75,
+  "Shellcode": 0.43956043956043955,
+  "Brute Force": 31.716874175814763,
+  "Theft": 57.62179151388162,
+  "ransomware": 11.971830985915492,
+  "Backdoor": 7.015607756582059
+}

@@ -1,0 +1,21 @@
+model_type,config,feature_set,family,n_seeds,mean_pct,std_pct
+supervised,LSTM,ports,Shellcode,1,7.03,0.00
+supervised,LSTM,ports,Brute Force,1,99.23,0.00
+supervised,LSTM,ports,Theft,1,66.95,0.00
+supervised,LSTM,ports,ransomware,1,11.27,0.00
+supervised,LSTM,ports,Backdoor,1,50.77,0.00
+supervised,MLP,ports,Shellcode,1,19.41,0.00
+supervised,MLP,ports,Brute Force,1,98.54,0.00
+supervised,MLP,ports,Theft,1,75.33,0.00
+supervised,MLP,ports,ransomware,1,0.00,0.00
+supervised,MLP,ports,Backdoor,1,8.10,0.00
+supervised,RF,ports,Shellcode,1,53.85,0.00
+supervised,RF,ports,Brute Force,1,66.31,0.00
+supervised,RF,ports,Theft,1,76.48,0.00
+supervised,RF,ports,ransomware,1,0.00,0.00
+supervised,RF,ports,Backdoor,1,45.90,0.00
+supervised,XGB,ports,Shellcode,1,53.92,0.00
+supervised,XGB,ports,Brute Force,1,66.30,0.00
+supervised,XGB,ports,Theft,1,75.64,0.00
+supervised,XGB,ports,ransomware,1,0.70,0.00
+supervised,XGB,ports,Backdoor,1,44.56,0.00

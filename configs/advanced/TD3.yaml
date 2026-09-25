@@ -1,0 +1,17 @@
+experiment_id: TD3
+title: Twin Delayed DDPG (discrete adapt)
+trainer: td3
+family: actor_critic
+status: planned
+
+mode: train
+seed: 42
+episodes: 31
+episode_length: 256
+batch_size: 64
+gamma: 0.97
+learning_rate: 0.0003
+save_every_episodes: 5
+
+# Shared IDS env (override per algorithm as needed)
+env: baseline

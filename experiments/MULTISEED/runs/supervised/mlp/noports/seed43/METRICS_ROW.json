@@ -1,0 +1,18 @@
+{
+  "config": "MLP",
+  "feature_set": "noports",
+  "model_type": "supervised",
+  "seed": 43,
+  "KT_Accuracy": 94.51,
+  "KT_Precision": 92.32,
+  "KT_Recall": 80.79,
+  "KT_F1": 86.17,
+  "KT_ROC_AUC": 97.85,
+  "Weighted_ZeroDay": 9.55,
+  "Macro_ZeroDay": 17.79,
+  "Shellcode": 0.07326007326007326,
+  "Brute Force": 9.326437293418506,
+  "Theft": 71.24148768989,
+  "ransomware": 0.7042253521126761,
+  "Backdoor": 7.609438225865784
+}

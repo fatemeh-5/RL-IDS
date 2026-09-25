@@ -1,0 +1,81 @@
+$ C:\Users\Dr. Zarepour\AppData\Local\Programs\Python\Python312\python.exe C:\Users\Dr. Zarepour\Desktop\RL_IDS\Codes\scripts\run_drl_cell.py --config B0 --feature-set ports --seed 42 --out-dir C:\Users\Dr. Zarepour\Desktop\RL_IDS\Codes\experiments\MULTISEED\runs\drl\B0\ports\seed42
+
+WARNING: All log messages before absl::InitializeLog() is called are written to STDERR
+I0000 00:00:1788518259.313724   33812 port.cc:153] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
+WARNING: All log messages before absl::InitializeLog() is called are written to STDERR
+I0000 00:00:1788518261.116409   33812 port.cc:153] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
+C:\Users\Dr. Zarepour\AppData\Local\Programs\Python\Python312\Lib\site-packages\keras\src\layers\core\dense.py:107: UserWarning: Do not pass an `input_shape`/`input_dim` argument to a layer. When using Sequential models, prefer using an `Input(shape)` object as the first layer in the model instead.
+  super().__init__(activity_regularizer=activity_regularizer, **kwargs)
+I0000 00:00:1788518262.739833   33812 cpu_feature_guard.cc:227] This TensorFlow binary is optimized to use available CPU instructions in performance-critical operations.
+To enable the following instructions: SSE3 SSE4.1 SSE4.2 AVX AVX2 FMA, in other operations, rebuild TensorFlow with the appropriate compiler flags.
+WARNING:tensorflow:TensorFlow GPU support is not available on native Windows for TensorFlow >= 2.11. Even if CUDA/cuDNN are installed, GPU will not be used. Please use WSL2 or the TensorFlow-DirectML plugin.
+========================================================================
+Rebuild B0: Original Stacked-LSTM DQN
+Mode: train  Feature set: ports  Seed: 42
+Config: C:\Users\Dr. Zarepour\Desktop\RL_IDS\Codes\configs\B0.yaml
+========================================================================
+Loading cache from C:\Users\Dr. Zarepour\Desktop\RL_IDS\Codes\data\prepared
+Episode 00/30 | Reward:    78.0 | Acc: 0.652 | Eps: 0.3806 | t: 41.7s
+Episode 01/30 | Reward:   148.0 | Acc: 0.789 | Eps: 0.1364 | t: 46.5s
+Episode 02/30 | Reward:   200.0 | Acc: 0.891 | Eps: 0.0500 | t: 48.0s
+Episode 03/30 | Reward:   214.0 | Acc: 0.918 | Eps: 0.0500 | t: 48.5s
+Episode 04/30 | Reward:   204.0 | Acc: 0.898 | Eps: 0.0500 | t: 48.4s
+Episode 05/30 | Reward:   210.0 | Acc: 0.910 | Eps: 0.0500 | t: 48.7s
+Episode 06/30 | Reward:   216.0 | Acc: 0.922 | Eps: 0.0500 | t: 48.4s
+Episode 07/30 | Reward:   212.0 | Acc: 0.914 | Eps: 0.0500 | t: 48.1s
+Episode 08/30 | Reward:   214.0 | Acc: 0.918 | Eps: 0.0500 | t: 48.2s
+Episode 09/30 | Reward:   210.0 | Acc: 0.910 | Eps: 0.0500 | t: 48.3s
+Episode 10/30 | Reward:   226.0 | Acc: 0.941 | Eps: 0.0500 | t: 48.3s
+Episode 11/30 | Reward:   220.0 | Acc: 0.930 | Eps: 0.0500 | t: 48.5s
+Episode 12/30 | Reward:   220.0 | Acc: 0.930 | Eps: 0.0500 | t: 48.1s
+Episode 13/30 | Reward:   216.0 | Acc: 0.922 | Eps: 0.0500 | t: 48.6s
+Episode 14/30 | Reward:   222.0 | Acc: 0.934 | Eps: 0.0500 | t: 48.4s
+Episode 15/30 | Reward:   214.0 | Acc: 0.918 | Eps: 0.0500 | t: 48.4s
+Episode 16/30 | Reward:   190.0 | Acc: 0.871 | Eps: 0.0500 | t: 48.1s
+Episode 17/30 | Reward:   220.0 | Acc: 0.930 | Eps: 0.0500 | t: 48.6s
+Episode 18/30 | Reward:   208.0 | Acc: 0.906 | Eps: 0.0500 | t: 48.9s
+Episode 19/30 | Reward:   224.0 | Acc: 0.938 | Eps: 0.0500 | t: 48.2s
+Episode 20/30 | Reward:   212.0 | Acc: 0.914 | Eps: 0.0500 | t: 48.6s
+Episode 21/30 | Reward:   206.0 | Acc: 0.902 | Eps: 0.0500 | t: 48.5s
+Episode 22/30 | Reward:   222.0 | Acc: 0.934 | Eps: 0.0500 | t: 48.1s
+Episode 23/30 | Reward:   216.0 | Acc: 0.922 | Eps: 0.0500 | t: 48.6s
+Episode 24/30 | Reward:   220.0 | Acc: 0.930 | Eps: 0.0500 | t: 48.2s
+Episode 25/30 | Reward:   222.0 | Acc: 0.934 | Eps: 0.0500 | t: 48.3s
+Episode 26/30 | Reward:   220.0 | Acc: 0.930 | Eps: 0.0500 | t: 48.5s
+Episode 27/30 | Reward:   218.0 | Acc: 0.926 | Eps: 0.0500 | t: 48.3s
+Episode 28/30 | Reward:   214.0 | Acc: 0.918 | Eps: 0.0500 | t: 48.0s
+Episode 29/30 | Reward:   214.0 | Acc: 0.918 | Eps: 0.0500 | t: 48.6s
+Episode 30/30 | Reward:   216.0 | Acc: 0.922 | Eps: 0.0500 | t: 48.5s
+Evaluating ...
+     Split  Accuracy  Precision_Attack  Recall_Attack  F1_Attack  ROC_AUC  True_Negative  False_Positive  False_Negative  True_Positive
+Validation    0.9143            0.8505         0.7220     0.7810    0.844        1334141           47066          103094         267773
+Known Test    0.9144            0.8512         0.7219     0.7812    0.844        1334395           46812          103132         267735
+
+Zero-day:
+{'Split': 'Zero-Day', 'Samples': 314400, 'Detected': 298622, 'Missed': 15778, 'Detection_Rate': 0.9498155216284987, 'Miss_Rate': 0.05018447837150127}
+     Attack  Samples  Detection Rate (%)  Miss Rate (%)
+Brute Force   291955               98.51           1.49
+   Backdoor    19029               57.13          42.87
+      Theft     1909                0.26          99.74
+  Shellcode     1365                0.59          99.41
+ ransomware      142               99.30           0.70
+Saved B0 run -> C:\Users\Dr. Zarepour\Desktop\RL_IDS\Codes\experiments\MULTISEED\runs\drl\B0\ports\seed42
+Wrote C:\Users\Dr. Zarepour\Desktop\RL_IDS\Codes\experiments\MULTISEED\runs\drl\B0\ports\seed42\METRICS_ROW.json
+{
+  "config": "B0",
+  "feature_set": "ports",
+  "model_type": "drl",
+  "seed": 42,
+  "KT_Accuracy": 91.44191398308519,
+  "KT_Precision": 85.11764537573082,
+  "KT_Recall": 72.19164821890327,
+  "KT_F1": 78.12358662064095,
+  "KT_ROC_AUC": 84.4016735200509,
+  "Weighted_ZeroDay": 94.98155216284987,
+  "Macro_ZeroDay": 51.155933975163,
+  "Shellcode": 0.5860805860805861,
+  "Brute Force": 98.50730420784025,
+  "Theft": 0.26191723415400736,
+  "ransomware": 99.29577464788733,
+  "Backdoor": 57.12859319985285
+}

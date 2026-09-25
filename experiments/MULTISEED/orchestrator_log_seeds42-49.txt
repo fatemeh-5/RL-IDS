@@ -1,0 +1,51 @@
+WARNING: All log messages before absl::InitializeLog() is called are written to STDERR
+I0000 00:00:1788766515.271306   33500 port.cc:153] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
+WARNING: All log messages before absl::InitializeLog() is called are written to STDERR
+I0000 00:00:1788766517.438328   33500 port.cc:153] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
+
+Trainer fidelity check (resolved fresh from each configs/<ID>.yaml):
+  Config  Trainer    Model builder        Env           
+  ------------------------------------------------------
+  B0      baseline   build_baseline_dqn   baseline      
+  B1      double     build_double_dqn     baseline      
+  B2      double     build_double_dqn     baseline      
+  B3      double     build_double_dqn     baseline      
+  B4      per        build_double_dqn     baseline      
+  B5      per        build_double_dqn     cost_sensitive
+  B6      per        build_dueling_dqn    baseline      
+  B7      per        build_double_dqn     family        
+  B8      per        build_double_dqn     family        
+  B9      per        build_double_dqn     family        
+  B10     per        build_double_dqn     family        
+  OK: every config resolves to its own trainer/model/env. Safe to train.
+
+Sweep plan: 240 cells total, 180 remaining (60 already done).
+[61/240] START drl/B0/ports/seed44
+  done in 24.7 min | progress 61/240 (ok=61, failed=0) | elapsed 0.41h | ETA 73.77h
+[62/240] START drl/B1/ports/seed44
+  done in 31.3 min | progress 62/240 (ok=62, failed=0) | elapsed 0.93h | ETA 83.07h
+[63/240] START drl/B2/ports/seed44
+  done in 30.8 min | progress 63/240 (ok=63, failed=0) | elapsed 1.45h | ETA 85.33h
+[64/240] START drl/B3/ports/seed44
+  done in 30.6 min | progress 64/240 (ok=64, failed=0) | elapsed 1.96h | ETA 86.11h
+[65/240] START drl/B4/ports/seed44
+  done in 31.5 min | progress 65/240 (ok=65, failed=0) | elapsed 2.48h | ETA 86.86h
+[66/240] START drl/B5/ports/seed44
+  done in 31.6 min | progress 66/240 (ok=66, failed=0) | elapsed 3.01h | ETA 87.24h
+[67/240] START drl/B6/ports/seed44
+  done in 32.0 min | progress 67/240 (ok=67, failed=0) | elapsed 3.54h | ETA 87.52h
+[68/240] START drl/B7/ports/seed44
+  done in 31.8 min | progress 68/240 (ok=68, failed=0) | elapsed 4.07h | ETA 87.53h
+[69/240] START drl/B8/ports/seed44
+  done in 31.5 min | progress 69/240 (ok=69, failed=0) | elapsed 4.60h | ETA 87.33h
+[70/240] START drl/B9/ports/seed44
+  done in 31.5 min | progress 70/240 (ok=70, failed=0) | elapsed 5.12h | ETA 87.05h
+[71/240] START drl/B10/ports/seed44
+  done in 29.9 min | progress 71/240 (ok=71, failed=0) | elapsed 5.62h | ETA 86.33h
+[72/240] START supervised/rf/ports/seed44
+  done in 11.7 min | progress 72/240 (ok=72, failed=0) | elapsed 5.81h | ETA 81.40h
+[73/240] START supervised/xgb/ports/seed44
+  done in 2.4 min | progress 73/240 (ok=73, failed=0) | elapsed 5.85h | ETA 75.20h
+[74/240] START supervised/mlp/ports/seed44
+  done in 2.0 min | progress 74/240 (ok=74, failed=0) | elapsed 5.89h | ETA 69.80h
+[75/240] START supervised/lstm/ports/seed44
