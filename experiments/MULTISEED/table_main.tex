@@ -1,0 +1,20 @@
+\begin{table}[t]
+\centering
+\caption{Headline multi-seed results (mean $\pm$ std across matched seeds, ports feature set).}
+\label{tab:multiseed-main}
+\begin{tabular}{lccc}
+\toprule
+Model & KT\_ROC\_AUC & Weighted\_ZeroDay & Macro\_ZeroDay \\
+\midrule
+RF & 99.69 $\pm$ 0.00 & 65.05 $\pm$ 0.00 & 48.61 $\pm$ 0.08 \\
+XGB & 99.67 $\pm$ 0.00 & 64.37 $\pm$ 0.71 & 46.29 $\pm$ 2.31 \\
+MLP & 99.15 $\pm$ 0.02 & 94.86 $\pm$ 1.10 & 47.11 $\pm$ 4.57 \\
+LSTM & 99.17 $\pm$ 0.03 & 94.15 $\pm$ 1.58 & 43.34 $\pm$ 5.31 \\
+B1 & 81.80 $\pm$ 4.08 & 90.86 $\pm$ 9.58 & 49.43 $\pm$ 9.86 \\
+B4 & 87.26 $\pm$ 4.63 & 90.52 $\pm$ 10.96 & 53.30 $\pm$ 7.37 \\
+B6 & 92.19 $\pm$ 5.74 & 93.33 $\pm$ 1.17 & 55.78 $\pm$ 3.94 \\
+B8 & 94.20 $\pm$ 1.24 & 90.65 $\pm$ 21.65 & 67.90 $\pm$ 3.65 \\
+B10 & 93.54 $\pm$ 1.31 & 98.29 $\pm$ 0.45 & 69.58 $\pm$ 2.84 \\
+\bottomrule
+\end{tabular}
+\end{table}
