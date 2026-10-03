@@ -1,0 +1,2 @@
+Model,KT_Accuracy,KT_Precision,KT_Recall,KT_F1,KT_ROC_AUC,Weighted_ZeroDay_%,Macro_ZeroDay_%
+MLP,98.02,97.84,92.71,95.21,99.16,95.68,48.85
