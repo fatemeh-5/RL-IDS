@@ -335,40 +335,7 @@ class FamilyAwareIDSEnvironment(BaselineIDSEnvironment):
                 + self.adaptive_mix * adaptive
             )
             probs = probs / probs.sum()
-            raw = probs * total
-            quotas = {family: self.min_family_quota for family in self.families}
-            remaining = total - self.min_family_quota * n
-            if remaining < 0:
-                # shrink min quota
-                base = max(0, total // n)
-                quotas = {family: base for family in self.families}
-                remaining = total - base * n
-            order = np.argsort(-raw)
-            for idx in order:
-                if remaining <= 0:
-                    break
-                family = self.families[int(idx)]
-                add = 1
-                if self.max_family_quota is not None:
-                    add = min(add, self.max_family_quota - quotas[family])
-                    if add <= 0:
-                        continue
-                quotas[family] += add
-                remaining -= add
-            # distribute leftovers round-robin
-            i = 0
-            while remaining > 0:
-                family = self.families[i % n]
-                if (
-                    self.max_family_quota is None
-                    or quotas[family] < self.max_family_quota
-                ):
-                    quotas[family] += 1
-                    remaining -= 1
-                i += 1
-                if i > n * (total + 2):
-                    break
-            return quotas
+            return self._allocate_quotas(probs, total)
 
         # stratified / hybrid: rotate equal quotas
         base = total // n
@@ -379,6 +346,43 @@ class FamilyAwareIDSEnvironment(BaselineIDSEnvironment):
             family = self.families[(start + offset) % n]
             quotas[family] += 1
         return quotas
+
+    def _allocate_quotas(self, probs: np.ndarray, total: int) -> dict[str, int]:
+        """Min quota per family, then split the rest proportionally to `probs`.
+
+        Largest-remainder allocation, capped at max_family_quota; capacity freed
+        by capped families is re-split among the open ones. If every family
+        hits the cap, the shortfall is left for `_build_episode_indices` to pad.
+        """
+        n = len(self.families)
+        base = self.min_family_quota
+        if base * n > total:
+            base = total // n
+        quotas = np.full(n, base, dtype=np.int64)
+        cap = total if self.max_family_quota is None else int(self.max_family_quota)
+        remaining = total - base * n
+
+        while remaining > 0:
+            room = np.maximum(cap - quotas, 0)
+            open_mask = room > 0
+            if not open_mask.any():
+                break
+            weights = np.where(open_mask, probs, 0.0)
+            share = weights / weights.sum() * remaining
+            add = np.minimum(np.floor(share).astype(np.int64), room)
+            if add.sum() == 0:
+                # Every share < 1: hand out single units by largest share.
+                for idx in np.argsort(-share, kind="stable"):
+                    if remaining <= 0:
+                        break
+                    if room[idx] > 0:
+                        quotas[idx] += 1
+                        remaining -= 1
+                break
+            quotas += add
+            remaining -= int(add.sum())
+
+        return {family: int(q) for family, q in zip(self.families, quotas)}
 
     def _sample_family_quota(self, family: str, quota: int) -> np.ndarray:
         """Override to change how a single family's quota is filled."""
