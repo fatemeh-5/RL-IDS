@@ -1,4 +1,4 @@
-"""Experiment catalog: B0–B11 + advanced algorithms (advance-AI branch)."""
+"""Experiment catalog: B0–B10 (paper ablation), B11 (exploratory extension), and advanced algorithms."""
 
 from __future__ import annotations
 

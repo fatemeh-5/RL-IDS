@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Orchestrate the full B0-B10 + RF/XGB/MLP/LSTM x ports/noports x 8-seed sweep.
+"""Orchestrate the full B0-B11 + RF/XGB/MLP/LSTM x ports/noports x 8-seed sweep (B11 is exploratory, not in the paper).
 
 Design goals:
   - Resumable: a cell counts as done iff its METRICS_ROW.json exists. Safe to

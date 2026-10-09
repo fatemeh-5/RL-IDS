@@ -1,169 +1,134 @@
 # NIDS-DRL — Zero-Day Detection with Deep Reinforcement Learning
 
-Code root: **`Codes/`**
-
 Stacked-LSTM DQN agents for Benign/Attack detection on **NF-UQ-NIDS**, with five
-Zero-Day holdout families. Ablation study **B0–B10**.
+Zero-Day holdout families (Shellcode, Brute Force, Theft, ransomware, Backdoor).
+The paper reports the ablation study **B0–B10**, evaluated with an 8-seed sweep,
+paired significance tests, and per-family precision/recall/F1.
 
-Paper: Alam et al., *Adaptive Defense…*, IEEE Access, 2025.
+This work builds on:
 
-Open this file cleanly in Cursor with **Ctrl+Shift+V**.
+> K. Alam, M. F. Monir, M. J. Hossain, M. S. Uddin, and M. T. Habib,
+> "Adaptive Defense: Zero-Day Attack Detection in NIDS With Deep Reinforcement
+> Learning," *IEEE Access*, vol. 13, 2025. doi:[10.1109/ACCESS.2025.3585445](https://doi.org/10.1109/ACCESS.2025.3585445)
 
----
-
-## Layout
-
-```text
-Codes/
-├── configs/                 # B0.yaml … B10.yaml
-├── agent/                   # RL library (grouped like a classic RL repo)
-│   ├── envs/
-│   ├── models/
-│   ├── buffers/
-│   ├── training/
-│   ├── evaluation/
-│   ├── data/                # constants + dataset pipeline
-│   ├── utils/               # config + checkpoints
-│   └── runners/             # B0–B10 catalog (CODE, not results)
-├── scripts/
-│   ├── prepare_data.py
-│   └── train.py
-├── experiments/             # RESULTS: one CSV per model
-├── data/
-│   ├── raw/                 # put NF-UQ-NIDS.csv here
-│   └── prepared/            # scaler + SMOTE cache
-├── notebooks/
-│   └── EDA.ipynb
-├── docs/
-│   └── eda/                 # EDA visual report PDF
-├── requirements.txt
-└── README.md
-```
-
-| Path | Role |
-|------|------|
-| `configs/` | Experiment hyperparameters |
-| `agent/` | How training works |
-| `scripts/` | CLI (`prepare_data`, `train`) |
-| `experiments/` | Published result CSVs only |
-| `data/` | Dataset + cache |
-| `notebooks/` | EDA notebook |
-| `docs/eda/` | EDA PDF report |
+All commands below are run from the repository root.
 
 ---
 
-## `agent/` package (clean groups)
+## Requirements
 
-```text
-agent/
-├── envs/          # Gymnasium IDS environments
-├── models/        # Q-networks (Softmax / Double / Dueling)
-├── buffers/       # Uniform replay + PER
-├── training/      # Train loops for B0–B10
-├── evaluation/    # Known-Test + Zero-Day metrics
-├── data/          # Paths, features, leakage-safe pipeline
-├── utils/         # YAML config + checkpoint I/O
-└── runners/       # Catalog + orchestration for B0–B10
-```
-
-| Dir | Contents |
-|-----|----------|
-| `envs/` | `ids_env.py` — baseline, cost-sensitive, family-aware |
-| `models/` | `networks.py` — DQN builders |
-| `buffers/` | `replay.py`, `prioritized.py` |
-| `training/` | `baseline.py` (B0), `double_dqn.py` (B1–B3), `per.py` (B4–B10), `dueling_helpers.py` |
-| `evaluation/` | `metrics.py` |
-| `data/` | `constants.py`, `pipeline.py` |
-| `utils/` | `config.py`, `checkpointing.py` |
-| `runners/` | `catalog.py`, `layout.py`, `runners.py` |
-
-**Do not put result files inside `agent/`.** Results go to top-level `experiments/`.
-
-```python
-from agent.models import build_double_dqn
-from agent.training import train_per
-from agent.runners.catalog import list_experiments
-from agent.data import prepare_and_cache
-```
+| | |
+|---|---|
+| Python | 3.12 (tested with 3.12.10) |
+| Packages | pinned in `requirements.txt` (TensorFlow 2.21, scikit-learn 1.9, imbalanced-learn 0.14, gymnasium 1.3, …) |
+| OS | Developed on Windows 11; the Python code is OS-independent |
+| Hardware used | AMD Ryzen 9 3900X (12 cores), 128 GB RAM, **CPU only** (no GPU) |
+| Runtime (on that machine) | DRL cell (one config × one seed): median ~65 min, range 8–85 min. Supervised cell: median ~9 min. Full DRL sweep (12 configs × 8 seeds = 96 cells): ~105 h |
 
 ---
 
-## Results — single source of truth: `experiments/MULTISEED/`
+## Dataset
 
-There is exactly ONE results pipeline. Per-seed cell outputs live under
-`experiments/MULTISEED/runs/<drl|supervised>/<config>/<ports|noports>/seed<N>/`
-(one `METRICS_ROW.json` + `results/` per cell). Everything else in
-`experiments/MULTISEED/` is derived from those cells and safe to regenerate:
+The dataset is **not** included in this repository.
+
+- **Dataset:** NF-UQ-NIDS (v1, the 8 NetFlow features + IPs/ports, with `Attack`
+  and `Dataset` columns): ~12M flows merged from UNSW-NB15, BoT-IoT, ToN-IoT and
+  CSE-CIC-IDS2018.
+- **Download:** University of Queensland, *Machine Learning-Based NIDS Datasets*:
+  <https://staff.itee.uq.edu.au/marius/NIDS_datasets/> (also listed at
+  <https://www.cyber.uq.edu.au/node/824>).
+- **License / terms:** set by the dataset authors. Academic research use is
+  permitted provided the papers below are cited. For any other use, check the
+  terms on the download page or contact the authors. This repository does not
+  redistribute the data.
+- **Citation:** M. Sarhan, S. Layeghy, N. Moustafa, and M. Portmann, "NetFlow
+  Datasets for Machine Learning-Based Network Intrusion Detection Systems," in
+  *Big Data Technologies and Applications (BDTA 2020)*, LNICST vol. 371,
+  Springer, 2021. doi:[10.1007/978-3-030-72802-1_9](https://doi.org/10.1007/978-3-030-72802-1_9)
+
+Place the CSV at:
 
 ```text
-experiments/MULTISEED/
-├── runs/                              # one dir per (config, feature_set, seed) cell — source of truth
-├── sweep_log.jsonl                    # one line per cell attempt (ok/failed), from run_multiseed_sweep.py
-├── progress.log                       # human-readable live log: timestamp | model features seed | episode x/N, reward, acc, eps, cell ETA
-├── aggregate_results.csv              # scripts/aggregate_multiseed.py: long table, one row per cell
-├── summary_stats.csv, significance_tests.csv, table_main.tex
-│                                       # scripts/multiseed_stats.py: mean/std/CI + paired Wilcoxon/t-test
-├── per_family_precision_recall_f1.csv # scripts/report_per_family.py: long, all seeds
-└── per_family_summary.csv / .json     # scripts/report_per_family.py: mean/std per (config, feature_set, family)
+data/raw/NF-UQ-NIDS.csv
 ```
 
-`paper_results_log.md` (repo root) gets a dated, versioned section appended
-by `scripts/report_per_family.py` each time it's run — never overwritten.
-
-There used to be a second, older per-model CSV pipeline
-(`experiments/B0_zero_day_per_attack_metrics.csv`, etc., written by
-`scripts/train.py <ID>` single runs). It was removed because it silently
-diverged from the multi-seed results and one of its files was stale. If you
-need a single, non-swept run for a quick check, `scripts/train.py <ID>` still
-works and writes to `experiments/<family_dir>/`, but for anything going in
-the paper, use the `MULTISEED` pipeline above.
-
-### Watching a running sweep
-
-```powershell
-python scripts\sweep_status.py --tail 15                          # snapshot: current model/seed/episode, done/total, ETA
-Get-Content experiments\MULTISEED\progress.log -Wait -Tail 20     # live stream, one clean line per episode
-```
-
-Each cell's full (noisy, TensorFlow-heavy) output still goes to its own
-`runs/<kind>/<config>/<features>/seed<N>/log.txt`.
-
-To rebuild everything from the sweep's raw cells:
-```bash
-python scripts/aggregate_multiseed.py     # -> aggregate_results.csv
-python scripts/multiseed_stats.py         # -> summary_stats.csv, significance_tests.csv, STATS_NOTES.md
-python scripts/report_per_family.py       # -> per_family_*.csv/json, appends to paper_results_log.md
-```
+`data/` is git-ignored, so create `data/raw/` yourself.
 
 ---
 
 ## Quick start
 
+Shell conventions: every `python ...` command below works unchanged in both
+bash and PowerShell (forward slashes are fine on Windows). Only lines that
+differ between shells are given twice and labelled.
+
 ```bash
-cd Codes
-python3 -m venv .venv
+# --- Linux / macOS (bash) ---
+python3.12 -m venv .venv
 source .venv/bin/activate
-pip install -r requirements.txt
-
-# required:
-#   data/raw/NF-UQ-NIDS.csv
-
-python3 scripts/prepare_data.py --force
-python3 scripts/train.py --list
-python3 scripts/train.py B10
-python3 scripts/train.py --all
 ```
 
-Smoke / resume:
+```powershell
+# --- Windows (PowerShell) ---
+py -3.12 -m venv .venv
+.venv\Scripts\Activate.ps1
+```
+
+Then, in either shell:
 
 ```bash
-python3 scripts/train.py B0 --episodes 2
-python3 scripts/train.py B4 --mode resume
+pip install -r requirements.txt
+
+python scripts/prepare_data.py --force     # scaler + SMOTE cache -> data/prepared/
+python scripts/train.py --list
+python scripts/train.py B10                # single run, quick check
+python scripts/train.py B0 --episodes 2    # smoke test
+python scripts/train.py B4 --mode resume   # resume from checkpoint
+```
+
+### Reproducing the paper results (multi-seed sweep)
+
+```bash
+python scripts/run_multiseed_sweep.py --dry-run   # print the plan
+python scripts/run_multiseed_sweep.py             # resumable; safe to kill and re-run
+```
+
+The sweep runs seeds 42–49. A cell counts as done when its `METRICS_ROW.json`
+exists, so re-running the command picks up where it stopped.
+
+Watching a running sweep:
+
+```bash
+python scripts/sweep_status.py --tail 15   # current model/seed/episode, done/total, ETA
+```
+
+```bash
+# --- Linux / macOS (bash) ---
+tail -f -n 20 experiments/MULTISEED/progress.log
+```
+
+```powershell
+# --- Windows (PowerShell) ---
+Get-Content experiments\MULTISEED\progress.log -Wait -Tail 20
+```
+
+`scripts/watchdog_sweep.ps1` is an optional Windows-only helper. It relaunches
+the sweep after a crash or reboot when registered as a Scheduled Task. On
+Linux, use cron/systemd or simply re-run the sweep command.
+
+Rebuilding all derived tables from the raw cells:
+
+```bash
+python scripts/aggregate_multiseed.py   # -> aggregate_results.csv
+python scripts/multiseed_stats.py       # -> summary_stats.csv, significance_tests.csv, table_main.tex, STATS_NOTES.md
+python scripts/report_per_family.py     # -> per_family_*.csv/json, appends to paper_results_log.md
 ```
 
 ---
 
-## Experiments B0–B10
+## Experiments
+
+### Paper ablation: B0–B10
 
 | ID | Idea | Trainer |
 |----|------|---------|
@@ -179,16 +144,95 @@ python3 scripts/train.py B4 --mode resume
 | B9 | Adaptive hybrid | `training/per.py` |
 | B10 | Restrained adaptive | `training/per.py` |
 
-Configs: `configs/B*.yaml`  
-Registry: `agent/runners/catalog.py`
+Configs: `configs/B*.yaml`. Registry: `agent/runners/catalog.py`.
+
+Supervised baselines (RF, XGBoost, MLP, LSTM) are run by
+`scripts/supervised_baseline.py` as part of the sweep.
+
+### Exploratory extensions (not reported in the paper)
+
+- **B11** (`configs/B11.yaml`, `agent/envs/investigate_env.py`): B10 sampling
+  plus a third "investigate" action and a post-alert queue effect. It is part of
+  the default sweep and appears in the aggregate CSVs, but it is **not** part of
+  the B0–B10 ablation in the paper. To skip it, remove `"B11"` from
+  `DRL_CONFIGS` in `scripts/run_multiseed_sweep.py`.
+- **Advanced algorithms** (`configs/advanced/`, `agent/training/advanced/`,
+  `experiments/ADV_*`): PPO, A2C, Rainbow, C51, QR-DQN, etc. These are
+  exploratory and not in the paper.
 
 ---
 
-## Parameters
+## Layout
 
-1. Global / data → `agent/data/constants.py`
-2. Per experiment → `configs/B*.yaml`
-3. Networks → `agent/models/networks.py`
+```text
+.
+├── configs/                 # B0.yaml … B10.yaml (paper), B11.yaml + advanced/ (exploratory)
+├── agent/                   # RL library
+│   ├── envs/                # Gymnasium IDS environments
+│   ├── models/              # Q-networks (Softmax / Double / Dueling)
+│   ├── buffers/             # Uniform replay + PER
+│   ├── training/            # Train loops (+ advanced/)
+│   ├── evaluation/          # Known-Test + Zero-Day metrics
+│   ├── data/                # constants + leakage-safe dataset pipeline
+│   ├── utils/               # config, checkpoints, progress logging
+│   └── runners/             # experiment catalog + orchestration (code, not results)
+├── scripts/                 # CLI: prepare_data, train, multi-seed sweep, aggregation, stats
+├── experiments/
+│   └── MULTISEED/           # paper results (derived tables tracked in git)
+├── data/                    # git-ignored: raw/NF-UQ-NIDS.csv, prepared/ cache
+├── notebooks/EDA.ipynb
+├── docs/eda/                # EDA visual report PDF
+├── STATS_NOTES.md           # statistical-testing notes (generated)
+├── paper_results_log.md     # dated, append-only results log
+├── requirements.txt
+└── LICENSE
+```
+
+**Do not put result files inside `agent/`.** Results go to `experiments/`.
+
+| Dir | Contents |
+|-----|----------|
+| `agent/envs/` | `ids_env.py` (baseline, cost-sensitive, family-aware), `investigate_env.py` (B11) |
+| `agent/models/` | `networks.py` (DQN builders) |
+| `agent/buffers/` | `replay.py`, `prioritized.py` |
+| `agent/training/` | `baseline.py` (B0), `double_dqn.py` (B1–B3), `per.py` (B4–B11), `dueling_helpers.py` |
+| `agent/evaluation/` | `metrics.py` |
+| `agent/data/` | `constants.py`, `pipeline.py` |
+| `agent/utils/` | `config.py`, `checkpointing.py`, `progress.py` |
+| `agent/runners/` | `catalog.py`, `layout.py`, `runners.py` |
+
+Parameters live in three places:
+
+1. Global / data: `agent/data/constants.py`
+2. Per experiment: `configs/B*.yaml`
+3. Networks: `agent/models/networks.py`
+
+---
+
+## Results: `experiments/MULTISEED/`
+
+There is a single results pipeline. Per-seed cell outputs live under
+`experiments/MULTISEED/runs/<drl|supervised>/<config>/<ports|noports>/seed<N>/`
+(one `METRICS_ROW.json` + `results/` per cell; git-ignored because of size).
+Everything else is derived from those cells and safe to regenerate:
+
+```text
+experiments/MULTISEED/
+├── runs/                              # one dir per (config, feature_set, seed) cell (source of truth)
+├── sweep_log.jsonl                    # one line per cell attempt (ok/failed)
+├── progress.log                       # live log: timestamp | model features seed | episode x/N, reward, acc, eps, ETA
+├── aggregate_results.csv              # long table, one row per cell
+├── summary_stats.csv, significance_tests.csv, table_main.tex
+│                                      # mean/std/CI + paired Wilcoxon/t-test
+├── per_family_precision_recall_f1.csv # long, all seeds
+└── per_family_summary.csv / .json     # mean/std per (config, feature_set, family)
+```
+
+Each cell's full TensorFlow output goes to its own
+`runs/<kind>/<config>/<features>/seed<N>/log.txt`.
+
+`scripts/train.py <ID>` single runs write to `experiments/<family_dir>/` and are
+meant for quick checks only. Use the `MULTISEED` pipeline for anything reported.
 
 ---
 
@@ -205,6 +249,13 @@ Registry: `agent/runners/catalog.py`
 
 | Problem | Fix |
 |---------|-----|
-| Dataset missing | Place CSV at `data/raw/NF-UQ-NIDS.csv` |
-| Cache missing | `python3 scripts/prepare_data.py --force` |
-| Import errors | Run commands from `Codes/` |
+| Dataset missing | Place CSV at `data/raw/NF-UQ-NIDS.csv` (see [Dataset](#dataset)) |
+| Cache missing | `python scripts/prepare_data.py --force` |
+| Import errors | Run commands from the repository root with the venv active |
+
+---
+
+## License
+
+Code: [MIT](LICENSE). The NF-UQ-NIDS dataset is subject to its own terms (see
+[Dataset](#dataset)).
